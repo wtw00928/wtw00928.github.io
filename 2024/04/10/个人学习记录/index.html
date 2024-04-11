@@ -13,7 +13,7 @@
 
 
 
-<title>网络编程 | Hexo</title>
+<title>学习记录 | Hexo</title>
 
 
 
@@ -196,7 +196,7 @@
     
     <article class="post-wrap">
         <header class="post-header">
-            <h1 class="post-title">网络编程</h1>
+            <h1 class="post-title">学习记录</h1>
             
                 <div class="post-meta">
                     
@@ -205,14 +205,14 @@
 
                     
                         <span class="post-time">
-                        Date: <a href="#">March 22, 2024&nbsp;&nbsp;20:26:09</a>
+                        Date: <a href="#">April 10, 2024&nbsp;&nbsp;10:18:35</a>
                         </span>
                     
                     
                         <span class="post-category">
                     Category:
                             
-                                <a href="/categories/Java/">Java</a>
+                                <a href="/categories/%E8%AE%B0%E5%BD%95/">记录</a>
                             
                         </span>
                     
@@ -221,48 +221,56 @@
         </header>
 
         <div class="post-content">
-            <h2 id="网络编程"><a href="#网络编程" class="headerlink" title="网络编程"></a>网络编程</h2><h3 id="1、网络编程以及通信协议是什么？"><a href="#1、网络编程以及通信协议是什么？" class="headerlink" title="1、网络编程以及通信协议是什么？"></a>1、网络编程以及通信协议是什么？</h3><p>网络编程是指编写程序以实现计算机网络通信的过程。在网络编程中，程序可以通过网络连接与其他计算机或设备进行通信，传输数据、接收数据，并进行各种网络相关的操作。</p>
-<p>通信协议其实就是计算机间互相通信所要遵守的规则。</p>
-<h3 id="2、URL、IP、HTTP、Socket以及端口是什么？"><a href="#2、URL、IP、HTTP、Socket以及端口是什么？" class="headerlink" title="2、URL、IP、HTTP、Socket以及端口是什么？"></a>2、URL、IP、HTTP、Socket以及端口是什么？</h3><p>URL其实就是我们经常说的网址：<a target="_blank" rel="noopener" href="https://wtw00928.github/">https://wtw00928.github</a>.</p>
-<p>IP地址分为IPv4和IPv6两种。IPv4采用32位地址，类似<code>101.202.99.12</code>，而IPv6采用128位地址，类似<code>2001:0DA8:100A:0000:0000:1020:F2F3:1428</code>，其中<code>101</code>表示的是一个8位二进制。</p>
-<p>HTTP(Hypertext Transfer Protocol，超文本传输协议)就是一个通信协议。HTTPS是HTTP的安全版本，通过在HTTP上加入SSL&#x2F;TLS协议层来加密通信内容，从而提供更高的安全性。</p>
-<p>端口就是计算机与服务器进行双向通信的逻辑通道，可以想象因为一个计算机内需要运行多个程序，所以端口的数量也很多<code>1~65535</code>。</p>
-<p>Socket是用于描述通信端点的抽象，它包含了IP地址和端口号。在建立网络连接时，通常会指定本地端口和远程端口。本地端口是指当前计算机上的应用程序使用的端口，远程端口是指通信对方的计算机上的应用程序使用的端口。当两个应用程序需要进行通信时，它们分别创建自己的Socket，并通过网络连接到对方的Socket，从而建立通信链路。</p>
-<h3 id="3、细谈Socket"><a href="#3、细谈Socket" class="headerlink" title="3、细谈Socket"></a>3、细谈Socket</h3><p>Socket类的构造函数通常有两种形式，用于创建客户端和服务器端的套接字。以下是这两种形式的概述：</p>
-<ol>
-<li><p><strong>客户端Socket的构造函数</strong>：</p>
-<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">Socket(String host, int port)</span><br></pre></td></tr></table></figure>
+            <h3 id="个人学习记录"><a href="#个人学习记录" class="headerlink" title="个人学习记录"></a>个人学习记录</h3><table>
+<thead>
+<tr>
+<th align="center">时间</th>
+<th align="center">上午</th>
+<th align="center">中午</th>
+<th align="center">晚上</th>
+<th align="center">leetcode自己做出几道？</th>
+</tr>
+</thead>
+<tbody><tr>
+<td align="center">2024&#x2F;4&#x2F;10</td>
+<td align="center">安装Mysql、两道leetcode</td>
+<td align="center">一道leetcode、sql(5-7)</td>
+<td align="center">一道leetcode、sql(8-11)</td>
+<td align="center">0</td>
+</tr>
+<tr>
+<td align="center"></td>
+<td align="center"></td>
+<td align="center"></td>
+<td align="center"></td>
+<td align="center"></td>
+</tr>
+<tr>
+<td align="center"></td>
+<td align="center"></td>
+<td align="center"></td>
+<td align="center"></td>
+<td align="center"></td>
+</tr>
+</tbody></table>
+<h6 id="2024-4-10"><a href="#2024-4-10" class="headerlink" title="2024&#x2F;4&#x2F;10:"></a>2024&#x2F;4&#x2F;10:</h6><p><strong>leetcode第239题要求的是滑动窗口的最大值</strong>，思路是：</p>
+<p>1、使用一个双向队列Duque，不断往队列尾部添加数字，然后队列中是单调递增(非严格递减)，头部最大，尾部最小</p>
+<p>2、可能会遇见最大值，然后把队列中原本存在的数全都remove掉，使得其变为队列头部，但是当窗口的滑过该节点的索引时，它也会被remove</p>
+<p><strong>leetcode第415题要求的是字符串相加</strong>，思路是：</p>
+<p>1、对于字符串中获取的单个字符，要变为数字这种可加减的形式，应该使用’9’ - ‘0’ &#x3D; 9，这样与字符0相减。</p>
+<p>2、注意进位carry，以及两个数的位数不同时的处理</p>
+<p>3、要用可变字符串StringBuffer，最后要将StringBuffer转化为字符串String</p>
+<p><strong>leetcode第796题要求的是旋转字符串</strong>，思路是：</p>
+<p>1、相同的字符串相连接，如果是旋转字符串，那么目标字符串会存在在连接字符串内</p>
+<p><strong>leetcode第946题要求的是两个字符数组是不是在栈上入栈出栈的结果</strong>，思路是：</p>
+<p>主要是对两个数组要进行分析，最先开始是要先push()一个，另外遍历的是pushed，因为先有pushed再有popped.</p>
+<figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">class</span> <span class="title class_">Solution</span> &#123;</span><br><span class="line">    <span class="keyword">public</span> <span class="type">boolean</span> <span class="title function_">validateStackSequences</span><span class="params">(<span class="type">int</span>[] pushed, <span class="type">int</span>[] popped)</span> &#123;</span><br><span class="line">        <span class="keyword">if</span>( pushed.length != popped.length )&#123;</span><br><span class="line">            <span class="keyword">return</span> <span class="literal">false</span>;</span><br><span class="line">        &#125;</span><br><span class="line">        <span class="keyword">if</span>(pushed.length == <span class="number">0</span>)&#123;</span><br><span class="line">            <span class="keyword">return</span> <span class="literal">true</span>;</span><br><span class="line">        &#125;</span><br><span class="line">        Stack&lt;Integer&gt; res = <span class="keyword">new</span> <span class="title class_">Stack</span>&lt;&gt;();</span><br><span class="line">        <span class="type">int</span> <span class="variable">i</span> <span class="operator">=</span> <span class="number">0</span></span><br><span class="line">        <span class="keyword">for</span>(<span class="type">int</span> nums : pushed)&#123;</span><br><span class="line">            res.push(pushed[<span class="number">0</span>]);</span><br><span class="line">            <span class="keyword">while</span>(!res.isEmpyt() &amp;&amp; res.peek() == popped[i])&#123;</span><br><span class="line">                res.pop();</span><br><span class="line">                i++;</span><br><span class="line">            &#125;</span><br><span class="line">        &#125;</span><br><span class="line">        <span class="keyword">return</span> res.isEmpyt();</span><br><span class="line">    &#125;</span><br></pre></td></tr></table></figure>
 
-<p>这个构造函数用于创建一个客户端套接字，并指定要连接的服务器的主机名（或IP地址）和端口号。它会尝试与指定的主机和端口建立连接。</p>
-<p>“localhost” 是一个特殊的主机名，通常用来引用本地计算机上的网络接口。它对应着本地回环地址（loopback address）127.0.0.1</p>
-</li>
-<li><p><strong>服务器端Socket的构造函数</strong>：</p>
-<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">ServerSocket(int port)</span><br></pre></td></tr></table></figure>
-
-<p>这个构造函数用于创建一个服务器端套接字，并绑定到指定的端口上，以便监听客户端的连接请求。当客户端尝试连接到指定端口时，服务器端套接字将接受连接请求并创建一个新的Socket对象，用于与客户端进行通信。</p>
-<p><code>DatagramSocket</code> 是 Java 中用于发送和接收 UDP 数据包的类。它允许应用程序通过 UDP 协议在网络上发送数据，并从网络中接收数据</p>
-</li>
-</ol>
-<p>###4、DatagramSocket是什么？</p>
-<p><code>DatagramSocket</code> 是 Java 中用于发送和接收 UDP 数据包的类。</p>
-<p><code>DatagramSocket</code>相当于一个码头，<code>DatagramPacket</code>相当于一个集装箱。集装箱里装有数据，码头将集装箱的数据发送到指定集装箱的目标地址和端口中。</p>
-<h3 id="5、网络编程中的服务器端与客户端"><a href="#5、网络编程中的服务器端与客户端" class="headerlink" title="5、网络编程中的服务器端与客户端"></a>5、网络编程中的服务器端与客户端</h3><p>编写程序时一般先看服务端，再看客户端，因为服务端要一直监听是否由客户端连接。服务端只要端口号，不用IP，而客户端需要服务端的IP，以及端口号，</p>
-<ol>
-<li><strong>服务器端</strong>：<ul>
-<li>服务器端是网络服务的提供者，它通常在服务器上运行，等待客户端的连接请求。</li>
-<li>服务器端负责接收客户端的连接请求，并为每个连接请求创建一个新的会话（或称为会话、连接、套接字）。</li>
-<li>一旦建立了连接，服务器端负责处理客户端发送过来的请求，并提供相应的服务或资源。</li>
-</ul>
-</li>
-<li><strong>客户端</strong>：<ul>
-<li>客户端是网络服务的使用者，它通常在用户的计算机上运行，向服务器端发送请求并接收响应。</li>
-<li>客户端负责与服务器端建立连接，并发送请求数据。</li>
-<li>客户端接收服务器端返回的响应，并根据需要对响应进行处理和显示给用户。</li>
-<li>客户端可以与多个服务器端进行通信，但通常一次只与一个服务器端建立连接</li>
-</ul>
-</li>
-</ol>
-
+<p><strong>sql</strong></p>
+<p>数据库今天主要学习了：<br>1、怎么通过可视化进行建表，以及用代码进行建表</p>
+<p>2、删除的操作</p>
+<p>3、列表的一些字段属性，但这些感觉不是重点？一般都明白，注意的是，not null 的意思是不能为空！</p>
+<h6 id="2024-4-11"><a href="#2024-4-11" class="headerlink" title="2024&#x2F;4&#x2F;11:"></a>2024&#x2F;4&#x2F;11:</h6>
         </div>
 
         
@@ -285,7 +293,7 @@
                 <span class="tag">
                     
                     
-                        <a href="/tags/%E7%BD%91%E7%BB%9C%E7%BC%96%E7%A8%8B/"># 网络编程</a>
+                        <a href="/tags/%E8%AE%B0%E5%BD%95/"># 记录</a>
                     
                         
                 </span>
@@ -298,10 +306,8 @@
         </section>
         <section class="post-nav">
             
-                <a class="prev" rel="prev" href="/2024/03/23/Leecode/">leetcode解题知识点</a>
             
-            
-            <a class="next" rel="next" href="/2024/03/21/Test2/">Test2</a>
+            <a class="next" rel="next" href="/2024/03/30/MySQL/">小林MySQL</a>
             
         </section>
 

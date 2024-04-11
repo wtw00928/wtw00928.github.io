@@ -1,0 +1,289 @@
+<!DOCTYPE html>
+<html lang="CH">
+
+<head>
+    <meta charset="UTF-8">
+<meta name="viewport"
+      content="width=device-width, initial-scale=1.0, maximum-scale=1.0, minimum-scale=1.0">
+<meta http-equiv="X-UA-Compatible" content="ie=edge">
+
+    <meta name="author" content="MatJenin">
+
+
+
+
+
+<title>多线程 | Hexo</title>
+
+
+
+    <link rel="icon" href="/favicon.ico">
+
+
+
+
+    <!-- stylesheets list from _config.yml -->
+    
+    <link rel="stylesheet" href="/css/style.css">
+    
+
+
+
+    <!-- scripts list from _config.yml -->
+    
+    <script src="/js/script.js"></script>
+    
+    <script src="/js/tocbot.min.js"></script>
+    
+
+
+
+    
+    
+        
+    
+
+
+<meta name="generator" content="Hexo 7.1.1"></head>
+
+<body>
+    <script>
+        // this function is used to check current theme before page loaded.
+        (() => {
+            const currentTheme = window.localStorage && window.localStorage.getItem('theme') || '';
+            const isDark = currentTheme === 'dark';
+            const pagebody = document.getElementsByTagName('body')[0]
+            if (isDark) {
+                pagebody.classList.add('dark-theme');
+                // mobile
+                document.getElementById("mobile-toggle-theme").innerText = "· Dark"
+            } else {
+                pagebody.classList.remove('dark-theme');
+                // mobile
+                document.getElementById("mobile-toggle-theme").innerText = "· Light"
+            }
+        })();
+    </script>
+
+    <div class="wrapper">
+        <header>
+    <nav class="navbar">
+        <div class="container">
+            <div class="navbar-header header-logo"><a href="/">MatJenin&#39;s Blog</a></div>
+            <div class="menu navbar-right">
+                
+                    <a class="menu-item" href="/archives">Posts</a>
+                
+                    <a class="menu-item" href="/category">Categories</a>
+                
+                    <a class="menu-item" href="/tag">Tags</a>
+                
+                    <a class="menu-item" href="/about">About</a>
+                
+                <input id="switch_default" type="checkbox" class="switch_default">
+                <label for="switch_default" class="toggleBtn"></label>
+            </div>
+        </div>
+    </nav>
+
+    
+    <nav class="navbar-mobile" id="nav-mobile">
+        <div class="container">
+            <div class="navbar-header">
+                <div>
+                    <a href="/">MatJenin&#39;s Blog</a><a id="mobile-toggle-theme">·&nbsp;Light</a>
+                </div>
+                <div class="menu-toggle" onclick="mobileBtn()">&#9776; Menu</div>
+            </div>
+            <div class="menu" id="mobile-menu">
+                
+                    <a class="menu-item" href="/archives">Posts</a>
+                
+                    <a class="menu-item" href="/category">Categories</a>
+                
+                    <a class="menu-item" href="/tag">Tags</a>
+                
+                    <a class="menu-item" href="/about">About</a>
+                
+            </div>
+        </div>
+    </nav>
+
+</header>
+<script>
+    var mobileBtn = function f() {
+        var toggleMenu = document.getElementsByClassName("menu-toggle")[0];
+        var mobileMenu = document.getElementById("mobile-menu");
+        if(toggleMenu.classList.contains("active")){
+           toggleMenu.classList.remove("active")
+            mobileMenu.classList.remove("active")
+        }else{
+            toggleMenu.classList.add("active")
+            mobileMenu.classList.add("active")
+        }
+    }
+</script>
+            <div class="main">
+                <div class="container">
+    
+    
+        <div class="post-toc">
+    <div class="tocbot-list">
+    </div>
+    <div class="tocbot-list-menu">
+        <a class="tocbot-toc-expand" onclick="expand_toc()">Expand all</a>
+        <a onclick="go_top()">Back to top</a>
+        <a onclick="go_bottom()">Go to bottom</a>
+    </div>
+</div>
+
+<script>
+    var tocbot_timer;
+    var DEPTH_MAX = 6; // 为 6 时展开所有
+    var tocbot_default_config = {
+        tocSelector: '.tocbot-list',
+        contentSelector: '.post-content',
+        headingSelector: 'h1, h2, h3, h4, h5',
+        orderedList: false,
+        scrollSmooth: true,
+        onClick: extend_click,
+    };
+
+    function extend_click() {
+        clearTimeout(tocbot_timer);
+        tocbot_timer = setTimeout(function() {
+            tocbot.refresh(obj_merge(tocbot_default_config, {
+                hasInnerContainers: true
+            }));
+        }, 420); // 这个值是由 tocbot 源码里定义的 scrollSmoothDuration 得来的
+    }
+
+    document.ready(function() {
+        tocbot.init(obj_merge(tocbot_default_config, {
+            collapseDepth: 1
+        }));
+    });
+
+    function expand_toc() {
+        var b = document.querySelector('.tocbot-toc-expand');
+        var expanded = b.getAttribute('data-expanded');
+        expanded ? b.removeAttribute('data-expanded') : b.setAttribute('data-expanded', true);
+        tocbot.refresh(obj_merge(tocbot_default_config, {
+            collapseDepth: expanded ? 1 : DEPTH_MAX
+        }));
+        b.innerText = expanded ? 'Expand all' : 'Collapse all';
+    }
+
+    function go_top() {
+        window.scrollTo(0, 0);
+    }
+
+    function go_bottom() {
+        window.scrollTo(0, document.body.scrollHeight);
+    }
+
+    function obj_merge(target, source) {
+        for (var item in source) {
+            if (source.hasOwnProperty(item)) {
+                target[item] = source[item];
+            }
+        }
+        return target;
+    }
+</script>
+    
+
+    
+    <article class="post-wrap">
+        <header class="post-header">
+            <h1 class="post-title">多线程</h1>
+            
+                <div class="post-meta">
+                    
+                        Author: <a itemprop="author" rel="author" href="/">MatJenin</a>
+                    
+
+                    
+                        <span class="post-time">
+                        Date: <a href="#">March 25, 2024&nbsp;&nbsp;21:43:53</a>
+                        </span>
+                    
+                    
+                        <span class="post-category">
+                    Category:
+                            
+                                <a href="/categories/Java/">Java</a>
+                            
+                        </span>
+                    
+                </div>
+            
+        </header>
+
+        <div class="post-content">
+            <h3 id="多线程"><a href="#多线程" class="headerlink" title="多线程"></a>多线程</h3><p>1、多线程的创建方式：</p>
+<figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment">//其实多线程的创建方式就两种：继承Thread 以及 实现Runnable接口</span></span><br><span class="line"><span class="comment">//第一种</span></span><br><span class="line"><span class="keyword">class</span> <span class="title class_">A</span> extent Thread&#123;</span><br><span class="line">    <span class="keyword">public</span> <span class="keyword">void</span> run&#123;</span><br><span class="line">        System.out.println(<span class="string">&quot;AAAAA&quot;</span>);</span><br><span class="line">    &#125;</span><br><span class="line">&#125;</span><br><span class="line"><span class="type">A</span> <span class="variable">aa</span> <span class="operator">=</span> <span class="keyword">new</span> <span class="title class_">A</span>();</span><br><span class="line">aa.start();</span><br><span class="line"><span class="comment">//第二种</span></span><br><span class="line"><span class="keyword">class</span> <span class="title class_">A</span> <span class="keyword">implements</span> <span class="title class_">Runnable</span>&#123;</span><br><span class="line">    <span class="keyword">public</span> <span class="keyword">void</span> run&#123;</span><br><span class="line">        System.out.println(<span class="string">&quot;AAAAA&quot;</span>);</span><br><span class="line">    &#125;</span><br><span class="line">&#125;</span><br><span class="line"><span class="type">A</span> <span class="variable">aa</span> <span class="operator">=</span> <span class="keyword">new</span> <span class="title class_">A</span>();</span><br><span class="line"><span class="type">Thread</span> <span class="variable">tt</span> <span class="operator">=</span> <span class="keyword">new</span> <span class="title class_">Thread</span>(aa);</span><br><span class="line">tt.start();</span><br></pre></td></tr></table></figure>
+
+<p>2、所谓的线程串行化，指的就是，&#x3D;&#x3D;t.join()&#x3D;&#x3D;</p>
+<p>t.join()是使得调用t的线程进入暂停，直至t线程完成操作！从英文上也能看出来：t线程被插队进去了！</p>
+<p>3、生产消费经典例子</p>
+<figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br><span class="line">35</span><br><span class="line">36</span><br><span class="line">37</span><br><span class="line">38</span><br><span class="line">39</span><br><span class="line">40</span><br><span class="line">41</span><br><span class="line">42</span><br><span class="line">43</span><br><span class="line">44</span><br><span class="line">45</span><br><span class="line">46</span><br><span class="line">47</span><br><span class="line">48</span><br><span class="line">49</span><br><span class="line">50</span><br><span class="line">51</span><br><span class="line">52</span><br><span class="line">53</span><br><span class="line">54</span><br><span class="line">55</span><br><span class="line">56</span><br><span class="line">57</span><br><span class="line">58</span><br><span class="line">59</span><br><span class="line">60</span><br><span class="line">61</span><br><span class="line">62</span><br><span class="line">63</span><br><span class="line">64</span><br><span class="line">65</span><br><span class="line">66</span><br><span class="line">67</span><br><span class="line">68</span><br><span class="line">69</span><br><span class="line">70</span><br><span class="line">71</span><br><span class="line">72</span><br><span class="line">73</span><br><span class="line">74</span><br><span class="line">75</span><br><span class="line">76</span><br><span class="line">77</span><br><span class="line">78</span><br><span class="line">79</span><br><span class="line">80</span><br><span class="line">81</span><br><span class="line">82</span><br><span class="line">83</span><br><span class="line">84</span><br><span class="line">85</span><br><span class="line">86</span><br><span class="line">87</span><br><span class="line">88</span><br><span class="line">89</span><br><span class="line">90</span><br><span class="line">91</span><br><span class="line">92</span><br><span class="line">93</span><br><span class="line">94</span><br><span class="line">95</span><br><span class="line">96</span><br><span class="line">97</span><br><span class="line">98</span><br><span class="line">99</span><br><span class="line">100</span><br><span class="line">101</span><br><span class="line">102</span><br><span class="line">103</span><br><span class="line">104</span><br><span class="line">105</span><br><span class="line">106</span><br><span class="line">107</span><br><span class="line">108</span><br><span class="line">109</span><br><span class="line">110</span><br><span class="line">111</span><br><span class="line">112</span><br><span class="line">113</span><br><span class="line">114</span><br><span class="line">115</span><br><span class="line">116</span><br><span class="line">117</span><br><span class="line">118</span><br><span class="line">119</span><br><span class="line">120</span><br><span class="line">121</span><br><span class="line">122</span><br><span class="line">123</span><br><span class="line">124</span><br><span class="line">125</span><br><span class="line">126</span><br><span class="line">127</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">public</span> <span class="keyword">class</span> <span class="title class_">Thread</span></span><br><span class="line">&#123;</span><br><span class="line">	<span class="keyword">public</span> <span class="keyword">static</span> <span class="keyword">void</span> <span class="title function_">main</span><span class="params">(String[] args)</span></span><br><span class="line">	&#123;</span><br><span class="line">		<span class="type">SyncStack</span> <span class="variable">ss</span> <span class="operator">=</span> <span class="keyword">new</span> <span class="title class_">SyncStack</span>();</span><br><span class="line">		<span class="type">Producer</span> <span class="variable">p</span> <span class="operator">=</span> <span class="keyword">new</span> <span class="title class_">Producer</span>(ss); <span class="comment">// 其实是使得生产以及消费作用的都是同一个SyncStack对象</span></span><br><span class="line">		<span class="type">Consumer</span> <span class="variable">c</span> <span class="operator">=</span> <span class="keyword">new</span> <span class="title class_">Consumer</span>(ss);</span><br><span class="line">		</span><br><span class="line">		<span class="type">Thread</span> <span class="variable">t1</span> <span class="operator">=</span> <span class="keyword">new</span> <span class="title class_">Thread</span>(p);<span class="comment">//	创建两个线程</span></span><br><span class="line">		<span class="type">Thread</span> <span class="variable">t2</span> <span class="operator">=</span> <span class="keyword">new</span> <span class="title class_">Thread</span>(c);</span><br><span class="line">		</span><br><span class="line">		t1.start();</span><br><span class="line">		t2.start();</span><br><span class="line">	&#125;	</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line"><span class="keyword">class</span> <span class="title class_">SyncStack</span></span><br><span class="line">&#123;</span><br><span class="line">	<span class="type">int</span> <span class="variable">cnt</span> <span class="operator">=</span> <span class="number">0</span>;</span><br><span class="line">	<span class="type">char</span>[] data = <span class="keyword">new</span> <span class="title class_">char</span>[<span class="number">6</span>];</span><br><span class="line">	</span><br><span class="line">	<span class="keyword">public</span> <span class="keyword">synchronized</span> <span class="keyword">void</span> <span class="title function_">push</span><span class="params">(<span class="type">char</span> ch)</span></span><br><span class="line">	&#123;</span><br><span class="line">		<span class="keyword">while</span> (cnt == data.length)</span><br><span class="line">		&#123;</span><br><span class="line">			<span class="keyword">try</span></span><br><span class="line">			&#123;</span><br><span class="line">				<span class="built_in">this</span>.wait();	<span class="comment">//wait是Object 类中的方法，不是Thread中的方法，Thread中wait也是继承自Object,      </span></span><br><span class="line">							   <span class="comment">//this.wait();不是让当前对象wait，而是让当前锁定this对象的线程wait，同时释放对this的锁定。</span></span><br><span class="line">							  <span class="comment">//注意：如果该对象没有被锁定，则调用wait方法就会报错！即只有在同步方法或者同步代码块中才可以调用wait方法，notify同理</span></span><br><span class="line">			&#125;</span><br><span class="line">			<span class="keyword">catch</span> (Exception e)</span><br><span class="line">			&#123;</span><br><span class="line">			&#125;</span><br><span class="line">		&#125;</span><br><span class="line">		<span class="built_in">this</span>.notify();  <span class="comment">//如果注释掉了本语句，可能会导致消费线程陷入阻塞(如果消费线程本身执行很慢的话，则消费线程永远不会wait，即永远不会阻塞)，因为消费线程陷入阻塞， 所以生产线程因此不停生产产品达到6个后也陷入阻塞，最后显示的肯定是“容器中现在共有6个字符!”</span></span><br><span class="line">						<span class="comment">//this.notify();叫醒一个现在正在wait  this对象的一个线程，如果有多个线程正在wait this对象，通常是叫醒最先wait this对象的线程,但具体是叫醒哪一个，这是由系统调度器控制，程序员无法控制 		</span></span><br><span class="line">						<span class="comment">// nority 和 notifyAll 都是Object 类中的方法	</span></span><br><span class="line">		</span><br><span class="line">		</span><br><span class="line">		data[cnt] = ch;</span><br><span class="line">		cnt++;</span><br><span class="line">		</span><br><span class="line">		System.out.printf(<span class="string">&quot;生产了: %c\n&quot;</span>, ch);</span><br><span class="line">		System.out.printf(<span class="string">&quot;容器中现在共有%d个字符!\n\n&quot;</span>, cnt);		</span><br><span class="line">	&#125;</span><br><span class="line">	</span><br><span class="line">	<span class="keyword">public</span> <span class="keyword">synchronized</span> <span class="type">char</span> <span class="title function_">pop</span><span class="params">()</span></span><br><span class="line">	&#123;</span><br><span class="line">		<span class="type">char</span> ch;</span><br><span class="line">		</span><br><span class="line">		<span class="keyword">while</span> (<span class="number">0</span> == cnt)</span><br><span class="line">		&#123;</span><br><span class="line">			<span class="keyword">try</span></span><br><span class="line">			&#123;</span><br><span class="line">				<span class="built_in">this</span>.wait();</span><br><span class="line">			&#125;</span><br><span class="line">			<span class="keyword">catch</span> (Exception e)</span><br><span class="line">			&#123;</span><br><span class="line">			&#125;</span><br><span class="line">		&#125;</span><br><span class="line">		<span class="built_in">this</span>.notify();  <span class="comment">//如果注释掉了本语句，可能会导致生产线程陷入阻塞(如果生产线程本身执行很慢的话，则生产线程永远不会wait，即永远不会阻塞)，因为生产线程陷入阻塞，消费线程因此不停取出产品，当容器中再也没有产品时消费线程也陷入阻塞，最后显示的肯定是“容器中现在共有0个字符!”</span></span><br><span class="line">		</span><br><span class="line">		ch = data[cnt-<span class="number">1</span>];</span><br><span class="line">		--cnt;</span><br><span class="line">		</span><br><span class="line">		System.out.printf(<span class="string">&quot;取出:  %c\n&quot;</span>, ch);</span><br><span class="line">		System.out.printf(<span class="string">&quot;容器中现在共有%d个字符!\n\n&quot;</span>, cnt);</span><br><span class="line">		</span><br><span class="line">		<span class="keyword">return</span> ch;</span><br><span class="line">	&#125;</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line"><span class="keyword">class</span> <span class="title class_">Producer</span> <span class="keyword">implements</span> <span class="title class_">Runnable</span></span><br><span class="line">&#123;</span><br><span class="line">	<span class="type">SyncStack</span> <span class="variable">ss</span> <span class="operator">=</span> <span class="literal">null</span>;</span><br><span class="line">	</span><br><span class="line">	<span class="keyword">public</span> <span class="title function_">Producer</span><span class="params">(SyncStack ss)</span></span><br><span class="line">	&#123;</span><br><span class="line">		<span class="built_in">this</span>.ss = ss;</span><br><span class="line">	&#125;</span><br><span class="line">	</span><br><span class="line">	<span class="keyword">public</span> <span class="keyword">void</span> <span class="title function_">run</span><span class="params">()</span></span><br><span class="line">	&#123;</span><br><span class="line">		<span class="type">char</span> ch;</span><br><span class="line">		</span><br><span class="line">		<span class="comment">//总共生产20个产品</span></span><br><span class="line">		<span class="keyword">for</span> (<span class="type">int</span> i=<span class="number">0</span>; i&lt;<span class="number">20</span>; ++i)</span><br><span class="line">		&#123;</span><br><span class="line">			ch = (<span class="type">char</span>)(<span class="string">&#x27;a&#x27;</span>+i);</span><br><span class="line">			ss.push(ch);</span><br><span class="line"><span class="comment">//			try</span></span><br><span class="line"><span class="comment">//			&#123;</span></span><br><span class="line"><span class="comment">//				Thread.sleep(500);</span></span><br><span class="line"><span class="comment">//			&#125;</span></span><br><span class="line"><span class="comment">//			catch (Exception e)</span></span><br><span class="line"><span class="comment">//			&#123;</span></span><br><span class="line"><span class="comment">//			&#125;			</span></span><br><span class="line">		&#125;</span><br><span class="line">	&#125;</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line"><span class="keyword">class</span> <span class="title class_">Consumer</span> <span class="keyword">implements</span> <span class="title class_">Runnable</span></span><br><span class="line">&#123;</span><br><span class="line">	<span class="type">SyncStack</span> <span class="variable">ss</span> <span class="operator">=</span> <span class="literal">null</span>;</span><br><span class="line">	</span><br><span class="line">	<span class="keyword">public</span> <span class="title function_">Consumer</span><span class="params">(SyncStack ss)</span></span><br><span class="line">	&#123;</span><br><span class="line">		<span class="built_in">this</span>.ss = ss;</span><br><span class="line">	&#125;</span><br><span class="line">	</span><br><span class="line">	<span class="comment">//总共消费20个产品</span></span><br><span class="line">	<span class="keyword">public</span> <span class="keyword">void</span> <span class="title function_">run</span><span class="params">()</span></span><br><span class="line">	&#123;</span><br><span class="line">		<span class="keyword">for</span> (<span class="type">int</span> i=<span class="number">0</span>; i&lt;<span class="number">20</span>; ++i)</span><br><span class="line">		&#123;</span><br><span class="line">			ss.pop();</span><br><span class="line">			<span class="keyword">try</span></span><br><span class="line">			&#123;</span><br><span class="line">				Thread.sleep(<span class="number">500</span>);</span><br><span class="line">			&#125;</span><br><span class="line">			<span class="keyword">catch</span> (Exception e)</span><br><span class="line">			&#123;</span><br><span class="line">			&#125;</span><br><span class="line">		&#125;</span><br><span class="line">	&#125;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+
+
+        </div>
+
+        
+            <section class="post-copyright">
+                
+                    <p class="copyright-item">
+                        <span>Author:</span>
+                        <span>MatJenin</span>
+                    </p>
+                
+                
+                
+                
+
+            </section>
+        
+        <section class="post-tags">
+            <div>
+                <span>Tag(s):</span>
+                <span class="tag">
+                    
+                    
+                        <a href="/tags/%E9%83%9D%E6%96%8Cjava%E3%80%81%E5%A4%9A%E7%BA%BF%E7%A8%8B/"># 郝斌java、多线程</a>
+                    
+                        
+                </span>
+            </div>
+            <div>
+                <a href="javascript:window.history.back();">back</a>
+                <span>· </span>
+                <a href="/">home</a>
+            </div>
+        </section>
+        <section class="post-nav">
+            
+                <a class="prev" rel="prev" href="/2024/03/26/%E6%95%B0%E6%8D%AE%E7%BB%93%E6%9E%84%E4%B8%8E%E7%AE%97%E6%B3%95/">做错的leetcode题目</a>
+            
+            
+            <a class="next" rel="next" href="/2024/03/25/IO/">IO</a>
+            
+        </section>
+
+
+    </article>
+</div>
+
+            </div>
+            <footer id="footer" class="footer">
+    <div class="copyright">
+        <span>© MatJenin | Powered by <a href="https://hexo.io" target="_blank">Hexo</a> & <a href="https://github.com/Siricee/hexo-theme-Chic" target="_blank">Chic</a></span>
+    </div>
+</footer>
+
+    </div>
+</body>
+
+</html>

@@ -13,7 +13,7 @@
 
 
 
-<title>网络编程 | Hexo</title>
+<title>小林计算机网络 | Hexo</title>
 
 
 
@@ -196,7 +196,7 @@
     
     <article class="post-wrap">
         <header class="post-header">
-            <h1 class="post-title">网络编程</h1>
+            <h1 class="post-title">小林计算机网络</h1>
             
                 <div class="post-meta">
                     
@@ -205,14 +205,14 @@
 
                     
                         <span class="post-time">
-                        Date: <a href="#">March 22, 2024&nbsp;&nbsp;20:26:09</a>
+                        Date: <a href="#">March 30, 2024&nbsp;&nbsp;18:54:44</a>
                         </span>
                     
                     
                         <span class="post-category">
                     Category:
                             
-                                <a href="/categories/Java/">Java</a>
+                                <a href="/categories/%E8%AE%A1%E7%AE%97%E6%9C%BA%E7%BD%91%E7%BB%9C/">计算机网络</a>
                             
                         </span>
                     
@@ -221,47 +221,19 @@
         </header>
 
         <div class="post-content">
-            <h2 id="网络编程"><a href="#网络编程" class="headerlink" title="网络编程"></a>网络编程</h2><h3 id="1、网络编程以及通信协议是什么？"><a href="#1、网络编程以及通信协议是什么？" class="headerlink" title="1、网络编程以及通信协议是什么？"></a>1、网络编程以及通信协议是什么？</h3><p>网络编程是指编写程序以实现计算机网络通信的过程。在网络编程中，程序可以通过网络连接与其他计算机或设备进行通信，传输数据、接收数据，并进行各种网络相关的操作。</p>
-<p>通信协议其实就是计算机间互相通信所要遵守的规则。</p>
-<h3 id="2、URL、IP、HTTP、Socket以及端口是什么？"><a href="#2、URL、IP、HTTP、Socket以及端口是什么？" class="headerlink" title="2、URL、IP、HTTP、Socket以及端口是什么？"></a>2、URL、IP、HTTP、Socket以及端口是什么？</h3><p>URL其实就是我们经常说的网址：<a target="_blank" rel="noopener" href="https://wtw00928.github/">https://wtw00928.github</a>.</p>
-<p>IP地址分为IPv4和IPv6两种。IPv4采用32位地址，类似<code>101.202.99.12</code>，而IPv6采用128位地址，类似<code>2001:0DA8:100A:0000:0000:1020:F2F3:1428</code>，其中<code>101</code>表示的是一个8位二进制。</p>
-<p>HTTP(Hypertext Transfer Protocol，超文本传输协议)就是一个通信协议。HTTPS是HTTP的安全版本，通过在HTTP上加入SSL&#x2F;TLS协议层来加密通信内容，从而提供更高的安全性。</p>
-<p>端口就是计算机与服务器进行双向通信的逻辑通道，可以想象因为一个计算机内需要运行多个程序，所以端口的数量也很多<code>1~65535</code>。</p>
-<p>Socket是用于描述通信端点的抽象，它包含了IP地址和端口号。在建立网络连接时，通常会指定本地端口和远程端口。本地端口是指当前计算机上的应用程序使用的端口，远程端口是指通信对方的计算机上的应用程序使用的端口。当两个应用程序需要进行通信时，它们分别创建自己的Socket，并通过网络连接到对方的Socket，从而建立通信链路。</p>
-<h3 id="3、细谈Socket"><a href="#3、细谈Socket" class="headerlink" title="3、细谈Socket"></a>3、细谈Socket</h3><p>Socket类的构造函数通常有两种形式，用于创建客户端和服务器端的套接字。以下是这两种形式的概述：</p>
+            <h1 id="基础篇"><a href="#基础篇" class="headerlink" title="基础篇"></a>基础篇</h1><h2 id="1、TCP、IP有几层"><a href="#1、TCP、IP有几层" class="headerlink" title="1、TCP、IP有几层"></a>1、TCP、IP有几层</h2><h3 id="1-1、IP地址是唯一的吗？"><a href="#1-1、IP地址是唯一的吗？" class="headerlink" title="1.1、IP地址是唯一的吗？"></a>1.1、IP地址是唯一的吗？</h3><p>是唯一的，IP地址分为网络地址和主机地址两部分，网络地址用于标识网络，主机地址用于标识具体的计算机。</p>
+<p>192.168.0.0&#x2F;16和172.16.0.0&#x2F;12等</p>
+<h2 id="2、键入网址到网页显示，期间发生了什么？"><a href="#2、键入网址到网页显示，期间发生了什么？" class="headerlink" title="2、键入网址到网页显示，期间发生了什么？"></a>2、键入网址到网页显示，期间发生了什么？</h2><p>IP与MAC虽然都是在网络传输过程中发挥作用，但是IP是告诉http数据包到底发给谁，让它具备远程定位能力，但下一站应该发到哪里是根据MAC地址来说明的，MAC地址一般是在路由器中。</p>
+<p><strong>MAC 头部的作用就是将包送达路由器</strong></p>
+<p>当路由器遇到不是直接发送到本地网络的数据包时，它会查看路由表并决定下一步的转发路径。路由器的作用是将数据包从一个网络接口转发到另一个网络接口，以便数据包可以在网络之间进行传输。这个过程包括以下几个步骤：</p>
 <ol>
-<li><p><strong>客户端Socket的构造函数</strong>：</p>
-<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">Socket(String host, int port)</span><br></pre></td></tr></table></figure>
-
-<p>这个构造函数用于创建一个客户端套接字，并指定要连接的服务器的主机名（或IP地址）和端口号。它会尝试与指定的主机和端口建立连接。</p>
-<p>“localhost” 是一个特殊的主机名，通常用来引用本地计算机上的网络接口。它对应着本地回环地址（loopback address）127.0.0.1</p>
-</li>
-<li><p><strong>服务器端Socket的构造函数</strong>：</p>
-<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">ServerSocket(int port)</span><br></pre></td></tr></table></figure>
-
-<p>这个构造函数用于创建一个服务器端套接字，并绑定到指定的端口上，以便监听客户端的连接请求。当客户端尝试连接到指定端口时，服务器端套接字将接受连接请求并创建一个新的Socket对象，用于与客户端进行通信。</p>
-<p><code>DatagramSocket</code> 是 Java 中用于发送和接收 UDP 数据包的类。它允许应用程序通过 UDP 协议在网络上发送数据，并从网络中接收数据</p>
-</li>
+<li><strong>查找路由表</strong>：路由器会检查数据包的目标MAC地址，并查找路由表以确定最佳的下一跳路径。路由表包含了路由器知道的目标网络及相应的出口接口。</li>
+<li><strong>选择最佳路径</strong>：路由器根据路由表中的信息选择最佳的路径来转发数据包。通常，路由器会选择最近和最快的路径来转发数据包，以确保数据包能够以最有效的方式到达目的地。</li>
+<li><strong>转发数据包</strong>：一旦选择了下一跳路径，路由器将数据包从一个网络接口转发到另一个网络接口，继续沿着选定的路径传输数据包。</li>
 </ol>
-<p>###4、DatagramSocket是什么？</p>
-<p><code>DatagramSocket</code> 是 Java 中用于发送和接收 UDP 数据包的类。</p>
-<p><code>DatagramSocket</code>相当于一个码头，<code>DatagramPacket</code>相当于一个集装箱。集装箱里装有数据，码头将集装箱的数据发送到指定集装箱的目标地址和端口中。</p>
-<h3 id="5、网络编程中的服务器端与客户端"><a href="#5、网络编程中的服务器端与客户端" class="headerlink" title="5、网络编程中的服务器端与客户端"></a>5、网络编程中的服务器端与客户端</h3><p>编写程序时一般先看服务端，再看客户端，因为服务端要一直监听是否由客户端连接。服务端只要端口号，不用IP，而客户端需要服务端的IP，以及端口号，</p>
-<ol>
-<li><strong>服务器端</strong>：<ul>
-<li>服务器端是网络服务的提供者，它通常在服务器上运行，等待客户端的连接请求。</li>
-<li>服务器端负责接收客户端的连接请求，并为每个连接请求创建一个新的会话（或称为会话、连接、套接字）。</li>
-<li>一旦建立了连接，服务器端负责处理客户端发送过来的请求，并提供相应的服务或资源。</li>
-</ul>
-</li>
-<li><strong>客户端</strong>：<ul>
-<li>客户端是网络服务的使用者，它通常在用户的计算机上运行，向服务器端发送请求并接收响应。</li>
-<li>客户端负责与服务器端建立连接，并发送请求数据。</li>
-<li>客户端接收服务器端返回的响应，并根据需要对响应进行处理和显示给用户。</li>
-<li>客户端可以与多个服务器端进行通信，但通常一次只与一个服务器端建立连接</li>
-</ul>
-</li>
-</ol>
+<p>“Remote Address” 是指发送请求的客户端的 IP 地址，而不是请求服务器的地址。</p>
+<p>浏览器是客户端还是服务器？<br>浏览器通常被称为客户端，因为它是用户用来请求和接收网络资源（如网页、图像、视频等）的工具。当用户在浏览器中输入网址或者点击链接时，浏览器会向服务器发送请求，并接收服务器响应的数据，然后将数据解析并呈现给用户。因此，从用户的角度来看，浏览器是客户端，它负责发起请求并接收响应，以满足用户对网络资源的需求。</p>
+<h1 id="二、计算机网络学习章节记录"><a href="#二、计算机网络学习章节记录" class="headerlink" title="二、计算机网络学习章节记录"></a>二、计算机网络学习章节记录</h1><p>4.7：  4.1的一个小部分</p>
 
         </div>
 
@@ -285,7 +257,7 @@
                 <span class="tag">
                     
                     
-                        <a href="/tags/%E7%BD%91%E7%BB%9C%E7%BC%96%E7%A8%8B/"># 网络编程</a>
+                        <a href="/tags/%E8%AE%A1%E7%AE%97%E6%9C%BA%E7%BD%91%E7%BB%9C/"># 计算机网络</a>
                     
                         
                 </span>
@@ -298,10 +270,10 @@
         </section>
         <section class="post-nav">
             
-                <a class="prev" rel="prev" href="/2024/03/23/Leecode/">leetcode解题知识点</a>
+                <a class="prev" rel="prev" href="/2024/03/30/MySQL/">小林MySQL</a>
             
             
-            <a class="next" rel="next" href="/2024/03/21/Test2/">Test2</a>
+            <a class="next" rel="next" href="/2024/03/30/%E6%93%8D%E4%BD%9C%E7%B3%BB%E7%BB%9F/">小林操作系统</a>
             
         </section>
 

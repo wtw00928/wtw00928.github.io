@@ -13,7 +13,7 @@
 
 
 
-<title>网络编程 | Hexo</title>
+<title>小林操作系统 | Hexo</title>
 
 
 
@@ -196,7 +196,7 @@
     
     <article class="post-wrap">
         <header class="post-header">
-            <h1 class="post-title">网络编程</h1>
+            <h1 class="post-title">小林操作系统</h1>
             
                 <div class="post-meta">
                     
@@ -205,14 +205,14 @@
 
                     
                         <span class="post-time">
-                        Date: <a href="#">March 22, 2024&nbsp;&nbsp;20:26:09</a>
+                        Date: <a href="#">March 30, 2024&nbsp;&nbsp;16:03:27</a>
                         </span>
                     
                     
                         <span class="post-category">
                     Category:
                             
-                                <a href="/categories/Java/">Java</a>
+                                <a href="/categories/%E6%93%8D%E4%BD%9C%E7%B3%BB%E7%BB%9F/">操作系统</a>
                             
                         </span>
                     
@@ -221,47 +221,16 @@
         </header>
 
         <div class="post-content">
-            <h2 id="网络编程"><a href="#网络编程" class="headerlink" title="网络编程"></a>网络编程</h2><h3 id="1、网络编程以及通信协议是什么？"><a href="#1、网络编程以及通信协议是什么？" class="headerlink" title="1、网络编程以及通信协议是什么？"></a>1、网络编程以及通信协议是什么？</h3><p>网络编程是指编写程序以实现计算机网络通信的过程。在网络编程中，程序可以通过网络连接与其他计算机或设备进行通信，传输数据、接收数据，并进行各种网络相关的操作。</p>
-<p>通信协议其实就是计算机间互相通信所要遵守的规则。</p>
-<h3 id="2、URL、IP、HTTP、Socket以及端口是什么？"><a href="#2、URL、IP、HTTP、Socket以及端口是什么？" class="headerlink" title="2、URL、IP、HTTP、Socket以及端口是什么？"></a>2、URL、IP、HTTP、Socket以及端口是什么？</h3><p>URL其实就是我们经常说的网址：<a target="_blank" rel="noopener" href="https://wtw00928.github/">https://wtw00928.github</a>.</p>
-<p>IP地址分为IPv4和IPv6两种。IPv4采用32位地址，类似<code>101.202.99.12</code>，而IPv6采用128位地址，类似<code>2001:0DA8:100A:0000:0000:1020:F2F3:1428</code>，其中<code>101</code>表示的是一个8位二进制。</p>
-<p>HTTP(Hypertext Transfer Protocol，超文本传输协议)就是一个通信协议。HTTPS是HTTP的安全版本，通过在HTTP上加入SSL&#x2F;TLS协议层来加密通信内容，从而提供更高的安全性。</p>
-<p>端口就是计算机与服务器进行双向通信的逻辑通道，可以想象因为一个计算机内需要运行多个程序，所以端口的数量也很多<code>1~65535</code>。</p>
-<p>Socket是用于描述通信端点的抽象，它包含了IP地址和端口号。在建立网络连接时，通常会指定本地端口和远程端口。本地端口是指当前计算机上的应用程序使用的端口，远程端口是指通信对方的计算机上的应用程序使用的端口。当两个应用程序需要进行通信时，它们分别创建自己的Socket，并通过网络连接到对方的Socket，从而建立通信链路。</p>
-<h3 id="3、细谈Socket"><a href="#3、细谈Socket" class="headerlink" title="3、细谈Socket"></a>3、细谈Socket</h3><p>Socket类的构造函数通常有两种形式，用于创建客户端和服务器端的套接字。以下是这两种形式的概述：</p>
+            <h1 id="硬件结构"><a href="#硬件结构" class="headerlink" title="硬件结构"></a>硬件结构</h1><h2 id="1、CPU是如何执行工作的"><a href="#1、CPU是如何执行工作的" class="headerlink" title="1、CPU是如何执行工作的"></a>1、CPU是如何执行工作的</h2><p>###1.1、硬件的 64 位和 32 位指的是 CPU 的位宽，软件的 64 位和 32 位指的是指令的位宽。二者需要匹配的原因是：</p>
 <ol>
-<li><p><strong>客户端Socket的构造函数</strong>：</p>
-<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">Socket(String host, int port)</span><br></pre></td></tr></table></figure>
-
-<p>这个构造函数用于创建一个客户端套接字，并指定要连接的服务器的主机名（或IP地址）和端口号。它会尝试与指定的主机和端口建立连接。</p>
-<p>“localhost” 是一个特殊的主机名，通常用来引用本地计算机上的网络接口。它对应着本地回环地址（loopback address）127.0.0.1</p>
-</li>
-<li><p><strong>服务器端Socket的构造函数</strong>：</p>
-<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">ServerSocket(int port)</span><br></pre></td></tr></table></figure>
-
-<p>这个构造函数用于创建一个服务器端套接字，并绑定到指定的端口上，以便监听客户端的连接请求。当客户端尝试连接到指定端口时，服务器端套接字将接受连接请求并创建一个新的Socket对象，用于与客户端进行通信。</p>
-<p><code>DatagramSocket</code> 是 Java 中用于发送和接收 UDP 数据包的类。它允许应用程序通过 UDP 协议在网络上发送数据，并从网络中接收数据</p>
-</li>
+<li><strong>指令集兼容性</strong>：软件必须能够理解和执行特定的指令集。如果软件设计为使用64位指令集编译和执行，但在32位硬件上运行，它将无法正确执行，因为硬件无法识别或执行这些指令。因此，软件和硬件之间的指令集必须匹配，以确保正确执行。</li>
+<li><strong>内存地址空间</strong>：64位硬件可以处理更大的内存地址空间，而32位硬件则受限于较小的地址空间。如果软件设计为利用更大的内存空间，但在32位硬件上运行，它将无法充分利用可用的内存资源。</li>
+<li><strong>性能和优化</strong>：64位软件通常能够更充分地利用64位硬件提供的性能优势，例如更大的寄存器、更多的并行操作等。如果在32位硬件上运行64位软件，将无法获得这些性能优势，并且可能会出现性能下降或不稳定的情况。</li>
 </ol>
-<p>###4、DatagramSocket是什么？</p>
-<p><code>DatagramSocket</code> 是 Java 中用于发送和接收 UDP 数据包的类。</p>
-<p><code>DatagramSocket</code>相当于一个码头，<code>DatagramPacket</code>相当于一个集装箱。集装箱里装有数据，码头将集装箱的数据发送到指定集装箱的目标地址和端口中。</p>
-<h3 id="5、网络编程中的服务器端与客户端"><a href="#5、网络编程中的服务器端与客户端" class="headerlink" title="5、网络编程中的服务器端与客户端"></a>5、网络编程中的服务器端与客户端</h3><p>编写程序时一般先看服务端，再看客户端，因为服务端要一直监听是否由客户端连接。服务端只要端口号，不用IP，而客户端需要服务端的IP，以及端口号，</p>
-<ol>
-<li><strong>服务器端</strong>：<ul>
-<li>服务器端是网络服务的提供者，它通常在服务器上运行，等待客户端的连接请求。</li>
-<li>服务器端负责接收客户端的连接请求，并为每个连接请求创建一个新的会话（或称为会话、连接、套接字）。</li>
-<li>一旦建立了连接，服务器端负责处理客户端发送过来的请求，并提供相应的服务或资源。</li>
-</ul>
-</li>
-<li><strong>客户端</strong>：<ul>
-<li>客户端是网络服务的使用者，它通常在用户的计算机上运行，向服务器端发送请求并接收响应。</li>
-<li>客户端负责与服务器端建立连接，并发送请求数据。</li>
-<li>客户端接收服务器端返回的响应，并根据需要对响应进行处理和显示给用户。</li>
-<li>客户端可以与多个服务器端进行通信，但通常一次只与一个服务器端建立连接</li>
-</ul>
-</li>
-</ol>
+<p>指令集兼容性是说明：CPU 一次能处理的数据大小如果小于软件的位宽，那么不能正确执行，如果软件被编译成使用64位指令集，但在32位CPU上运行，这意味着CPU每次只能处理32位的数据，而软件却期望一次处理64位数据。因此，CPU无法正确执行这些64位指令，因为它们超出了CPU能够处理的范围。</p>
+<p>###2.2、64 位 CPU 的地址总线并不一定是64位的吧？</p>
+<p>64位CPU”通常指的是CPU的数据总线和寄存器是64位宽度的，这意味着它们能够一次处理64位的数据。但是，CPU的地址总线并不一定与其数据总线宽度相同。地址总线的宽度决定了CPU可以直接寻址的内存的数量，通常以位数表示。因此，即使是64位CPU，其地址总线的宽度也可能是32位或者48位。</p>
+<h3 id="2-3、冯诺伊曼模型跟图灵机的大致流程"><a href="#2-3、冯诺伊曼模型跟图灵机的大致流程" class="headerlink" title="2.3、冯诺伊曼模型跟图灵机的大致流程"></a>2.3、冯诺伊曼模型跟图灵机的大致流程</h3><h3 id="二、操作系统学习知识点记录"><a href="#二、操作系统学习知识点记录" class="headerlink" title="二、操作系统学习知识点记录"></a>二、操作系统学习知识点记录</h3><p>4、7： 4.1、4.2、4.3</p>
 
         </div>
 
@@ -285,7 +254,7 @@
                 <span class="tag">
                     
                     
-                        <a href="/tags/%E7%BD%91%E7%BB%9C%E7%BC%96%E7%A8%8B/"># 网络编程</a>
+                        <a href="/tags/%E6%93%8D%E4%BD%9C%E7%B3%BB%E7%BB%9F/"># 操作系统</a>
                     
                         
                 </span>
@@ -298,10 +267,10 @@
         </section>
         <section class="post-nav">
             
-                <a class="prev" rel="prev" href="/2024/03/23/Leecode/">leetcode解题知识点</a>
+                <a class="prev" rel="prev" href="/2024/03/30/%E8%AE%A1%E7%AE%97%E6%9C%BA%E7%BD%91%E7%BB%9C/">小林计算机网络</a>
             
             
-            <a class="next" rel="next" href="/2024/03/21/Test2/">Test2</a>
+            <a class="next" rel="next" href="/2024/03/26/%E6%95%B0%E6%8D%AE%E7%BB%93%E6%9E%84%E4%B8%8E%E7%AE%97%E6%B3%95/">做错的leetcode题目</a>
             
         </section>
 
