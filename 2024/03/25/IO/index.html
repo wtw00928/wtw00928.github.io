@@ -1,0 +1,385 @@
+<!DOCTYPE html>
+<html lang="CH">
+
+<head>
+    <meta charset="UTF-8">
+<meta name="viewport"
+      content="width=device-width, initial-scale=1.0, maximum-scale=1.0, minimum-scale=1.0">
+<meta http-equiv="X-UA-Compatible" content="ie=edge">
+
+    <meta name="author" content="MatJenin">
+
+
+
+
+
+<title>IO | Hexo</title>
+
+
+
+    <link rel="icon" href="/favicon.ico">
+
+
+
+
+    <!-- stylesheets list from _config.yml -->
+    
+    <link rel="stylesheet" href="/css/style.css">
+    
+
+
+
+    <!-- scripts list from _config.yml -->
+    
+    <script src="/js/script.js"></script>
+    
+    <script src="/js/tocbot.min.js"></script>
+    
+
+
+
+    
+    
+        
+    
+
+
+<meta name="generator" content="Hexo 7.1.1"></head>
+
+<body>
+    <script>
+        // this function is used to check current theme before page loaded.
+        (() => {
+            const currentTheme = window.localStorage && window.localStorage.getItem('theme') || '';
+            const isDark = currentTheme === 'dark';
+            const pagebody = document.getElementsByTagName('body')[0]
+            if (isDark) {
+                pagebody.classList.add('dark-theme');
+                // mobile
+                document.getElementById("mobile-toggle-theme").innerText = "· Dark"
+            } else {
+                pagebody.classList.remove('dark-theme');
+                // mobile
+                document.getElementById("mobile-toggle-theme").innerText = "· Light"
+            }
+        })();
+    </script>
+
+    <div class="wrapper">
+        <header>
+    <nav class="navbar">
+        <div class="container">
+            <div class="navbar-header header-logo"><a href="/">MatJenin&#39;s Blog</a></div>
+            <div class="menu navbar-right">
+                
+                    <a class="menu-item" href="/archives">Posts</a>
+                
+                    <a class="menu-item" href="/category">Categories</a>
+                
+                    <a class="menu-item" href="/tag">Tags</a>
+                
+                    <a class="menu-item" href="/about">About</a>
+                
+                <input id="switch_default" type="checkbox" class="switch_default">
+                <label for="switch_default" class="toggleBtn"></label>
+            </div>
+        </div>
+    </nav>
+
+    
+    <nav class="navbar-mobile" id="nav-mobile">
+        <div class="container">
+            <div class="navbar-header">
+                <div>
+                    <a href="/">MatJenin&#39;s Blog</a><a id="mobile-toggle-theme">·&nbsp;Light</a>
+                </div>
+                <div class="menu-toggle" onclick="mobileBtn()">&#9776; Menu</div>
+            </div>
+            <div class="menu" id="mobile-menu">
+                
+                    <a class="menu-item" href="/archives">Posts</a>
+                
+                    <a class="menu-item" href="/category">Categories</a>
+                
+                    <a class="menu-item" href="/tag">Tags</a>
+                
+                    <a class="menu-item" href="/about">About</a>
+                
+            </div>
+        </div>
+    </nav>
+
+</header>
+<script>
+    var mobileBtn = function f() {
+        var toggleMenu = document.getElementsByClassName("menu-toggle")[0];
+        var mobileMenu = document.getElementById("mobile-menu");
+        if(toggleMenu.classList.contains("active")){
+           toggleMenu.classList.remove("active")
+            mobileMenu.classList.remove("active")
+        }else{
+            toggleMenu.classList.add("active")
+            mobileMenu.classList.add("active")
+        }
+    }
+</script>
+            <div class="main">
+                <div class="container">
+    
+    
+        <div class="post-toc">
+    <div class="tocbot-list">
+    </div>
+    <div class="tocbot-list-menu">
+        <a class="tocbot-toc-expand" onclick="expand_toc()">Expand all</a>
+        <a onclick="go_top()">Back to top</a>
+        <a onclick="go_bottom()">Go to bottom</a>
+    </div>
+</div>
+
+<script>
+    var tocbot_timer;
+    var DEPTH_MAX = 6; // 为 6 时展开所有
+    var tocbot_default_config = {
+        tocSelector: '.tocbot-list',
+        contentSelector: '.post-content',
+        headingSelector: 'h1, h2, h3, h4, h5',
+        orderedList: false,
+        scrollSmooth: true,
+        onClick: extend_click,
+    };
+
+    function extend_click() {
+        clearTimeout(tocbot_timer);
+        tocbot_timer = setTimeout(function() {
+            tocbot.refresh(obj_merge(tocbot_default_config, {
+                hasInnerContainers: true
+            }));
+        }, 420); // 这个值是由 tocbot 源码里定义的 scrollSmoothDuration 得来的
+    }
+
+    document.ready(function() {
+        tocbot.init(obj_merge(tocbot_default_config, {
+            collapseDepth: 1
+        }));
+    });
+
+    function expand_toc() {
+        var b = document.querySelector('.tocbot-toc-expand');
+        var expanded = b.getAttribute('data-expanded');
+        expanded ? b.removeAttribute('data-expanded') : b.setAttribute('data-expanded', true);
+        tocbot.refresh(obj_merge(tocbot_default_config, {
+            collapseDepth: expanded ? 1 : DEPTH_MAX
+        }));
+        b.innerText = expanded ? 'Expand all' : 'Collapse all';
+    }
+
+    function go_top() {
+        window.scrollTo(0, 0);
+    }
+
+    function go_bottom() {
+        window.scrollTo(0, document.body.scrollHeight);
+    }
+
+    function obj_merge(target, source) {
+        for (var item in source) {
+            if (source.hasOwnProperty(item)) {
+                target[item] = source[item];
+            }
+        }
+        return target;
+    }
+</script>
+    
+
+    
+    <article class="post-wrap">
+        <header class="post-header">
+            <h1 class="post-title">IO</h1>
+            
+                <div class="post-meta">
+                    
+                        Author: <a itemprop="author" rel="author" href="/">MatJenin</a>
+                    
+
+                    
+                        <span class="post-time">
+                        Date: <a href="#">March 25, 2024&nbsp;&nbsp;21:43:37</a>
+                        </span>
+                    
+                    
+                        <span class="post-category">
+                    Category:
+                            
+                                <a href="/categories/Java/">Java</a>
+                            
+                        </span>
+                    
+                </div>
+            
+        </header>
+
+        <div class="post-content">
+            <h2 id="网络编程-从TCP连接的建立说起"><a href="#网络编程-从TCP连接的建立说起" class="headerlink" title="网络编程-从TCP连接的建立说起"></a>网络编程-从TCP连接的建立说起</h2><h2 id="前言"><a href="#前言" class="headerlink" title="前言"></a>前言</h2><p>网络编程几乎是每一门编程语言都会涉及的内容，虽然各种语言调用的方式可能不一样，但它们背后的原理支持都是一样的。因此本文将从TCP的连接的建立说起。在此之前，假设你已经对计算机网络有了最基本的认识。</p>
+<h2 id="网络编程做什么"><a href="#网络编程做什么" class="headerlink" title="网络编程做什么"></a>网络编程做什么</h2><p>当下网络应用数不胜数，如微信，可以让你通过网络与远在异国他乡的朋友交流沟通；如在线视频，让你通过网络就可以观看你喜欢的视频，而这一切的背后，都有网络编程技术的支持。通俗来讲，可以认为网络编程是<strong>两台或者多台主机（应用）之间进行数据交换或传输</strong>。</p>
+<h2 id="TCP：传输控制协议"><a href="#TCP：传输控制协议" class="headerlink" title="TCP：传输控制协议"></a>TCP：传输控制协议</h2><p>而数据交换需要按照一定的规则，而这种规则就是<strong>协议</strong>。只有按照约定的规则，双方之间才能正确地进行数据交换。而TCP就是这些协议的一种，<strong>它提供一种面向连接的，可靠的字节流服务</strong>。</p>
+<ul>
+<li>面向连接：两个使用TCP的应用在交换数据之前必须先建立一个TCP连接</li>
+<li>可靠的：TCP有很多机制来<strong>尽可能</strong>的保证数据不丢失</li>
+<li>字节流： 不区分是ASCII字符还是二进制数据，数据解释交给应用层</li>
+</ul>
+<h2 id="为什么要理解TCP"><a href="#为什么要理解TCP" class="headerlink" title="为什么要理解TCP"></a>为什么要理解TCP</h2><p>事实上不理解TCP背后的基本原理，仍然可以写出代码，但是当你遇到一些奇奇怪怪的而通过API的说明又无法解决的问题时，你就会庆幸自己花了点时间去学习TCP了。</p>
+<h2 id="TCP连接的建立"><a href="#TCP连接的建立" class="headerlink" title="TCP连接的建立"></a>TCP连接的建立</h2><p>关于TCP连接的建立，你可能早已耳熟能详，其流程倒背如流。但我觉得还是有必要再理一理。TCP连接的建立，也就是三次握手的流程如下：</p>
+<p><a target="_blank" rel="noopener" href="https://github.com/yanbinghu/BlogImages/raw/master/articles/tcp_connect/TCP.png"><img src="/TCP.png" alt="TCP三次握手"></a></p>
+<p>我们再试着描述一下三次握手的过程：</p>
+<ul>
+<li>服务端启动，并监听等待，处于LISTEN状态</li>
+<li>客户端发起连接请求，发送序列号seq&#x3D;X，处于SYN_SENT状态</li>
+<li>服务端收到后，并回应ACK&#x3D;X+1和seq&#x3D;Y，处于SYN_RCVD状态，客户端发送能力，服务端接收能力正常。</li>
+<li>客户端收到服务端的ACK，连接建立，同时向服务端回复ACK，处于ESTABLISHED状态</li>
+<li>服务端收到ACK，连接建立，处于ESTABLISHED状态，客户端接收能力正常。</li>
+</ul>
+<p>至此三次握手完成。需要注意的是，这是正常流程下的三次握手。而前面所说的这些状态可以通过<a target="_blank" rel="noopener" href="https://www.yanbinghu.com/2019/06/15/40941.html">netstat命令</a>或者<a target="_blank" rel="noopener" href="https://www.yanbinghu.com/2019/06/30/19183.html">ss命令</a>查看到，当然有些状态的存在时间比较短，可能无法观察到。</p>
+<p>好了，那么问题来了：</p>
+<ul>
+<li>为什么要三次握手</li>
+<li>连接到一个不存在的端口会发生什么</li>
+<li>连接到一个不存在的服务器主机会发生什么</li>
+<li>初始seq是如何变化的</li>
+<li>半连接队列是什么</li>
+<li>SYN攻击是什么</li>
+</ul>
+<p>如果以上所有问题你都能轻而易举的回答出来，那么本文后面的内容你可以跳过了。</p>
+<h2 id="为什么要三次握手"><a href="#为什么要三次握手" class="headerlink" title="为什么要三次握手"></a>为什么要三次握手</h2><p>这几乎是面试中必问的一个问题。一个TCP连接是全双工的，即数据在两个方向上能同时传输。因此，建立连接的过程也就必须确认双方的收发能力都是正常的。</p>
+<p>四次握手是否可以呢？完全可以！<strong>但是没有必要</strong>！在服务端收到SYN之后，它可以先回ACK，再发送SYN，但是这两个信息可以一起发送出去，<strong>因此没有必要</strong>。</p>
+<p>两次握手是否可以呢？想象这样一种情况，客户端发起了一个连接请求在网络中滞留了很长时间，以至于在连接建立好且断开连接后，它才到达服务端，此时如果采用两次握手，那么服务端就会认为这个报文是新的连接请求，于是建立连接，等待客户端发送数据，但是实际上客户端根本没有发出建立请求，也不会理睬服务端，因此导致服务端空等而浪费资源。</p>
+<p>为什么服务器会认为这个迟到的报文是新的连接请求？因为如果采用两次握手机制，那么服务端无法通过SYN来判断这是一个迟到或者重复的报文，还是正常到达的报文，但是对于三次握手，即便出现这样的情况，也不会在服务端建立起真正的连接。</p>
+<h2 id="一个正常的连接三次握手"><a href="#一个正常的连接三次握手" class="headerlink" title="一个正常的连接三次握手"></a>一个正常的连接三次握手</h2><p>我们利用tcpdump命令和<a target="_blank" rel="noopener" href="https://www.yanbinghu.com/2019/06/23/55893.html">nc命令</a>来观察一个正常的tcp连接建立过程。首先在终端1准备抓包：</p>
+<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">$ tcpdump port 1234   -i any -v -n</span><br></pre></td></tr></table></figure>
+
+
+
+<p>在终端2启动监听1234端口：</p>
+<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">$ nc -l 1234</span><br></pre></td></tr></table></figure>
+
+
+
+<p>在终端3连接：</p>
+<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">$ nc 127.0.0.1 1234</span><br></pre></td></tr></table></figure>
+
+
+
+<p>在终端1得到以下输出内容：</p>
+<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br></pre></td><td class="code"><pre><span class="line">tcpdump: listening on any, link-type LINUX_SLL (Linux cooked), capture size 262144 bytes</span><br><span class="line">21:00:50.794424 IP (tos 0x0, ttl 64, id 50542, offset 0, flags [DF], proto TCP (6), length 60)</span><br><span class="line">    127.0.0.1.45848 &gt; 127.0.0.1.1234: Flags [S], cksum 0xfe30 (incorrect -&gt; 0x3163), seq 1310563628, win 43690, options [mss 65495,sackOK,TS val 3721786049 ecr 0,nop,wscale 7], length 0</span><br><span class="line">21:00:50.794437 IP (tos 0x0, ttl 64, id 0, offset 0, flags [DF], proto TCP (6), length 60)</span><br><span class="line">    127.0.0.1.1234 &gt; 127.0.0.1.45848: Flags [S.], cksum 0xfe30 (incorrect -&gt; 0xef35), seq 1685196050, ack 1310563629, win 43690, options [mss 65495,sackOK,TS val 3721786049 ecr 3721786049,nop,wscale 7], length 0</span><br><span class="line">21:00:50.794449 IP (tos 0x0, ttl 64, id 50543, offset 0, flags [DF], proto TCP (6), length 52)</span><br><span class="line">    127.0.0.1.45848 &gt; 127.0.0.1.1234: Flags [.], cksum 0xfe28 (incorrect -&gt; 0xc17a), ack 1, win 342, options [nop,nop,TS val 3721786049 ecr 3721786049], length 0</span><br></pre></td></tr></table></figure>
+
+
+
+<p>从上面抓包内容可以看到，总共有三个报文，分别是客户端发送到服务端的SYN，服务端回应给客户端的SYN和ACK，以及客户端回应给服务端的ACK。</p>
+<h2 id="连接到一个不存在的端口"><a href="#连接到一个不存在的端口" class="headerlink" title="连接到一个不存在的端口"></a>连接到一个不存在的端口</h2><p>如果要连接的服务器端口不存在会出现什么情况呢？我们利用nc命令来抓包观察。<br>在一个终端窗口使用管理员权限执行下面的命令进行抓包，并打印相关信息：</p>
+<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">$ tcpdump port 1234   -i any -v -n</span><br></pre></td></tr></table></figure>
+
+
+
+<p>在另外一个终端使用nc命令尝试连接到本地的1234端口</p>
+<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">$ nc 127.0.0.1 1234 -v</span><br><span class="line">nc: connect to 127.0.0.1 port 1234 (tcp) failed: Connection refused</span><br></pre></td></tr></table></figure>
+
+
+
+<p>TCP抓包内容如下：</p>
+<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></td><td class="code"><pre><span class="line">tcpdump: listening on any, link-type LINUX_SLL (Linux cooked), capture size 262144 bytes</span><br><span class="line">21:06:15.295407 IP (tos 0x0, ttl 64, id 29112, offset 0, flags [DF], proto TCP (6), length 60)</span><br><span class="line">    127.0.0.1.46108 &gt; 127.0.0.1.1234: Flags [S], cksum 0xfe30 (incorrect -&gt; 0x7fef), seq 1175796450, win 43690, options [mss 65495,sackOK,TS val 2076405654 ecr 0,nop,wscale 7], length 0</span><br><span class="line">21:06:15.295462 IP (tos 0x0, ttl 64, id 58706, offset 0, flags [DF], proto TCP (6), length 40)</span><br><span class="line">    127.0.0.1.1234 &gt; 127.0.0.1.46108: Flags [R.], cksum 0x77e7 (correct), seq 0, ack 1175796451, win 0, length 0</span><br></pre></td></tr></table></figure>
+
+
+
+<p>从抓包内容中可以看到，首先nc客户端发送一个SYN（Flags为S），seq为1175796450。而后收到一个RST（Flags为R），seq为1175796451。</p>
+<p>也就是说，如果连接到一个不存在的端口，服务端所在的系统会<strong>响应一个RST</strong>（复位），直接终止连接。</p>
+<p>Flags字段含义如下：</p>
+<ul>
+<li>F : FIN - 结束; 结束会话</li>
+<li>S : SYN - 同步; 表示开始会话请求</li>
+<li>R : RST - 复位;中断一个连接</li>
+<li>P : PUSH - 推送; 数据包立即发送</li>
+<li>A : ACK - 应答</li>
+<li>U : URG - 紧急</li>
+<li>E : ECE - 显式拥塞提醒回应</li>
+<li>W : CWR - 拥塞窗口减少</li>
+</ul>
+<h2 id="连接到一个不存在的服务器"><a href="#连接到一个不存在的服务器" class="headerlink" title="连接到一个不存在的服务器"></a>连接到一个不存在的服务器</h2><p>同样是利用nc和tcpdump命令。</p>
+<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">$ tcpdump port 1234   -i any -v -n</span><br></pre></td></tr></table></figure>
+
+
+
+<p>在另外一个窗口使用nc命令连接到一个不存在的或者无法连接的服务器地址：</p>
+<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">$ nc 121.11.12.31 1234 -v</span><br><span class="line">nc: connect to 121.11.12.31 port 1234 (tcp) failed: Connection timed out</span><br></pre></td></tr></table></figure>
+
+
+
+<p>tcpdump输出内容如下：</p>
+<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br></pre></td><td class="code"><pre><span class="line">tcpdump: listening on any, link-type LINUX_SLL (Linux cooked), capture size 262144 bytes</span><br><span class="line">21:13:04.259752 IP (tos 0x0, ttl 64, id 33411, offset 0, flags [DF], proto TCP (6), length 60)</span><br><span class="line">    192.168.0.103.52402 &gt; 121.11.12.31.1234: Flags [S], cksum 0xcdc0 (correct), seq 2648987704, win 29200, options [mss 1460,sackOK,TS val 75888078 ecr 0,nop,wscale 7], length 0</span><br><span class="line">21:13:05.269438 IP (tos 0x0, ttl 64, id 33412, offset 0, flags [DF], proto TCP (6), length 60)</span><br><span class="line">    192.168.0.103.52402 &gt; 121.11.12.31.1234: Flags [S], cksum 0xc9ce (correct), seq 2648987704, win 29200, options [mss 1460,sackOK,TS val 75889088 ecr 0,nop,wscale 7], length 0</span><br><span class="line">21:13:07.285415 IP (tos 0x0, ttl 64, id 33413, offset 0, flags [DF], proto TCP (6), length 60)</span><br><span class="line">    192.168.0.103.52402 &gt; 121.11.12.31.1234: Flags [S], cksum 0xc1ee (correct), seq 2648987704, win 29200, options [mss 1460,sackOK,TS val 75891104 ecr 0,nop,wscale 7], length 0</span><br><span class="line">21:13:11.445491 IP (tos 0x0, ttl 64, id 33414, offset 0, flags [DF], proto TCP (6), length 60)</span><br><span class="line">    192.168.0.103.52402 &gt; 121.11.12.31.1234: Flags [S], cksum 0xb1ae (correct), seq 2648987704, win 29200, options [mss 1460,sackOK,TS val 75895264 ecr 0,nop,wscale 7], length 0</span><br><span class="line">21:13:19.637403 IP (tos 0x0, ttl 64, id 33415, offset 0, flags [DF], proto TCP (6), length 60)</span><br><span class="line">    192.168.0.103.52402 &gt; 121.11.12.31.1234: Flags [S], cksum 0x91ae (correct), seq 2648987704, win 29200, options [mss 1460,sackOK,TS val 75903456 ecr 0,nop,wscale 7], length 0</span><br><span class="line">21:13:35.765417 IP (tos 0x0, ttl 64, id 33416, offset 0, flags [DF], proto TCP (6), length 60)</span><br><span class="line">    192.168.0.103.52402 &gt; 121.11.12.31.1234: Flags [S], cksum 0x52ae (correct), seq 2648987704, win 29200, options [mss 1460,sackOK,TS val 75919584 ecr 0,nop,wscale 7], length 0</span><br><span class="line">21:14:09.045497 IP (tos 0x0, ttl 64, id 33417, offset 0, flags [DF], proto TCP (6), length 60)</span><br><span class="line">    192.168.0.103.52402 &gt; 121.11.12.31.1234: Flags [S], cksum 0xd0ad (correct), seq 2648987704, win 29200, options [mss 1460,sackOK,TS val 75952864 ecr 0,nop,wscale 7], length 0</span><br></pre></td></tr></table></figure>
+
+
+
+<p>通过实际操作可以发现，当发送第一个SYN没有响应时，客户端会再次发送；如果还是没有响应，再隔更长一段时间，继续发送SYN，最终连接超时。从观察情况来看，<strong>默认会进行5次重发</strong>，5次的重试时间间隔分别为1s, 2s, 4s, 8s, 16s。</p>
+<h2 id="初始序列号是如何变化的"><a href="#初始序列号是如何变化的" class="headerlink" title="初始序列号是如何变化的"></a>初始序列号是如何变化的</h2><p>通过前面的两次抓包可以看到，发送第一个SYN请求的初始序列号seq并不是固定的。实际上，不同的系统它的生成方法可能不同，但是可以知道的是，它在一定时间内，生成seq值肯定不同，否则服务端无法区分这到底是同一个seq的重发还是这个报文在网络中滞留一段时间后又重新到达。RFC 793指出初始序列号可以可看成一个32位的计数器，每隔4ms加1（但不同系统实际实现又可能不太一样，为了安全起见会处理成随机值），因此当它重新回到开始的时候，已经过了够长时间，使得网络中延迟的报文早已消失。</p>
+<h2 id="半连接队列"><a href="#半连接队列" class="headerlink" title="半连接队列"></a>半连接队列</h2><p>在服务器收到客户端的连接请求，并发送ACK之后，服务端处于SYN_RECV状态，此时的连接成为半连接，服务器会将半连接放到一个名为半连接队列的地方。</p>
+<h2 id="SYN攻击"><a href="#SYN攻击" class="headerlink" title="SYN攻击"></a>SYN攻击</h2><p>正因如此，如果有人恶意地向服务器发送大量的SYN包，并且由于客户端IP是伪造的，导致服务器收不到ACK，不断重发ACK，以至于半连接队列容易占满，导致无法处理正常的连接请求，并且可能导致服务器资源耗尽。</p>
+<p>如何处理SYN攻击又是另外一个话题。</p>
+<h2 id="总结"><a href="#总结" class="headerlink" title="总结"></a>总结</h2><p>TCP三次握手的正常场景我们很容易描述出来，但是涉及更多细节以及异常场景的时候，我们可能不是那么熟悉，通过本文可以简单地了解TCP连接的建立，为后面的网络编程打下基础。但是需要说明的是，本文仅仅简单介绍了TCP连接的建立，并没有深入介绍。</p>
+
+        </div>
+
+        
+            <section class="post-copyright">
+                
+                    <p class="copyright-item">
+                        <span>Author:</span>
+                        <span>MatJenin</span>
+                    </p>
+                
+                
+                
+                
+
+            </section>
+        
+        <section class="post-tags">
+            <div>
+                <span>Tag(s):</span>
+                <span class="tag">
+                    
+                    
+                        <a href="/tags/IO%E3%80%81%E9%83%9D%E6%96%8Cjava/"># IO、郝斌java</a>
+                    
+                        
+                </span>
+            </div>
+            <div>
+                <a href="javascript:window.history.back();">back</a>
+                <span>· </span>
+                <a href="/">home</a>
+            </div>
+        </section>
+        <section class="post-nav">
+            
+                <a class="prev" rel="prev" href="/2024/03/25/%E5%A4%9A%E7%BA%BF%E7%A8%8B/">多线程</a>
+            
+            
+            <a class="next" rel="next" href="/2024/03/23/Leecode/">leetcode解题知识点</a>
+            
+        </section>
+
+
+    </article>
+</div>
+
+            </div>
+            <footer id="footer" class="footer">
+    <div class="copyright">
+        <span>© MatJenin | Powered by <a href="https://hexo.io" target="_blank">Hexo</a> & <a href="https://github.com/Siricee/hexo-theme-Chic" target="_blank">Chic</a></span>
+    </div>
+</footer>
+
+    </div>
+</body>
+
+</html>

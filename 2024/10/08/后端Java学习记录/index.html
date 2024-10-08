@@ -1,0 +1,495 @@
+<!DOCTYPE html>
+<html lang="CH">
+
+<head>
+    <meta charset="UTF-8">
+<meta name="viewport"
+      content="width=device-width, initial-scale=1.0, maximum-scale=1.0, minimum-scale=1.0">
+<meta http-equiv="X-UA-Compatible" content="ie=edge">
+
+    <meta name="author" content="MatJenin">
+
+
+
+
+
+<title>Java学习记录 | Hexo</title>
+
+
+
+    <link rel="icon" href="/favicon.ico">
+
+
+
+
+    <!-- stylesheets list from _config.yml -->
+    
+    <link rel="stylesheet" href="/css/style.css">
+    
+
+
+
+    <!-- scripts list from _config.yml -->
+    
+    <script src="/js/script.js"></script>
+    
+    <script src="/js/tocbot.min.js"></script>
+    
+
+
+
+    
+    
+        
+    
+
+
+<meta name="generator" content="Hexo 7.1.1"></head>
+
+<body>
+    <script>
+        // this function is used to check current theme before page loaded.
+        (() => {
+            const currentTheme = window.localStorage && window.localStorage.getItem('theme') || '';
+            const isDark = currentTheme === 'dark';
+            const pagebody = document.getElementsByTagName('body')[0]
+            if (isDark) {
+                pagebody.classList.add('dark-theme');
+                // mobile
+                document.getElementById("mobile-toggle-theme").innerText = "· Dark"
+            } else {
+                pagebody.classList.remove('dark-theme');
+                // mobile
+                document.getElementById("mobile-toggle-theme").innerText = "· Light"
+            }
+        })();
+    </script>
+
+    <div class="wrapper">
+        <header>
+    <nav class="navbar">
+        <div class="container">
+            <div class="navbar-header header-logo"><a href="/">MatJenin&#39;s Blog</a></div>
+            <div class="menu navbar-right">
+                
+                    <a class="menu-item" href="/archives">Posts</a>
+                
+                    <a class="menu-item" href="/category">Categories</a>
+                
+                    <a class="menu-item" href="/tag">Tags</a>
+                
+                    <a class="menu-item" href="/about">About</a>
+                
+                <input id="switch_default" type="checkbox" class="switch_default">
+                <label for="switch_default" class="toggleBtn"></label>
+            </div>
+        </div>
+    </nav>
+
+    
+    <nav class="navbar-mobile" id="nav-mobile">
+        <div class="container">
+            <div class="navbar-header">
+                <div>
+                    <a href="/">MatJenin&#39;s Blog</a><a id="mobile-toggle-theme">·&nbsp;Light</a>
+                </div>
+                <div class="menu-toggle" onclick="mobileBtn()">&#9776; Menu</div>
+            </div>
+            <div class="menu" id="mobile-menu">
+                
+                    <a class="menu-item" href="/archives">Posts</a>
+                
+                    <a class="menu-item" href="/category">Categories</a>
+                
+                    <a class="menu-item" href="/tag">Tags</a>
+                
+                    <a class="menu-item" href="/about">About</a>
+                
+            </div>
+        </div>
+    </nav>
+
+</header>
+<script>
+    var mobileBtn = function f() {
+        var toggleMenu = document.getElementsByClassName("menu-toggle")[0];
+        var mobileMenu = document.getElementById("mobile-menu");
+        if(toggleMenu.classList.contains("active")){
+           toggleMenu.classList.remove("active")
+            mobileMenu.classList.remove("active")
+        }else{
+            toggleMenu.classList.add("active")
+            mobileMenu.classList.add("active")
+        }
+    }
+</script>
+            <div class="main">
+                <div class="container">
+    
+    
+        <div class="post-toc">
+    <div class="tocbot-list">
+    </div>
+    <div class="tocbot-list-menu">
+        <a class="tocbot-toc-expand" onclick="expand_toc()">Expand all</a>
+        <a onclick="go_top()">Back to top</a>
+        <a onclick="go_bottom()">Go to bottom</a>
+    </div>
+</div>
+
+<script>
+    var tocbot_timer;
+    var DEPTH_MAX = 6; // 为 6 时展开所有
+    var tocbot_default_config = {
+        tocSelector: '.tocbot-list',
+        contentSelector: '.post-content',
+        headingSelector: 'h1, h2, h3, h4, h5',
+        orderedList: false,
+        scrollSmooth: true,
+        onClick: extend_click,
+    };
+
+    function extend_click() {
+        clearTimeout(tocbot_timer);
+        tocbot_timer = setTimeout(function() {
+            tocbot.refresh(obj_merge(tocbot_default_config, {
+                hasInnerContainers: true
+            }));
+        }, 420); // 这个值是由 tocbot 源码里定义的 scrollSmoothDuration 得来的
+    }
+
+    document.ready(function() {
+        tocbot.init(obj_merge(tocbot_default_config, {
+            collapseDepth: 1
+        }));
+    });
+
+    function expand_toc() {
+        var b = document.querySelector('.tocbot-toc-expand');
+        var expanded = b.getAttribute('data-expanded');
+        expanded ? b.removeAttribute('data-expanded') : b.setAttribute('data-expanded', true);
+        tocbot.refresh(obj_merge(tocbot_default_config, {
+            collapseDepth: expanded ? 1 : DEPTH_MAX
+        }));
+        b.innerText = expanded ? 'Expand all' : 'Collapse all';
+    }
+
+    function go_top() {
+        window.scrollTo(0, 0);
+    }
+
+    function go_bottom() {
+        window.scrollTo(0, document.body.scrollHeight);
+    }
+
+    function obj_merge(target, source) {
+        for (var item in source) {
+            if (source.hasOwnProperty(item)) {
+                target[item] = source[item];
+            }
+        }
+        return target;
+    }
+</script>
+    
+
+    
+    <article class="post-wrap">
+        <header class="post-header">
+            <h1 class="post-title">Java学习记录</h1>
+            
+                <div class="post-meta">
+                    
+                        Author: <a itemprop="author" rel="author" href="/">MatJenin</a>
+                    
+
+                    
+                        <span class="post-time">
+                        Date: <a href="#">October 8, 2024&nbsp;&nbsp;21:55:45</a>
+                        </span>
+                    
+                    
+                </div>
+            
+        </header>
+
+        <div class="post-content">
+            <h1 id="Cache使用小结"><a href="#Cache使用小结" class="headerlink" title="Cache使用小结"></a>Cache使用小结</h1><p>“缓存”一直是我们程序员聊的最多的那一类技术点，诸如 Redis、Encache、Guava Cache，你至少会听说过一个。需要承认的是，无论是面试八股文的风气，还是实际使用的频繁度，Redis 分布式缓存的确是当下最为流行的缓存技术，但同时，从我个人的项目经验来看，本地缓存也是非常常用的一个技术点。</p>
+<p>分析 Redis 缓存的文章很多，例如 Redis 雪崩、Redis 过期机制等等，诸如此类的公众号标题不鲜出现在我朋友圈的 timeline 中，但是分析本地缓存的文章在我的映像中很少。</p>
+<p>在最近的项目中，有一位新人同事使用了 Guava Cache 来对一个 RPC 接口的响应进行缓存，我在 review 其代码时恰好发现了一个不太合理的写法，遂有此文。</p>
+<p>本文将会介绍 Guava Cache 的一些常用操作：基础 API 使用，过期策略，刷新策略。并且按照我的写作习惯，会附带上实际开发中的一些总结。需要事先说明的是，我没有阅读过 Guava Cache 的源码，对其的介绍仅仅是一些使用经验或者最佳实践，不会有过多深入的解析。</p>
+<p>先简单介绍一下 Guava Cache，它是 Google 封装的基础工具包 guava 中的一个内存缓存模块，它主要提供了以下能力：</p>
+<ul>
+<li>封装了缓存与数据源交互的流程，使得开发更关注于业务操作</li>
+<li>提供线程安全的存取操作（可以类比 ConcurrentHashMap）</li>
+<li>提供常用的缓存过期策略，缓存刷新策略</li>
+<li>提供缓存命中率的监控</li>
+</ul>
+<h2 id="基础使用"><a href="#基础使用" class="headerlink" title="基础使用"></a>基础使用</h2><p>使用一个示例介绍 Guava Cache 的基础使用方法 – 缓存大小写转换的返回值。</p>
+<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br></pre></td><td class="code"><pre><span class="line">private String fetchValueFromServer(String key) &#123;</span><br><span class="line">    return key.toUpperCase();</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line">@Test</span><br><span class="line">public void whenCacheMiss_thenFetchValueFromServer() throws ExecutionException &#123;</span><br><span class="line">    LoadingCache&lt;String, String&gt; cache =</span><br><span class="line">        CacheBuilder.newBuilder().build(new CacheLoader&lt;String, String&gt;() &#123;</span><br><span class="line">            @Override</span><br><span class="line">            public String load(String key) &#123;</span><br><span class="line">                return fetchValueFromServer(key);</span><br><span class="line">            &#125;</span><br><span class="line">        &#125;);</span><br><span class="line"></span><br><span class="line">    assertEquals(0, cache.size());</span><br><span class="line">    assertEquals(&quot;HELLO&quot;, cache.getUnchecked(&quot;hello&quot;));</span><br><span class="line">    assertEquals(&quot;HELLO&quot;, cache.get(&quot;hello&quot;));</span><br><span class="line">    assertEquals(1, cache.size());</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+
+<p>使用 Guava Cache 的好处已经跃然于纸上了，它解耦了缓存存取与业务操作。<code>CacheLoader</code> 的 <code>load</code> 方法可以理解为从数据源加载原始数据的入口，当调用 LoadingCache 的 <code>getUnchecked</code> 或者 <code>get</code>方法时，Guava Cache 行为如下：</p>
+<ul>
+<li>缓存未命中时，同步调用 load 接口，加载进缓存，返回缓存值</li>
+<li>缓存命中，直接返回缓存值</li>
+<li>多线程缓存未命中时，A 线程 load 时，会阻塞 B 线程的请求，直到缓存加载完毕</li>
+</ul>
+<p>注意到，Guava 提供了两个 <code>getUnchecked</code> 或者 <code>get</code> 加载方法，没有太大的区别，无论使用哪一个，都需要注意，数据源无论是 RPC 接口的返回值还是数据库，都要考虑访问超时或者失败的情况，做好异常处理。</p>
+<h2 id="预加载缓存"><a href="#预加载缓存" class="headerlink" title="预加载缓存"></a>预加载缓存</h2><p>预加载缓存的常见使用场景：</p>
+<ul>
+<li>老生常谈的秒杀场景，事先缓存预热，将热点商品加入缓存；</li>
+<li>系统重启过后，事先加载好缓存，避免真实请求击穿缓存</li>
+</ul>
+<p>Guava Cache 提供了 <code>put</code> 和 <code>putAll</code> 方法</p>
+<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br></pre></td><td class="code"><pre><span class="line">@Test</span><br><span class="line">public void whenPreloadCache_thenPut() &#123;</span><br><span class="line">    LoadingCache&lt;String, String&gt; cache =</span><br><span class="line">        CacheBuilder.newBuilder().build(new CacheLoader&lt;String, String&gt;() &#123;</span><br><span class="line">            @Override</span><br><span class="line">            public String load(String key) &#123;</span><br><span class="line">                return fetchValueFromServer(key);</span><br><span class="line">            &#125;</span><br><span class="line">        &#125;);</span><br><span class="line"></span><br><span class="line">    String key = &quot;kirito&quot;;</span><br><span class="line">    cache.put(key,fetchValueFromServer(key));</span><br><span class="line"></span><br><span class="line">    assertEquals(1, cache.size());</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+
+<p>操作和 HashMap 一模一样。</p>
+<p>这里有一个误区，而那位新人同事恰好踩到了，也是我写这篇文章的初衷，请务必仅在预加载缓存这个场景使用 put，其他任何场景都应该使用 load 去触发加载缓存。看下面这个<strong>反面示例</strong>：</p>
+<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br></pre></td><td class="code"><pre><span class="line">// 注意这是一个反面示例</span><br><span class="line">@Test</span><br><span class="line">public void wrong_usage_whenCacheMiss_thenPut() throws ExecutionException &#123;</span><br><span class="line">    LoadingCache&lt;String, String&gt; cache =</span><br><span class="line">        CacheBuilder.newBuilder().build(new CacheLoader&lt;String, String&gt;() &#123;</span><br><span class="line">            @Override</span><br><span class="line">            public String load(String key) &#123;</span><br><span class="line">                return &quot;&quot;;</span><br><span class="line">            &#125;</span><br><span class="line">        &#125;);</span><br><span class="line"></span><br><span class="line">    String key = &quot;kirito&quot;;</span><br><span class="line">    String cacheValue = cache.get(key);</span><br><span class="line">    if (&quot;&quot;.equals(cacheValue)) &#123;</span><br><span class="line">        cacheValue = fetchValueFromServer(key);</span><br><span class="line">        cache.put(key, cacheValue);</span><br><span class="line">    &#125;</span><br><span class="line">    cache.put(key, cacheValue);</span><br><span class="line"></span><br><span class="line">    assertEquals(1, cache.size());</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+
+<p>这样的写法，在 load 方法中设置了一个空值，后续通过手动 put + get 的方式使用缓存，这种习惯更像是在操作一个 HashMap，但并不推荐在 Cache 中使用。在前面介绍过 get 配合 load 是由 Guava Cache 去保障了线程安全，保障多个线程访问缓存时，第一个请求加载缓存的同时，阻塞后续请求，这样的 HashMap 用法既不优雅，在极端情况下还会引发缓存击穿、线程安全等问题。</p>
+<p>请务必仅仅将 put 方法用作预加载缓存场景。</p>
+<h2 id="缓存过期"><a href="#缓存过期" class="headerlink" title="缓存过期"></a>缓存过期</h2><p>前面的介绍使用起来依旧没有脱离 ConcurrentHashMap 的范畴，Cache 与其的第一个区别在“缓存过期”这个场景可以被体现出来。本节介绍 Guava 一些常见的缓存过期行为及策略。</p>
+<h3 id="缓存固定数量的值"><a href="#缓存固定数量的值" class="headerlink" title="缓存固定数量的值"></a>缓存固定数量的值</h3><figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br></pre></td><td class="code"><pre><span class="line">@Test</span><br><span class="line">public void whenReachMaxSize_thenEviction() throws ExecutionException &#123;</span><br><span class="line">    LoadingCache&lt;String, String&gt; cache =</span><br><span class="line">        CacheBuilder.newBuilder().maximumSize(3).build(new CacheLoader&lt;String, String&gt;() &#123;</span><br><span class="line">            @Override</span><br><span class="line">            public String load(String key) &#123;</span><br><span class="line">                return fetchValueFromServer(key);</span><br><span class="line">            &#125;</span><br><span class="line">        &#125;);</span><br><span class="line"></span><br><span class="line">    cache.get(&quot;one&quot;);</span><br><span class="line">    cache.get(&quot;two&quot;);</span><br><span class="line">    cache.get(&quot;three&quot;);</span><br><span class="line">    cache.get(&quot;four&quot;);</span><br><span class="line">    assertEquals(3, cache.size());</span><br><span class="line">    assertNull(cache.getIfPresent(&quot;one&quot;));</span><br><span class="line">    assertEquals(&quot;FOUR&quot;, cache.getIfPresent(&quot;four&quot;));</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+
+<p>使用 <code>ConcurrentHashMap</code> 做缓存的一个最大的问题，便是我们没有简易有效的手段阻止其无限增长，而 Guava Cache 可以通过初始化 LoadingCache 的过程，配置 <code>maximumSize</code> ，以确保缓存内容不导致你的系统出现 OOM。</p>
+<p>值得注意的是，我这里的测试用例使用的是除了 <code>get</code> 、<code>getUnchecked</code> 外的第三种获取缓存的方式，如字面意思描述的那样，<code>getIfPresent</code> 在缓存不存在时，并不会触发 <code>load</code> 方法加载数据源。</p>
+<h3 id="LRU-过期策略"><a href="#LRU-过期策略" class="headerlink" title="LRU 过期策略"></a>LRU 过期策略</h3><p>依旧沿用上述的示例，我们在设置容量为 3 时，仅获悉 LoadingCache 可以存储 3 个值，却并未得知第 4 个值存入后，哪一个旧值需要淘汰，为新值腾出空位。实际上，Guava Cache 默认采取了 LRU 缓存淘汰策略。Least Recently Used 即最近最少使用，这个算法你可能没有实现过，但一定会听说过，在 Guava Cache 中 Used 的语义代表任意一次访问，例如 put、get。继续看下面的示例。</p>
+<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br></pre></td><td class="code"><pre><span class="line">@Test</span><br><span class="line">public void whenReachMaxSize_thenEviction() throws ExecutionException &#123;</span><br><span class="line">    LoadingCache&lt;String, String&gt; cache =</span><br><span class="line">        CacheBuilder.newBuilder().maximumSize(3).build(new CacheLoader&lt;String, String&gt;() &#123;</span><br><span class="line">            @Override</span><br><span class="line">            public String load(String key) &#123;</span><br><span class="line">                return fetchValueFromServer(key);</span><br><span class="line">            &#125;</span><br><span class="line">        &#125;);</span><br><span class="line"></span><br><span class="line">    cache.get(&quot;one&quot;);</span><br><span class="line">    cache.get(&quot;two&quot;);</span><br><span class="line">    cache.get(&quot;three&quot;);</span><br><span class="line">    // access one</span><br><span class="line">    cache.get(&quot;one&quot;);</span><br><span class="line">    cache.get(&quot;four&quot;);</span><br><span class="line">    assertEquals(3, cache.size());</span><br><span class="line">    assertNull(cache.getIfPresent(&quot;two&quot;));</span><br><span class="line">    assertEquals(&quot;ONE&quot;, cache.getIfPresent(&quot;one&quot;));</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+
+<p>注意此示例与上一节示例的区别：第四次 get 访问 one 后，two 变成了最久未被使用的值，当第四个值 four 存入后，淘汰的对象变成了 two，而不再是 one 了。</p>
+<h3 id="缓存固定时间"><a href="#缓存固定时间" class="headerlink" title="缓存固定时间"></a>缓存固定时间</h3><p>为缓存设置过期时间，也是区分 HashMap 和 Cache 的一个重要特性。Guava Cache 提供了<code>expireAfterAccess</code>、 <code>expireAfterWrite</code> 的方案，为 LoadingCache 中的缓存值设置过期时间。</p>
+<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br></pre></td><td class="code"><pre><span class="line">@Test</span><br><span class="line">public void whenEntryIdle_thenEviction()</span><br><span class="line">    throws InterruptedException, ExecutionException &#123;</span><br><span class="line"></span><br><span class="line">    LoadingCache&lt;String, String&gt; cache =</span><br><span class="line">        CacheBuilder.newBuilder().expireAfterAccess(1, TimeUnit.SECONDS).build(new CacheLoader&lt;String, String&gt;() &#123;</span><br><span class="line">            @Override</span><br><span class="line">            public String load(String key) &#123;</span><br><span class="line">                return fetchValueFromServer(key);</span><br><span class="line">            &#125;</span><br><span class="line">        &#125;);</span><br><span class="line"></span><br><span class="line">    cache.get(&quot;kirito&quot;);</span><br><span class="line">    assertEquals(1, cache.size());</span><br><span class="line"></span><br><span class="line">    cache.get(&quot;kirito&quot;);</span><br><span class="line">    Thread.sleep(2000);</span><br><span class="line"></span><br><span class="line">    assertNull(cache.getIfPresent(&quot;kirito&quot;));</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+
+<h2 id="缓存失效"><a href="#缓存失效" class="headerlink" title="缓存失效"></a>缓存失效</h2><figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br></pre></td><td class="code"><pre><span class="line">@Test</span><br><span class="line">public void whenInvalidate_thenGetNull() throws ExecutionException &#123;</span><br><span class="line">    LoadingCache&lt;String, String&gt; cache =</span><br><span class="line">        CacheBuilder.newBuilder()</span><br><span class="line">            .build(new CacheLoader&lt;String, String&gt;() &#123;</span><br><span class="line">                @Override</span><br><span class="line">                public String load(String key) &#123;</span><br><span class="line">                    return fetchValueFromServer(key);</span><br><span class="line">                &#125;</span><br><span class="line">            &#125;);</span><br><span class="line"></span><br><span class="line">    String name = cache.get(&quot;kirito&quot;);</span><br><span class="line">    assertEquals(&quot;KIRITO&quot;, name);</span><br><span class="line"></span><br><span class="line">    cache.invalidate(&quot;kirito&quot;);</span><br><span class="line">    assertNull(cache.getIfPresent(&quot;kirito&quot;));</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+
+<p>使用 <code>void invalidate(Object key)</code> 移除单个缓存，使用 <code>void invalidateAll()</code> 移除所有缓存。</p>
+<h2 id="缓存刷新"><a href="#缓存刷新" class="headerlink" title="缓存刷新"></a>缓存刷新</h2><p>缓存刷新的常用于使用数据源的新值覆盖缓存旧值，Guava Cache 提供了两类刷新机制：手动刷新和定时刷新。</p>
+<h3 id="手动刷新"><a href="#手动刷新" class="headerlink" title="手动刷新"></a>手动刷新</h3><figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">cache.refresh(&quot;kirito&quot;);</span><br></pre></td></tr></table></figure>
+
+<p>refresh 方法将会触发 load 逻辑，尝试从数据源加载缓存。</p>
+<p>需要注意点的是，refresh 方法并不会阻塞 get 方法，所以在 refresh 期间，旧的缓存值依旧会被访问到，直到 load 完毕，看下面的示例。</p>
+<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br></pre></td><td class="code"><pre><span class="line">@Test</span><br><span class="line">public void whenCacheRefresh_thenLoad()</span><br><span class="line">    throws InterruptedException, ExecutionException &#123;</span><br><span class="line"></span><br><span class="line">    LoadingCache&lt;String, String&gt; cache =</span><br><span class="line">        CacheBuilder.newBuilder().expireAfterWrite(1, TimeUnit.SECONDS).build(new CacheLoader&lt;String, String&gt;() &#123;</span><br><span class="line">            @Override</span><br><span class="line">            public String load(String key) throws InterruptedException &#123;</span><br><span class="line">                Thread.sleep(2000);</span><br><span class="line">                return key + ThreadLocalRandom.current().nextInt(100);</span><br><span class="line">            &#125;</span><br><span class="line">        &#125;);</span><br><span class="line"></span><br><span class="line">    String oldValue = cache.get(&quot;kirito&quot;);</span><br><span class="line"></span><br><span class="line">    new Thread(() -&gt; &#123;</span><br><span class="line">        cache.refresh(&quot;kirito&quot;);</span><br><span class="line">    &#125;).start();</span><br><span class="line"></span><br><span class="line">    // make sure another refresh thread is scheduling</span><br><span class="line">    Thread.sleep(500);</span><br><span class="line"></span><br><span class="line">    String val1 = cache.get(&quot;kirito&quot;);</span><br><span class="line"></span><br><span class="line">    assertEquals(oldValue, val1);</span><br><span class="line"></span><br><span class="line">    // make sure refresh cache </span><br><span class="line">    Thread.sleep(2000);</span><br><span class="line"></span><br><span class="line">    String val2 = cache.get(&quot;kirito&quot;);</span><br><span class="line">    assertNotEquals(oldValue, val2);</span><br><span class="line"></span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+
+<p>其实任何情况下，缓存值都有可能和数据源出现不一致，业务层面需要做好访问到旧值的容错逻辑。</p>
+<h3 id="自动刷新"><a href="#自动刷新" class="headerlink" title="自动刷新"></a>自动刷新</h3><figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br></pre></td><td class="code"><pre><span class="line">@Test</span><br><span class="line">public void whenTTL_thenRefresh() throws ExecutionException, InterruptedException &#123;</span><br><span class="line">    LoadingCache&lt;String, String&gt; cache =</span><br><span class="line">        CacheBuilder.newBuilder().refreshAfterWrite(1, TimeUnit.SECONDS).build(new CacheLoader&lt;String, String&gt;() &#123;</span><br><span class="line">            @Override</span><br><span class="line">            public String load(String key) &#123;</span><br><span class="line">                return key + ThreadLocalRandom.current().nextInt(100);</span><br><span class="line">            &#125;</span><br><span class="line">        &#125;);</span><br><span class="line"></span><br><span class="line">    String first = cache.get(&quot;kirito&quot;);</span><br><span class="line">    Thread.sleep(1000);</span><br><span class="line">    String second = cache.get(&quot;kirito&quot;);</span><br><span class="line"></span><br><span class="line">    assertNotEquals(first, second);</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+
+<p>和上节的 refresh 机制一样，<code>refreshAfterWrite</code> 同样不会阻塞 get 线程，依旧有访问旧值的可能性。</p>
+<h2 id="缓存命中统计"><a href="#缓存命中统计" class="headerlink" title="缓存命中统计"></a>缓存命中统计</h2><p>Guava Cache 默认情况不会对命中情况进行统计，需要在构建 CacheBuilder 时显式配置 <code>recordStats</code>。</p>
+<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br></pre></td><td class="code"><pre><span class="line">@Test</span><br><span class="line">public void whenRecordStats_thenPrint() throws ExecutionException &#123;</span><br><span class="line">    LoadingCache&lt;String, String&gt; cache =</span><br><span class="line">        CacheBuilder.newBuilder().maximumSize(100).recordStats().build(new CacheLoader&lt;String, String&gt;() &#123;</span><br><span class="line">            @Override</span><br><span class="line">            public String load(String key) &#123;</span><br><span class="line">                return fetchValueFromServer(key);</span><br><span class="line">            &#125;</span><br><span class="line">        &#125;);</span><br><span class="line"></span><br><span class="line">    cache.get(&quot;one&quot;);</span><br><span class="line">    cache.get(&quot;two&quot;);</span><br><span class="line">    cache.get(&quot;three&quot;);</span><br><span class="line">    cache.get(&quot;four&quot;);</span><br><span class="line"></span><br><span class="line">    cache.get(&quot;one&quot;);</span><br><span class="line">    cache.get(&quot;four&quot;);</span><br><span class="line"></span><br><span class="line">    CacheStats stats = cache.stats();</span><br><span class="line">    System.out.println(stats);</span><br><span class="line">&#125;</span><br><span class="line">---</span><br><span class="line">CacheStats&#123;hitCount=2, missCount=4, loadSuccessCount=4, loadExceptionCount=0, totalLoadTime=1184001, evictionCount=0&#125;</span><br></pre></td></tr></table></figure>
+
+<h2 id="缓存移除的通知机制"><a href="#缓存移除的通知机制" class="headerlink" title="缓存移除的通知机制"></a>缓存移除的通知机制</h2><p>在一些业务场景中，我们希望对缓存失效进行一些监测，或者是针对失效的缓存做一些回调处理，就可以使用 <code>RemovalNotification</code> 机制。</p>
+<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br></pre></td><td class="code"><pre><span class="line">@Test</span><br><span class="line">public void whenRemoval_thenNotify() throws ExecutionException &#123;</span><br><span class="line">    LoadingCache&lt;String, String&gt; cache =</span><br><span class="line">        CacheBuilder.newBuilder().maximumSize(3)</span><br><span class="line">            .removalListener(</span><br><span class="line">                cacheItem -&gt; System.out.println(cacheItem + &quot; is removed, cause by &quot; + cacheItem.getCause()))</span><br><span class="line">            .build(new CacheLoader&lt;String, String&gt;() &#123;</span><br><span class="line">                @Override</span><br><span class="line">                public String load(String key) &#123;</span><br><span class="line">                    return fetchValueFromServer(key);</span><br><span class="line">                &#125;</span><br><span class="line">            &#125;);</span><br><span class="line"></span><br><span class="line">    cache.get(&quot;one&quot;);</span><br><span class="line">    cache.get(&quot;two&quot;);</span><br><span class="line">    cache.get(&quot;three&quot;);</span><br><span class="line">    cache.get(&quot;four&quot;);</span><br><span class="line">&#125;</span><br><span class="line">---</span><br><span class="line">one=ONE is removed, cause by SIZE</span><br></pre></td></tr></table></figure>
+
+<p><code>removalListener</code> 可以给 LoadingCache 增加一个回调处理器，<code>RemovalNotification</code> 实例包含了缓存的键值对以及移除原因。</p>
+<h2 id="Weak-Keys-Soft-Values"><a href="#Weak-Keys-Soft-Values" class="headerlink" title="Weak Keys &amp; Soft Values"></a>Weak Keys &amp; Soft Values</h2><p>Java 基础中的弱引用和软引用的概念相信大家都学习过，这里先给大家复习一下</p>
+<ul>
+<li><strong>软引用</strong>：如果一个对象只具有<strong>软引用</strong>，则<strong>内存空间充足</strong>时，<strong>垃圾回收器</strong>就<strong>不会</strong>回收它；如果<strong>内存空间不足</strong>，就会<strong>回收</strong>这些对象。只要垃圾回收器没有回收它，该对象就可以被程序使用</li>
+<li><strong>弱引用</strong>：只具有<strong>弱引用</strong>的对象拥有<strong>更短暂</strong>的<strong>生命周期</strong>。在垃圾回收器线程扫描它所管辖的内存区域的过程中，一旦发现了只具有<strong>弱引用</strong>的对象，不管当前<strong>内存空间足够与否</strong>，都会<strong>回收</strong>它的内存。</li>
+</ul>
+<p>在 Guava Cache 中，CacheBuilder 提供了 weakKeys、weakValues、softValues 三种方法，将缓存的键值对与 JVM 垃圾回收机制产生关联。</p>
+<p>该操作可能有它适用的场景，例如最大限度的使用 JVM 内存做缓存，但依赖 GC 清理，性能可想而知会比较低。总之我是不会依赖 JVM 的机制来清理缓存的，所以这个特性我不敢使用，线上还是稳定性第一。</p>
+<p>如果需要设置清理策略，可以参考缓存过期小结中的介绍固定数量和固定时间两个方案，结合使用确保使用缓存获得高性能的同时，不把内存打挂。</p>
+<h2 id="总结"><a href="#总结" class="headerlink" title="总结"></a>总结</h2><p>本文介绍了 Guava Cache 一些常用的 API 、用法示例，以及需要警惕的一些使用误区。</p>
+<p>在选择使用 Guava 时，我一般会结合实际使用场景，做出以下的考虑：</p>
+<ol>
+<li><p>为什么不用 Redis？</p>
+<p>如果本地缓存能够解决，我不希望额外引入一个中间件。</p>
+</li>
+<li><p>如果保证缓存和数据源数据的一致性？</p>
+<p>一种情况，我会在数据要求敏感度不高的场景使用缓存，所以短暂的不一致可以忍受；另外一些情况，我会在设置定期刷新缓存以及手动刷新缓存的机制。举个例子，页面上有一个显示应用 developer 列表的功能，而本地仅存储了应用名，developer 列表是通过一个 RPC 接口查询获取的，而由于对方的限制，该接口 qps 承受能力非常低，便可以考虑缓存 developer 列表，并配置 maximumSize 以及 expireAfterAccess。如果有用户在 developer 数据源中新增了数据，导致了数据不一致，页面也可以设置一个同步按钮，让用户去主动 refresh；或者，如果判断当前用户不在 developer 列表，也可以程序 refresh 一次。总之非常灵活，使用 Guava Cache 的 API 可以满足大多数业务场景的缓存需求。</p>
+</li>
+<li><p>为什么是 Guava Cache，它的性能怎么样？</p>
+<p>我现在主要是出于稳定性考虑，项目一直在使用 Guava Cache。据说有比 Guava Cache 快的本地缓存，但那点性能我的系统不是特别关心。</p>
+</li>
+</ol>
+<h1 id="浅析-java-内存模型（JMM）"><a href="#浅析-java-内存模型（JMM）" class="headerlink" title="浅析 java 内存模型（JMM）"></a>浅析 java 内存模型（JMM）</h1><h2 id="并发编程模型的分类"><a href="#并发编程模型的分类" class="headerlink" title="并发编程模型的分类"></a>并发编程模型的分类</h2><p>在并发编程中，我们需要处理两个关键问题：线程之间如何通信及线程之间如何同步（这里的线程是指并发执行的活动实体）。通信是指线程之间以何种机制来交换信息。在命令式编程中，线程之间的通信机制有两种：共享内存和消息传递。</p>
+<p>在共享内存的并发模型里，线程之间共享程序的公共状态，线程之间通过写 - 读内存中的公共状态来隐式进行通信。在消息传递的并发模型里，线程之间没有公共状态，线程之间必须通过明确的发送消息来显式进行通信。</p>
+<p>同步是指程序用于控制不同线程之间操作发生相对顺序的机制。在共享内存并发模型里，同步是显式进行的。程序员必须显式指定某个方法或某段代码需要在线程之间互斥执行。在消息传递的并发模型里，由于消息的发送必须在消息的接收之前，因此同步是隐式进行的。</p>
+<p>Java 的并发采用的是共享内存模型，Java 线程之间的通信总是隐式进行，整个通信过程对程序员完全透明。如果编写多线程程序的 Java 程序员不理解隐式进行的线程之间通信的工作机制，很可能会遇到各种奇怪的内存可见性问题。</p>
+<h2 id="Java-内存模型的抽象"><a href="#Java-内存模型的抽象" class="headerlink" title="Java 内存模型的抽象"></a>Java 内存模型的抽象</h2><p>在 java 中，所有实例域、静态域和数组元素存储在堆内存中，堆内存在线程之间共享（本文使用“共享变量”这个术语代指实例域，静态域和数组元素）。局部变量（Local variables），方法定义参数（java 语言规范称之为 formal method parameters）和异常处理器参数（exception handler parameters）不会在线程之间共享，它们不会有内存可见性问题，也不受内存模型的影响。</p>
+<p>Java 线程之间的通信由 Java 内存模型（本文简称为 JMM）控制，JMM 决定一个线程对共享变量的写入何时对另一个线程可见。从抽象的角度来看，JMM 定义了线程和主内存之间的抽象关系：线程之间的共享变量存储在主内存（main memory）中，每个线程都有一个私有的本地内存（local memory），本地内存中存储了该线程以读 &#x2F; 写共享变量的副本。本地内存是 JMM 的一个抽象概念，并不真实存在。它涵盖了缓存，写缓冲区，寄存器以及其他的硬件和编译器优化。Java 内存模型的抽象示意图如下：</p>
+<p>从上图来看，线程 A 与线程 B 之间如要通信的话，必须要经历下面 2 个步骤：</p>
+<ol>
+<li>首先，线程 A 把本地内存 A 中更新过的共享变量刷新到主内存中去。</li>
+<li>然后，线程 B 到主内存中去读取线程 A 之前已更新过的共享变量。</li>
+</ol>
+<p>下面通过示意图来说明这两个步骤：</p>
+<p>如上图所示，本地内存 A 和 B 有主内存中共享变量 x 的副本。假设初始时，这三个内存中的 x 值都为 0。线程 A 在执行时，把更新后的 x 值（假设值为 1）临时存放在自己的本地内存 A 中。当线程 A 和线程 B 需要通信时，线程 A 首先会把自己本地内存中修改后的 x 值刷新到主内存中，此时主内存中的 x 值变为了 1。随后，线程 B 到主内存中去读取线程 A 更新后的 x 值，此时线程 B 的本地内存的 x 值也变为了 1。</p>
+<p>从整体来看，这两个步骤实质上是线程 A 在向线程 B 发送消息，而且这个通信过程必须要经过主内存。JMM 通过控制主内存与每个线程的本地内存之间的交互，来为 java 程序员提供内存可见性保证。</p>
+<h2 id="重排序"><a href="#重排序" class="headerlink" title="重排序"></a>重排序</h2><p>在执行程序时为了提高性能，编译器和处理器常常会对指令做重排序。重排序分三种类型：</p>
+<ol>
+<li>编译器优化的重排序。编译器在不改变单线程程序语义的前提下，可以重新安排语句的执行顺序。</li>
+<li>指令级并行的重排序。现代处理器采用了指令级并行技术（Instruction-Level Parallelism， ILP）来将多条指令重叠执行。如果不存在数据依赖性，处理器可以改变语句对应机器指令的执行顺序。</li>
+<li>内存系统的重排序。由于处理器使用缓存和读 &#x2F; 写缓冲区，这使得加载和存储操作看上去可能是在乱序执行。</li>
+</ol>
+<p>从 java 源代码到最终实际执行的指令序列，会分别经历下面三种重排序：</p>
+<p>上述的 1 属于编译器重排序，2 和 3 属于处理器重排序。这些重排序都可能会导致多线程程序出现内存可见性问题。对于编译器，JMM 的编译器重排序规则会禁止特定类型的编译器重排序（不是所有的编译器重排序都要禁止）。对于处理器重排序，JMM 的处理器重排序规则会要求 java 编译器在生成指令序列时，插入特定类型的内存屏障（memory barriers，intel 称之为 memory fence）指令，通过内存屏障指令来禁止特定类型的处理器重排序（不是所有的处理器重排序都要禁止）。</p>
+<p>JMM 属于语言级的内存模型，它确保在不同的编译器和不同的处理器平台之上，通过禁止特定类型的编译器重排序和处理器重排序，为程序员提供一致的内存可见性保证。</p>
+<h2 id="处理器重排序与内存屏障指令"><a href="#处理器重排序与内存屏障指令" class="headerlink" title="处理器重排序与内存屏障指令"></a>处理器重排序与内存屏障指令</h2><p>现代的处理器使用写缓冲区来临时保存向内存写入的数据。写缓冲区可以保证指令流水线持续运行，它可以避免由于处理器停顿下来等待向内存写入数据而产生的延迟。同时，通过以批处理的方式刷新写缓冲区，以及合并写缓冲区中对同一内存地址的多次写，可以减少对内存总线的占用。虽然写缓冲区有这么多好处，但每个处理器上的写缓冲区，仅仅对它所在的处理器可见。这个特性会对内存操作的执行顺序产生重要的影响：处理器对内存的读 &#x2F; 写操作的执行顺序，不一定与内存实际发生的读 &#x2F; 写操作顺序一致！为了具体说明，请看下面示例：</p>
+<table>
+<thead>
+<tr>
+<th align="left">Processor A</th>
+<th align="left">Processor B</th>
+</tr>
+</thead>
+<tbody><tr>
+<td align="left">a &#x3D; 1; &#x2F;&#x2F;A1x &#x3D; b; &#x2F;&#x2F;A2</td>
+<td align="left">b &#x3D; 2; &#x2F;&#x2F;B1y &#x3D; a; &#x2F;&#x2F;B2</td>
+</tr>
+<tr>
+<td align="left">初始状态：a &#x3D; b &#x3D; 0 处理器允许执行后得到结果：x &#x3D; y &#x3D; 0</td>
+<td align="left"></td>
+</tr>
+</tbody></table>
+<p>假设处理器 A 和处理器 B 按程序的顺序并行执行内存访问，最终却可能得到 x &#x3D; y &#x3D; 0 的结果。具体的原因如下图所示：</p>
+<p>这里处理器 A 和处理器 B 可以同时把共享变量写入自己的写缓冲区（A1，B1），然后从内存中读取另一个共享变量（A2，B2），最后才把自己写缓存区中保存的脏数据刷新到内存中（A3，B3）。当以这种时序执行时，程序就可以得到 x &#x3D; y &#x3D; 0 的结果。</p>
+<p>从内存操作实际发生的顺序来看，直到处理器 A 执行 A3 来刷新自己的写缓存区，写操作 A1 才算真正执行了。虽然处理器 A 执行内存操作的顺序为：A1-&gt;A2，但内存操作实际发生的顺序却是：A2-&gt;A1。此时，处理器 A 的内存操作顺序被重排序了（处理器 B 的情况和处理器 A 一样，这里就不赘述了）。</p>
+<p>这里的关键是，由于写缓冲区仅对自己的处理器可见，它会导致处理器执行内存操作的顺序可能会与内存实际的操作执行顺序不一致。由于现代的处理器都会使用写缓冲区，因此现代的处理器都会允许对写 - 读操做重排序。</p>
+<p>下面是常见处理器允许的重排序类型的列表：</p>
+<table>
+<thead>
+<tr>
+<th align="left"></th>
+<th align="left">Load-Load</th>
+<th align="left">Load-Store</th>
+<th align="left">Store-Store</th>
+<th align="left">Store-Load</th>
+<th align="left">数据依赖</th>
+</tr>
+</thead>
+<tbody><tr>
+<td align="left">sparc-TSO</td>
+<td align="left">N</td>
+<td align="left">N</td>
+<td align="left">N</td>
+<td align="left">Y</td>
+<td align="left">N</td>
+</tr>
+<tr>
+<td align="left">x86</td>
+<td align="left">N</td>
+<td align="left">N</td>
+<td align="left">N</td>
+<td align="left">Y</td>
+<td align="left">N</td>
+</tr>
+<tr>
+<td align="left">ia64</td>
+<td align="left">Y</td>
+<td align="left">Y</td>
+<td align="left">Y</td>
+<td align="left">Y</td>
+<td align="left">N</td>
+</tr>
+<tr>
+<td align="left">PowerPC</td>
+<td align="left">Y</td>
+<td align="left">Y</td>
+<td align="left">Y</td>
+<td align="left">Y</td>
+<td align="left">N</td>
+</tr>
+</tbody></table>
+<p>上表单元格中的“N”表示处理器不允许两个操作重排序，“Y”表示允许重排序。</p>
+<p>从上表我们可以看出：常见的处理器都允许 Store-Load 重排序；常见的处理器都不允许对存在数据依赖的操作做重排序。sparc-TSO 和 x86 拥有相对较强的处理器内存模型，它们仅允许对写 - 读操作做重排序（因为它们都使用了写缓冲区）。</p>
+<p>※注 1：sparc-TSO 是指以 TSO(Total Store Order) 内存模型运行时，sparc 处理器的特性。</p>
+<p>※注 2：上表中的 x86 包括 x64 及 AMD64。</p>
+<p>※注 3：由于 ARM 处理器的内存模型与 PowerPC 处理器的内存模型非常类似，本文将忽略它。</p>
+<p>※注 4：数据依赖性后文会专门说明。</p>
+<p>为了保证内存可见性，java 编译器在生成指令序列的适当位置会插入内存屏障指令来禁止特定类型的处理器重排序。JMM 把内存屏障指令分为下列四类：</p>
+<table>
+<thead>
+<tr>
+<th align="left">屏障类型</th>
+<th align="left">指令示例</th>
+<th align="left">说明</th>
+</tr>
+</thead>
+<tbody><tr>
+<td align="left">LoadLoad Barriers</td>
+<td align="left">Load1; LoadLoad; Load2</td>
+<td align="left">确保 Load1 数据的装载，之前于 Load2 及所有后续装载指令的装载。</td>
+</tr>
+<tr>
+<td align="left">StoreStore Barriers</td>
+<td align="left">Store1; StoreStore; Store2</td>
+<td align="left">确保 Store1 数据对其他处理器可见（刷新到内存），之前于 Store2 及所有后续存储指令的存储。</td>
+</tr>
+<tr>
+<td align="left">LoadStore Barriers</td>
+<td align="left">Load1; LoadStore; Store2</td>
+<td align="left">确保 Load1 数据装载，之前于 Store2 及所有后续的存储指令刷新到内存。</td>
+</tr>
+<tr>
+<td align="left">StoreLoad Barriers</td>
+<td align="left">Store1; StoreLoad; Load2</td>
+<td align="left">确保 Store1 数据对其他处理器变得可见（指刷新到内存），之前于 Load2 及所有后续装载指令的装载。StoreLoad Barriers 会使该屏障之前的所有内存访问指令（存储和装载指令）完成之后，才执行该屏障之后的内存访问指令。</td>
+</tr>
+</tbody></table>
+<p>StoreLoad Barriers 是一个“全能型”的屏障，它同时具有其他三个屏障的效果。现代的多处理器大都支持该屏障（其他类型的屏障不一定被所有处理器支持）。执行该屏障开销会很昂贵，因为当前处理器通常要把写缓冲区中的数据全部刷新到内存中（buffer fully flush）。</p>
+<h2 id="happens-before"><a href="#happens-before" class="headerlink" title="happens-before"></a>happens-before</h2><p>从 JDK5 开始，java 使用新的 JSR -133 内存模型（本文除非特别说明，针对的都是 JSR- 133 内存模型）。JSR-133 提出了 happens-before 的概念，通过这个概念来阐述操作之间的内存可见性。如果一个操作执行的结果需要对另一个操作可见，那么这两个操作之间必须存在 happens-before 关系。这里提到的两个操作既可以是在一个线程之内，也可以是在不同线程之间。 与程序员密切相关的 happens-before 规则如下：</p>
+<ul>
+<li>程序顺序规则：一个线程中的每个操作，happens- before 于该线程中的任意后续操作。</li>
+<li>监视器锁规则：对一个监视器锁的解锁，happens- before 于随后对这个监视器锁的加锁。</li>
+<li>volatile 变量规则：对一个 volatile 域的写，happens- before 于任意后续对这个 volatile 域的读。</li>
+<li>传递性：如果 A happens- before B，且 B happens- before C，那么 A happens- before C。</li>
+</ul>
+<p>注意，两个操作之间具有 happens-before 关系，并不意味着前一个操作必须要在后一个操作之前执行！happens-before 仅仅要求前一个操作（执行的结果）对后一个操作可见，且前一个操作按顺序排在第二个操作之前（the first is visible to and ordered before the second）。happens- before 的定义很微妙，后文会具体说明 happens-before 为什么要这么定义。</p>
+<p>happens-before 与 JMM 的关系如下图所示：</p>
+<p>如上图所示，一个 happens-before 规则通常对应于多个编译器重排序规则和处理器重排序规则。对于 java 程序员来说，happens-before 规则简单易懂，它避免程序员为了理解 JMM 提供的内存可见性保证而去学习复杂的重排序规则以及这些规则的具体实现。</p>
+
+        </div>
+
+        
+            <section class="post-copyright">
+                
+                    <p class="copyright-item">
+                        <span>Author:</span>
+                        <span>MatJenin</span>
+                    </p>
+                
+                
+                
+                
+
+            </section>
+        
+        <section class="post-tags">
+            <div>
+                <span>Tag(s):</span>
+                <span class="tag">
+                    
+                </span>
+            </div>
+            <div>
+                <a href="javascript:window.history.back();">back</a>
+                <span>· </span>
+                <a href="/">home</a>
+            </div>
+        </section>
+        <section class="post-nav">
+            
+                <a class="prev" rel="prev" href="/2024/10/08/hexo%E5%8D%9A%E5%AE%A2%E4%BC%98%E5%8C%96%E6%97%A5%E5%BF%97/">hexo博客优化日志</a>
+            
+            
+            <a class="next" rel="next" href="/2024/06/13/%E5%8A%A8%E6%80%81%E8%A7%84%E5%88%92/"></a>
+            
+        </section>
+
+
+    </article>
+</div>
+
+            </div>
+            <footer id="footer" class="footer">
+    <div class="copyright">
+        <span>© MatJenin | Powered by <a href="https://hexo.io" target="_blank">Hexo</a> & <a href="https://github.com/Siricee/hexo-theme-Chic" target="_blank">Chic</a></span>
+    </div>
+</footer>
+
+    </div>
+</body>
+
+</html>

@@ -1,0 +1,264 @@
+<!DOCTYPE html>
+<html lang="CH">
+
+<head>
+    <meta charset="UTF-8">
+<meta name="viewport"
+      content="width=device-width, initial-scale=1.0, maximum-scale=1.0, minimum-scale=1.0">
+<meta http-equiv="X-UA-Compatible" content="ie=edge">
+
+    <meta name="author" content="MatJenin">
+
+
+
+
+
+<title>实习笔记 | Hexo</title>
+
+
+
+    <link rel="icon" href="/favicon.ico">
+
+
+
+
+    <!-- stylesheets list from _config.yml -->
+    
+    <link rel="stylesheet" href="/css/style.css">
+    
+
+
+
+    <!-- scripts list from _config.yml -->
+    
+    <script src="/js/script.js"></script>
+    
+    <script src="/js/tocbot.min.js"></script>
+    
+
+
+
+    
+    
+        
+    
+
+
+<meta name="generator" content="Hexo 7.1.1"></head>
+
+<body>
+    <script>
+        // this function is used to check current theme before page loaded.
+        (() => {
+            const currentTheme = window.localStorage && window.localStorage.getItem('theme') || '';
+            const isDark = currentTheme === 'dark';
+            const pagebody = document.getElementsByTagName('body')[0]
+            if (isDark) {
+                pagebody.classList.add('dark-theme');
+                // mobile
+                document.getElementById("mobile-toggle-theme").innerText = "· Dark"
+            } else {
+                pagebody.classList.remove('dark-theme');
+                // mobile
+                document.getElementById("mobile-toggle-theme").innerText = "· Light"
+            }
+        })();
+    </script>
+
+    <div class="wrapper">
+        <header>
+    <nav class="navbar">
+        <div class="container">
+            <div class="navbar-header header-logo"><a href="/">MatJenin&#39;s Blog</a></div>
+            <div class="menu navbar-right">
+                
+                    <a class="menu-item" href="/archives">Posts</a>
+                
+                    <a class="menu-item" href="/category">Categories</a>
+                
+                    <a class="menu-item" href="/tag">Tags</a>
+                
+                    <a class="menu-item" href="/about">About</a>
+                
+                <input id="switch_default" type="checkbox" class="switch_default">
+                <label for="switch_default" class="toggleBtn"></label>
+            </div>
+        </div>
+    </nav>
+
+    
+    <nav class="navbar-mobile" id="nav-mobile">
+        <div class="container">
+            <div class="navbar-header">
+                <div>
+                    <a href="/">MatJenin&#39;s Blog</a><a id="mobile-toggle-theme">·&nbsp;Light</a>
+                </div>
+                <div class="menu-toggle" onclick="mobileBtn()">&#9776; Menu</div>
+            </div>
+            <div class="menu" id="mobile-menu">
+                
+                    <a class="menu-item" href="/archives">Posts</a>
+                
+                    <a class="menu-item" href="/category">Categories</a>
+                
+                    <a class="menu-item" href="/tag">Tags</a>
+                
+                    <a class="menu-item" href="/about">About</a>
+                
+            </div>
+        </div>
+    </nav>
+
+</header>
+<script>
+    var mobileBtn = function f() {
+        var toggleMenu = document.getElementsByClassName("menu-toggle")[0];
+        var mobileMenu = document.getElementById("mobile-menu");
+        if(toggleMenu.classList.contains("active")){
+           toggleMenu.classList.remove("active")
+            mobileMenu.classList.remove("active")
+        }else{
+            toggleMenu.classList.add("active")
+            mobileMenu.classList.add("active")
+        }
+    }
+</script>
+            <div class="main">
+                <div class="container">
+    
+    
+
+    
+    <article class="post-wrap">
+        <header class="post-header">
+            <h1 class="post-title">实习笔记</h1>
+            
+                <div class="post-meta">
+                    
+                        Author: <a itemprop="author" rel="author" href="/">MatJenin</a>
+                    
+
+                    
+                        <span class="post-time">
+                        Date: <a href="#">October 8, 2024&nbsp;&nbsp;22:19:15</a>
+                        </span>
+                    
+                    
+                </div>
+            
+        </header>
+
+        <div class="post-content">
+            <p>1、 自动驾驶中的功能降级是什么意思？</p>
+<p>2、 刷写中34、36、37服务与31例程控制的关系</p>
+<p><img src="/wps2.jpg" alt="img"><img src="/wps3.jpg" alt="img"> </p>
+<p>其实在刷写文件中，通常先将flash driver下载进ECU的RAM，然后再步骤5检查flash driver的有效性，执行6将旧有的程序擦除，之后才会再使用一个34、36、37将新的软件刷进ECU，我们项目中好像只是将flash driver下载进ECU，但没有将新的软件刷写进ECU，</p>
+<p><img src="/wps4.jpg" alt="img"> </p>
+<p>CRC检验、UDS与CAN在iso七层协议中的关系、</p>
+<p>网关的作用：</p>
+<p><img src="/wps5.jpg" alt="img"> </p>
+<p>所以由于网关的作用，使得汽车网络中不同网络间是可以通信的</p>
+<p>高精地图、视觉感知、智能驾驶的实现、摄像头的产品方案的关系：</p>
+<p>基于高精地图的城市NOA会用到下面这些算法：<br><img src="/wps6.jpg" alt="img"></p>
+<p>这些算法都需要通过摄像头等传感器进行数据的汇总分析，最后实现智能驾驶。</p>
+<p>获取数据的时候现实的路测是一方面，另一方面还需要在仿真平台上测试。</p>
+<p>影子模式是指：在于在有人驾驶状态下，系统包括传感器仍然运行但是不进行控制，用来跑算法模型、对其进行验证。</p>
+<p><img src="/wps7.jpg" alt="img"> </p>
+<p>全局DTC与局部DTC的区别：</p>
+<p>全局DTC是全部ECU都需要支持的，局部则是可选的</p>
+<p>IPC是进程间的通信，ADCU是自动驾驶控制器</p>
+<p>一主多从的XCP协议</p>
+<p><img src="/wps8.jpg" alt="img"> </p>
+<p>自动化测试框架是怎么建立的？<br><img src="/wps9.jpg" alt="img"></p>
+<p>@property是在类中把一个方法变为属性，之后在类中可以self.方法名调用</p>
+<p>我们的框架中的XCP的实现方式：</p>
+<p>1、建立连接：首先是通过getattr()获得指定路径下的json文件，然后通过StringIO读取json文件，得到文件中的配置信息，根据pyxcp包中的readConfiguration方法构建一个配置类，然后通过XCP的接口API类Master建立XCP对象，使用Master类中的connect方法建立连接。</p>
+<p>2、读取信息：使用Master类中的def shortUpload(self, length: int, address: int, addressExt: int &#x3D; 0x00):方法对指定地址的ECU读取信息，读的是A2L信息</p>
+<p>3、写入信息：使用Master类中的def shortDownload(self, address, addressExt, data):</p>
+<p>方法对指定地址的ECU写入信息，写入的是Bytes字节信息</p>
+<p>诊断连接的建立：</p>
+<p>通过UDSCommon(protocol&#x3D;protocol, conn_name&#x3D;conn_name, **kwargs)中的’conn’参数建立的连接_conn，然后self._socket &#x3D; _client.Client(self._conn, config&#x3D;client_config, request_timeout&#x3D;self._timeout)建立socket</p>
+<p>先建立BaseConnection，后建立Client</p>
+<p>我们关闭线程的是通过使用全局变量的方式</p>
+<p>基于udsoncan库</p>
+<p>框架中诊断的实现方式：</p>
+<p>1、 在testcase中编写需要诊断的服务ID信息，包括一些前置条件以及测试过程，调用testcase_aw中的诊断服务测试框架DiagnosticServer类</p>
+<p>2、 testcase_aw中diagnostic_server_aw包含有诊断的前置条件，测试过程，以及清理环境。在前置条件中会先使用feature_lib中的DiagnosticServerCommon来创建uds_client连接以及对于前置条件以及测试过程中的不同serverID进行执行。</p>
+<p>3、 uds_client连接的实现其实是通过实现了诊断接口(common_lib中的uds_interface)，里面有不同serverID的具体代码实现，以及诊断连接的建立与断开。</p>
+<p>4、 诊断socket连接的建立：通过实现Client类(bus以及tp层的具体参数合并的conn对象)</p>
+<p>5、 不同诊断的实现，其实是通过udsoncan.Request与response来实现的，在socket中发送request(已经被包装好了) ，响应response &#x3D; Response.from_payload(recv_payload)</p>
+<p>一个socket对象其实就是一个地址+端口号</p>
+<p>Keepalive与keep-Alive的区别</p>
+<p>cls与self的区别</p>
+<p>Python实现网络编程：创建Session会话、SSH连接、SFTP连接方式</p>
+<p>创建Session会话：主要是通过paramiko包中的Transport方法（传IP地址以及端口号），还可以设定一些包括超时时间、登录密码、Keepalive等</p>
+<p>SSH连接：主要是通过Session会话中的open_session()方法创建channel</p>
+<p>连接通道，对于执行特定的cmd指令，还需要使用channel.send（cmd）,然后通过recv方法接收</p>
+<p>SFTP连接类似，主要是通过Session会话中的open_sftp_client()方法</p>
+<p>Python是怎么与CANoe建立连接的呢？</p>
+<p>通过com口来建立连接，使用DispatchEx接口</p>
+<p>Pytest我们公司不适用，对于我们的项目来说是不合适的，一方面因为我们的代码需要有很强的复用性，以及我们在Jenkins流水线上需要选择部分的测试用例执行，对于Pytest来说，指定执行部分用例的方式很麻烦，测试的类都需要以Test开头。</p>
+<p>因为allure-pytest与Pytest强绑定，我们用的是allure-commons库</p>
+<p>DLC、报文周期、预期报文、Counter以及Checksum的检查</p>
+<p>DLC、报文周期、预期报文都是获取报文信息与DBC文件定义的数据做比较，看是否符合</p>
+<p>Counter以及Checksum是对检查数据是否在发送过程中出现丢失报文或者信息出现差错</p>
+<p><img src="/wps10.jpg" alt="img"><img src="/wps11.jpg" alt="img"><img src="/wps12.jpg" alt="img"><img src="/wps13.jpg" alt="img"> </p>
+<p>你觉得实习公司的自动化框架是否有需要优化的地方？<br>随着实际项目内容的增加，我发现框架内各个类之间耦合的层度越来越高，这个从设计模式上看是不合理的，是需要修改的；同时在测试用例中会逐步增加非文本用例的内容，这个也是不符合测试规范的</p>
+<p>我举一个例子把：我们在测试将文件刷写到ECU内部时，如果本身就是压缩包的形式，那么直接进行传输就行，但是如果是其他的文件类型，比如Hex文件、SREC文件时，我们需要对文件进行拆包，得到文件中的数据段，再将数据段写入ECU中。在我们原本的框架内容中，我们一方面在公共库中添加了对传输文件的拆包操作，另一方面，在测试用例中添加了一个字段，来声明是否需要进行拆包</p>
+<p>其实我们完全可以定义一个拆包类，来对各类文件进行拆包操作；我们也不需要在文本用例中做判断，可以在前置过程中，直接对传输的数据进行拆包，符合拆包要求的就拆包，不符合的就不拆，拆包后的文件放在一个列表中，之后执行传输，直接从这个列表中提取文件就好了，这样既减少了文件的耦合，又不用在测试用例中做修改，后续项目中如有再有不同的文件格式，那么只需要在拆包类下进行添加不同的拆包方法就好了！</p>
+<p>获取CAN报文数据的方式：<br>1、PCAN+上位机</p>
+<p>2、CANoe</p>
+
+        </div>
+
+        
+            <section class="post-copyright">
+                
+                    <p class="copyright-item">
+                        <span>Author:</span>
+                        <span>MatJenin</span>
+                    </p>
+                
+                
+                
+                
+
+            </section>
+        
+        <section class="post-tags">
+            <div>
+                <span>Tag(s):</span>
+                <span class="tag">
+                    
+                </span>
+            </div>
+            <div>
+                <a href="javascript:window.history.back();">back</a>
+                <span>· </span>
+                <a href="/">home</a>
+            </div>
+        </section>
+        <section class="post-nav">
+            
+                <a class="prev" rel="prev" href="/2024/10/08/Redis%E7%9B%B8%E5%85%B3%E9%9D%A2%E8%AF%95%E9%A2%98/">Redis相关面试题</a>
+            
+            
+            <a class="next" rel="next" href="/2024/10/08/%E7%BD%91%E7%BB%9C%E7%BC%96%E7%A8%8B-%E7%AE%80%E5%8D%95%E7%9A%84echo%E7%A8%8B%E5%BA%8F/">网络编程-简单的echo程序</a>
+            
+        </section>
+
+
+    </article>
+</div>
+
+            </div>
+            <footer id="footer" class="footer">
+    <div class="copyright">
+        <span>© MatJenin | Powered by <a href="https://hexo.io" target="_blank">Hexo</a> & <a href="https://github.com/Siricee/hexo-theme-Chic" target="_blank">Chic</a></span>
+    </div>
+</footer>
+
+    </div>
+</body>
+
+</html>

@@ -1,0 +1,290 @@
+<!DOCTYPE html>
+<html lang="CH">
+
+<head>
+    <meta charset="UTF-8">
+<meta name="viewport"
+      content="width=device-width, initial-scale=1.0, maximum-scale=1.0, minimum-scale=1.0">
+<meta http-equiv="X-UA-Compatible" content="ie=edge">
+
+    <meta name="author" content="MatJenin">
+
+
+
+
+
+<title>Hexo</title>
+
+
+
+    <link rel="icon" href="/favicon.ico">
+
+
+
+
+    <!-- stylesheets list from _config.yml -->
+    
+    <link rel="stylesheet" href="/css/style.css">
+    
+
+
+
+    <!-- scripts list from _config.yml -->
+    
+    <script src="/js/script.js"></script>
+    
+    <script src="/js/tocbot.min.js"></script>
+    
+
+
+
+    
+    
+        
+    
+
+
+<meta name="generator" content="Hexo 7.1.1"></head>
+
+<body>
+    <script>
+        // this function is used to check current theme before page loaded.
+        (() => {
+            const currentTheme = window.localStorage && window.localStorage.getItem('theme') || '';
+            const isDark = currentTheme === 'dark';
+            const pagebody = document.getElementsByTagName('body')[0]
+            if (isDark) {
+                pagebody.classList.add('dark-theme');
+                // mobile
+                document.getElementById("mobile-toggle-theme").innerText = "· Dark"
+            } else {
+                pagebody.classList.remove('dark-theme');
+                // mobile
+                document.getElementById("mobile-toggle-theme").innerText = "· Light"
+            }
+        })();
+    </script>
+
+    <div class="wrapper">
+        <header>
+    <nav class="navbar">
+        <div class="container">
+            <div class="navbar-header header-logo"><a href="/">MatJenin&#39;s Blog</a></div>
+            <div class="menu navbar-right">
+                
+                    <a class="menu-item" href="/archives">Posts</a>
+                
+                    <a class="menu-item" href="/category">Categories</a>
+                
+                    <a class="menu-item" href="/tag">Tags</a>
+                
+                    <a class="menu-item" href="/about">About</a>
+                
+                <input id="switch_default" type="checkbox" class="switch_default">
+                <label for="switch_default" class="toggleBtn"></label>
+            </div>
+        </div>
+    </nav>
+
+    
+    <nav class="navbar-mobile" id="nav-mobile">
+        <div class="container">
+            <div class="navbar-header">
+                <div>
+                    <a href="/">MatJenin&#39;s Blog</a><a id="mobile-toggle-theme">·&nbsp;Light</a>
+                </div>
+                <div class="menu-toggle" onclick="mobileBtn()">&#9776; Menu</div>
+            </div>
+            <div class="menu" id="mobile-menu">
+                
+                    <a class="menu-item" href="/archives">Posts</a>
+                
+                    <a class="menu-item" href="/category">Categories</a>
+                
+                    <a class="menu-item" href="/tag">Tags</a>
+                
+                    <a class="menu-item" href="/about">About</a>
+                
+            </div>
+        </div>
+    </nav>
+
+</header>
+<script>
+    var mobileBtn = function f() {
+        var toggleMenu = document.getElementsByClassName("menu-toggle")[0];
+        var mobileMenu = document.getElementById("mobile-menu");
+        if(toggleMenu.classList.contains("active")){
+           toggleMenu.classList.remove("active")
+            mobileMenu.classList.remove("active")
+        }else{
+            toggleMenu.classList.add("active")
+            mobileMenu.classList.add("active")
+        }
+    }
+</script>
+            <div class="main">
+                <div class="container">
+    
+    
+        <div class="post-toc">
+    <div class="tocbot-list">
+    </div>
+    <div class="tocbot-list-menu">
+        <a class="tocbot-toc-expand" onclick="expand_toc()">Expand all</a>
+        <a onclick="go_top()">Back to top</a>
+        <a onclick="go_bottom()">Go to bottom</a>
+    </div>
+</div>
+
+<script>
+    var tocbot_timer;
+    var DEPTH_MAX = 6; // 为 6 时展开所有
+    var tocbot_default_config = {
+        tocSelector: '.tocbot-list',
+        contentSelector: '.post-content',
+        headingSelector: 'h1, h2, h3, h4, h5',
+        orderedList: false,
+        scrollSmooth: true,
+        onClick: extend_click,
+    };
+
+    function extend_click() {
+        clearTimeout(tocbot_timer);
+        tocbot_timer = setTimeout(function() {
+            tocbot.refresh(obj_merge(tocbot_default_config, {
+                hasInnerContainers: true
+            }));
+        }, 420); // 这个值是由 tocbot 源码里定义的 scrollSmoothDuration 得来的
+    }
+
+    document.ready(function() {
+        tocbot.init(obj_merge(tocbot_default_config, {
+            collapseDepth: 1
+        }));
+    });
+
+    function expand_toc() {
+        var b = document.querySelector('.tocbot-toc-expand');
+        var expanded = b.getAttribute('data-expanded');
+        expanded ? b.removeAttribute('data-expanded') : b.setAttribute('data-expanded', true);
+        tocbot.refresh(obj_merge(tocbot_default_config, {
+            collapseDepth: expanded ? 1 : DEPTH_MAX
+        }));
+        b.innerText = expanded ? 'Expand all' : 'Collapse all';
+    }
+
+    function go_top() {
+        window.scrollTo(0, 0);
+    }
+
+    function go_bottom() {
+        window.scrollTo(0, document.body.scrollHeight);
+    }
+
+    function obj_merge(target, source) {
+        for (var item in source) {
+            if (source.hasOwnProperty(item)) {
+                target[item] = source[item];
+            }
+        }
+        return target;
+    }
+</script>
+    
+
+    
+    <article class="post-wrap">
+        <header class="post-header">
+            <h1 class="post-title"></h1>
+            
+                <div class="post-meta">
+                    
+                        Author: <a itemprop="author" rel="author" href="/">MatJenin</a>
+                    
+
+                    
+                        <span class="post-time">
+                        Date: <a href="#">June 1, 2024&nbsp;&nbsp;22:01:32</a>
+                        </span>
+                    
+                    
+                </div>
+            
+        </header>
+
+        <div class="post-content">
+            <h3 id="1、Junit是一个单元测试框架"><a href="#1、Junit是一个单元测试框架" class="headerlink" title="1、Junit是一个单元测试框架"></a>1、Junit是一个单元测试框架</h3><p>Junit是一个单元测试框架，JUnit 使用注解（如 <code>@Test</code>、<code>@Before</code>、<code>@After</code> 等）来简化测试用例的编写和组织。开发者只需标记测试方法，这些方法会自动被 JUnit 识别并执行。</p>
+<figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">import</span> org.junit.jupiter.api.Test; </span><br><span class="line"><span class="keyword">import</span> <span class="keyword">static</span> org.junit.jupiter.api.Assertions.*;</span><br><span class="line"><span class="keyword">public</span> <span class="keyword">class</span> <span class="title class_">MyTests</span> &#123;    </span><br><span class="line">    <span class="meta">@Test</span>    </span><br><span class="line">    <span class="keyword">void</span> <span class="title function_">testAddition</span><span class="params">()</span> &#123;         </span><br><span class="line">        assertEquals(<span class="number">2</span>, <span class="number">1</span> + <span class="number">1</span>, <span class="string">&quot;1 + 1 should equal 2&quot;</span>);    </span><br><span class="line">    &#125; </span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+
+<h3 id="2、Springboot方式"><a href="#2、Springboot方式" class="headerlink" title="2、Springboot方式"></a>2、Springboot方式</h3><figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment">//Springboot方式</span></span><br><span class="line"><span class="meta">@RestController</span></span><br><span class="line"><span class="keyword">public</span> <span class="keyword">class</span> <span class="title class_">RequsetController</span> &#123;</span><br><span class="line">    <span class="meta">@RequestMapping(&quot;/simpleParm&quot;)</span></span><br><span class="line">    <span class="keyword">public</span> String <span class="title function_">simpleParm</span><span class="params">( String name, Integer age)</span>&#123;</span><br><span class="line">        System.out.println(name + <span class="string">&quot;:&quot;</span> + age);</span><br><span class="line">        <span class="keyword">return</span> <span class="string">&quot;ok&quot;</span>;</span><br><span class="line">    &#125;</span><br><span class="line"></span><br><span class="line">    <span class="meta">@RequestMapping(&quot;/hello&quot;)</span></span><br><span class="line">    <span class="keyword">public</span> String <span class="title function_">hello</span><span class="params">()</span>&#123;</span><br><span class="line">        System.out.println(<span class="string">&quot;Hello!&quot;</span>);</span><br><span class="line">        <span class="keyword">return</span> <span class="string">&quot;Hello~&quot;</span>;</span><br><span class="line">    &#125;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+
+<ul>
+<li><code>System.out.println(&quot;Hello!&quot;);</code>是在服务器上输出</li>
+<li><code>return &quot;Hello~&quot;;</code>是在浏览器控制台上输出</li>
+<li><img src="/image-20240603202623787.png" alt="image-20240603202623787"></li>
+</ul>
+<p><img src="/image-20240603202636116.png" alt="image-20240603202636116"></p>
+<h3 id="3、应用分层"><a href="#3、应用分层" class="headerlink" title="3、应用分层"></a>3、应用分层</h3><p><img src="/image-20240603220748471.png" alt="image-20240603220748471"></p>
+<h3 id="4、如何使用Mybatis来查询数据库："><a href="#4、如何使用Mybatis来查询数据库：" class="headerlink" title="4、如何使用Mybatis来查询数据库："></a>4、如何使用Mybatis来查询数据库：</h3><figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment">//首先需要在resources中添加上SQL的四项基本信息</span></span><br><span class="line">#驱动类名称</span><br><span class="line">spring.datasource.driver-class-name=com.mysql.cj.jdbc.Driver</span><br><span class="line">#数据库连接的url</span><br><span class="line">spring.datasource.url=jdbc:mysql:<span class="comment">//localhost:3306/heima</span></span><br><span class="line">#连接数据库的用户名</span><br><span class="line">spring.datasource.username=root</span><br><span class="line">#连接数据库的密码</span><br><span class="line">spring.datasource.password=<span class="number">123456</span></span><br><span class="line">    </span><br><span class="line"><span class="comment">//第二、创建一个对象，该对象类型要与你数据库中想要查询的对象类型相符，比如User对象</span></span><br><span class="line"><span class="comment">//第三、需要写具体的SQL语句，创建一个接口，并加上@Mapper注解，表明将这个接口自动实现，并汇入DIO成为一个Bean，写具体的代码时用@select(&quot;&quot;),需要考虑对象是用什么数据结构储存</span></span><br><span class="line"><span class="comment">//第四，在测试类中运行，测试类中注入一个对象，输出该对象中的数据</span></span><br></pre></td></tr></table></figure>
+
+<h3 id="5、Spring-框架提供了几个注解来标记不同层次的组件"><a href="#5、Spring-框架提供了几个注解来标记不同层次的组件" class="headerlink" title="5、Spring 框架提供了几个注解来标记不同层次的组件"></a>5、Spring 框架提供了几个注解来标记不同层次的组件</h3><figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br><span class="line">35</span><br><span class="line">36</span><br><span class="line">37</span><br><span class="line">38</span><br><span class="line">39</span><br><span class="line">40</span><br><span class="line">41</span><br><span class="line">42</span><br><span class="line">43</span><br><span class="line">44</span><br><span class="line">45</span><br><span class="line">46</span><br><span class="line">47</span><br><span class="line">48</span><br><span class="line">49</span><br><span class="line">50</span><br><span class="line">51</span><br><span class="line">52</span><br><span class="line">53</span><br><span class="line">54</span><br><span class="line">55</span><br><span class="line">56</span><br><span class="line">57</span><br><span class="line">58</span><br><span class="line">59</span><br><span class="line">60</span><br><span class="line">61</span><br><span class="line">62</span><br><span class="line">63</span><br><span class="line">64</span><br><span class="line">65</span><br><span class="line">66</span><br><span class="line">67</span><br><span class="line">68</span><br><span class="line">69</span><br><span class="line">70</span><br><span class="line">71</span><br><span class="line">72</span><br><span class="line">73</span><br><span class="line">74</span><br></pre></td><td class="code"><pre><span class="line">Spring 框架提供了几个注解来标记不同层次的组件，这些注解帮助开发者明确地定义应用程序中的各个部分，并使得代码更加可读和可维护。主要的注解包括 <span class="meta">@Component</span>、<span class="meta">@Service</span>、<span class="meta">@Repository</span> 和 <span class="meta">@Controller</span>。下面对每个注解进行详细解释：</span><br><span class="line"></span><br><span class="line"><span class="number">1.</span> <span class="meta">@Component</span></span><br><span class="line"><span class="meta">@Component</span> 是一个通用的 Spring 注解，用于标记一个类为 Spring 管理的组件。它通常用于不属于特定层次的类。所有的特定层次注解（如 <span class="meta">@Service</span>、<span class="meta">@Repository</span>、<span class="meta">@Controller</span>）都是 <span class="meta">@Component</span> 的特化。</span><br><span class="line"></span><br><span class="line">示例：</span><br><span class="line"></span><br><span class="line"><span class="keyword">import</span> org.springframework.stereotype.Component;</span><br><span class="line"></span><br><span class="line"><span class="meta">@Component</span></span><br><span class="line"><span class="keyword">public</span> <span class="keyword">class</span> <span class="title class_">MyComponent</span> &#123;</span><br><span class="line">    <span class="keyword">public</span> <span class="keyword">void</span> <span class="title function_">doSomething</span><span class="params">()</span> &#123;</span><br><span class="line">        <span class="comment">// 业务逻辑</span></span><br><span class="line">    &#125;</span><br><span class="line">&#125;</span><br><span class="line"><span class="number">2.</span> <span class="meta">@Service</span></span><br><span class="line"><span class="meta">@Service</span> 注解用于标记服务层的组件。服务层主要处理业务逻辑，通常调用数据访问层（DAO）的方法进行数据处理，并执行应用程序的核心功能。</span><br><span class="line"></span><br><span class="line">示例：</span><br><span class="line"></span><br><span class="line"><span class="keyword">import</span> org.springframework.stereotype.Service;</span><br><span class="line"></span><br><span class="line"><span class="meta">@Service</span></span><br><span class="line"><span class="keyword">public</span> <span class="keyword">class</span> <span class="title class_">UserService</span> &#123;</span><br><span class="line">    <span class="keyword">public</span> <span class="keyword">void</span> <span class="title function_">performBusinessLogic</span><span class="params">()</span> &#123;</span><br><span class="line">        <span class="comment">// 业务逻辑</span></span><br><span class="line">    &#125;</span><br><span class="line">&#125;</span><br><span class="line"><span class="number">3.</span> <span class="meta">@Repository</span></span><br><span class="line"><span class="meta">@Repository</span> 注解用于标记数据访问层的组件，通常用于 DAO（Data Access Object）层。除了将类标记为 Spring 管理的 Bean 外，<span class="meta">@Repository</span> 还具有一个额外的功能，即将数据库相关的异常转换为 Spring 的数据访问异常层次结构中的异常。</span><br><span class="line"></span><br><span class="line">示例：</span><br><span class="line"></span><br><span class="line"><span class="keyword">import</span> org.springframework.stereotype.Repository;</span><br><span class="line"></span><br><span class="line"><span class="meta">@Repository</span></span><br><span class="line"><span class="keyword">public</span> <span class="keyword">class</span> <span class="title class_">UserRepository</span> &#123;</span><br><span class="line">    <span class="keyword">public</span> User <span class="title function_">findUserById</span><span class="params">(<span class="type">int</span> id)</span> &#123;</span><br><span class="line">        <span class="comment">// 数据库操作</span></span><br><span class="line">        <span class="keyword">return</span> <span class="keyword">new</span> <span class="title class_">User</span>();</span><br><span class="line">    &#125;</span><br><span class="line">&#125;</span><br><span class="line"><span class="number">4.</span> <span class="meta">@Controller</span></span><br><span class="line"><span class="meta">@Controller</span> 注解用于标记控制器层的组件，通常用于 Spring MVC 的控制器。控制器负责处理 HTTP 请求，执行相应的业务逻辑，并返回视图或数据响应。</span><br><span class="line"></span><br><span class="line"><span class="keyword">import</span> org.springframework.stereotype.Controller;</span><br><span class="line"><span class="keyword">import</span> org.springframework.web.bind.annotation.GetMapping;</span><br><span class="line"><span class="keyword">import</span> org.springframework.web.bind.annotation.RequestMapping;</span><br><span class="line"><span class="keyword">import</span> org.springframework.ui.Model;</span><br><span class="line"></span><br><span class="line"><span class="meta">@Controller</span></span><br><span class="line"><span class="meta">@RequestMapping(&quot;/users&quot;)</span></span><br><span class="line"><span class="keyword">public</span> <span class="keyword">class</span> <span class="title class_">UserController</span> &#123;</span><br><span class="line"></span><br><span class="line">    <span class="meta">@GetMapping</span></span><br><span class="line">    <span class="keyword">public</span> String <span class="title function_">listUsers</span><span class="params">(Model model)</span> &#123;</span><br><span class="line">        <span class="comment">// 处理请求，返回视图</span></span><br><span class="line">        model.addAttribute(<span class="string">&quot;users&quot;</span>, getUsers());</span><br><span class="line">        <span class="keyword">return</span> <span class="string">&quot;userList&quot;</span>;</span><br><span class="line">    &#125;</span><br><span class="line"></span><br><span class="line">    <span class="keyword">private</span> List&lt;User&gt; <span class="title function_">getUsers</span><span class="params">()</span> &#123;</span><br><span class="line">        <span class="comment">// 获取用户列表</span></span><br><span class="line">        <span class="keyword">return</span> <span class="keyword">new</span> <span class="title class_">ArrayList</span>&lt;&gt;();</span><br><span class="line">    &#125;</span><br><span class="line">&#125;</span><br><span class="line">总结</span><br><span class="line">Spring 提供的这几个注解有助于将应用程序分层，并使得代码结构更加清晰和可维护。具体使用这些注解的建议如下：</span><br><span class="line"></span><br><span class="line"><span class="meta">@Component</span>：用于通用组件，适用于不属于特定层次的 Bean。</span><br><span class="line"><span class="meta">@Service</span>：用于服务层组件，处理业务逻辑。</span><br><span class="line"><span class="meta">@Repository</span>：用于数据访问层组件，处理数据库操作和数据存取。</span><br><span class="line"><span class="meta">@Controller</span>：用于控制器层组件，处理 HTTP 请求和响应。</span><br><span class="line">通过使用这些注解，可以清晰地划分应用程序的各个部分，增强代码的可读性和维护性。</span><br></pre></td></tr></table></figure>
+
+<h3 id="6、Integer-id-和-int-id-的区别"><a href="#6、Integer-id-和-int-id-的区别" class="headerlink" title="6、Integer id; 和 int id; 的区别"></a>6、Integer id; 和 int id; 的区别</h3><figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">private</span> Integer id; 和 <span class="keyword">private</span> <span class="type">int</span> id; 的区别在于 id 属性的类型。</span><br><span class="line"></span><br><span class="line"><span class="keyword">private</span> Integer id;:</span><br><span class="line"></span><br><span class="line">在这种情况下，id 被声明为 Integer 类的对象，Integer 是 <span class="type">int</span> 的包装类。</span><br><span class="line">使用 Integer 允许变量除了整数值之外还可以持有 <span class="literal">null</span> 值。</span><br><span class="line">当你想表示缺少值或未初始化状态时，可以将变量赋值为 <span class="literal">null</span>，这时 Integer 很有用。</span><br><span class="line"><span class="keyword">private</span> <span class="type">int</span> id;:</span><br><span class="line"></span><br><span class="line">这里，id 被声明为原始数据类型 <span class="type">int</span>。</span><br><span class="line">原始数据类型不能持有 <span class="literal">null</span> 值；如果没有明确初始化，它们总是有默认值（如 <span class="type">int</span> 的默认值为 <span class="number">0</span>）。</span><br><span class="line">使用 <span class="type">int</span> 可能更加内存高效和性能快，因为 <span class="type">int</span> 是一个原始类型。</span><br><span class="line">使用情况：</span><br><span class="line">当你需要表示缺少值或未初始化状态时，使用 Integer。例如，在数据库实体中，字段可以为 <span class="literal">null</span>。</span><br><span class="line">当你需要确保变量始终持有有效的整数值时，并且不需要表示缺少值时，使用 <span class="type">int</span>。</span><br><span class="line">示例：</span><br><span class="line"></span><br><span class="line"><span class="keyword">public</span> <span class="keyword">class</span> <span class="title class_">Emp</span> &#123;</span><br><span class="line">    <span class="keyword">private</span> Integer nullableId; <span class="comment">// 可以持有 null</span></span><br><span class="line">    <span class="keyword">private</span> <span class="type">int</span> nonNullableId;  <span class="comment">// 总是持有一个值，如果未初始化，则默认为 0</span></span><br><span class="line"></span><br><span class="line">    <span class="comment">// 构造函数</span></span><br><span class="line">    <span class="keyword">public</span> <span class="title function_">Emp</span><span class="params">(Integer nullableId, <span class="type">int</span> nonNullableId)</span> &#123;</span><br><span class="line">        <span class="built_in">this</span>.nullableId = nullableId;</span><br><span class="line">        <span class="built_in">this</span>.nonNullableId = nonNullableId;</span><br><span class="line">    &#125;</span><br><span class="line">&#125;</span><br><span class="line">在这个例子中，nullableId 可以被赋值为 <span class="literal">null</span>，而 nonNullableId 必须持有有效的整数值。</span><br></pre></td></tr></table></figure>
+
+<h3 id="7、使用日志记录库（如-SLF4J-和-Logback）与直接使用-System-out-println-进行输出有以下几个主要区别"><a href="#7、使用日志记录库（如-SLF4J-和-Logback）与直接使用-System-out-println-进行输出有以下几个主要区别" class="headerlink" title="7、使用日志记录库（如 SLF4J 和 Logback）与直接使用 System.out.println 进行输出有以下几个主要区别"></a>7、使用日志记录库（如 SLF4J 和 Logback）与直接使用 System.out.println 进行输出有以下几个主要区别</h3><figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br></pre></td><td class="code"><pre><span class="line">使用日志记录库（如 SLF4J 和 Logback）与直接使用 System.out.println 进行输出有以下几个主要区别：</span><br><span class="line"></span><br><span class="line">日志级别控制：</span><br><span class="line">日志记录库：支持不同的日志级别（如 TRACE、DEBUG、INFO、WARN、ERROR 等），可以根据需要调整日志级别。例如，开发过程中可以设置为 DEBUG 或 TRACE 级别以获得更多详细信息，而在生产环境中可以设置为 WARN 或 ERROR 级别以减少日志量。</span><br><span class="line">System.out.println：没有日志级别控制，所有信息都被无差别地输出。</span><br><span class="line"></span><br><span class="line">输出灵活性：</span><br><span class="line">日志记录库：支持将日志输出到多个目的地，如控制台、文件、远程服务器等，并且可以配置输出格式和策略（如滚动日志文件、按大小或时间分割日志文件等）。</span><br><span class="line">System.out.println：只能输出到标准输出（通常是控制台），无法灵活配置输出目的地和格式。</span><br><span class="line">性能：</span><br><span class="line"></span><br><span class="line">日志记录库：在高并发环境中，日志记录库通常是线程安全的，并且具有异步日志记录能力，可以减少日志记录对应用程序性能的影响。</span><br><span class="line">System.out.println：在高并发环境中可能会成为瓶颈，并且没有异步处理能力，可能会显著影响应用程序性能。</span><br><span class="line">日志管理和分析：</span><br><span class="line"></span><br><span class="line">日志记录库：可以方便地与日志管理和分析工具集成，例如 ELK（Elasticsearch、Logstash、Kibana）栈、Splunk 等，便于集中管理和分析日志。</span><br><span class="line">System.out.println：难以集成到日志管理和分析工具中，不利于集中管理和分析。</span><br><span class="line">日志格式化：</span><br><span class="line"></span><br><span class="line">日志记录库：支持丰富的日志格式化选项，可以通过配置文件灵活定义日志的格式和内容。</span><br><span class="line">System.out.println：需要手动拼接字符串，格式化日志内容不够灵活。</span><br><span class="line">条件日志记录：</span><br><span class="line"></span><br><span class="line">日志记录库：提供了条件日志记录功能，可以根据条件决定是否记录日志。例如，可以在 DEBUG 级别下记录一些调试信息，而在非 DEBUG 级别下不记录。</span><br><span class="line">System.out.println：需要手动添加条件判断，不如日志记录库灵活。</span><br><span class="line">    </span><br><span class="line">总结来说，使用日志记录库如 SLF4J 和 Logback 可以提供更丰富、更灵活的日志记录和管理能力，有助于提高应用程序的可维护性和可调试性。而 System.out.println 虽然简单直接，但在功能和灵活性上远不及专业的日志记录库。</span><br><span class="line"></span><br><span class="line"></span><br></pre></td></tr></table></figure>
+
+
+        </div>
+
+        
+            <section class="post-copyright">
+                
+                    <p class="copyright-item">
+                        <span>Author:</span>
+                        <span>MatJenin</span>
+                    </p>
+                
+                
+                
+                
+
+            </section>
+        
+        <section class="post-tags">
+            <div>
+                <span>Tag(s):</span>
+                <span class="tag">
+                    
+                </span>
+            </div>
+            <div>
+                <a href="javascript:window.history.back();">back</a>
+                <span>· </span>
+                <a href="/">home</a>
+            </div>
+        </section>
+        <section class="post-nav">
+            
+                <a class="prev" rel="prev" href="/2024/06/13/%E5%8A%A8%E6%80%81%E8%A7%84%E5%88%92/"></a>
+            
+            
+            <a class="next" rel="next" href="/2024/05/29/%E5%89%8D%E7%AB%AF/"></a>
+            
+        </section>
+
+
+    </article>
+</div>
+
+            </div>
+            <footer id="footer" class="footer">
+    <div class="copyright">
+        <span>© MatJenin | Powered by <a href="https://hexo.io" target="_blank">Hexo</a> & <a href="https://github.com/Siricee/hexo-theme-Chic" target="_blank">Chic</a></span>
+    </div>
+</footer>
+
+    </div>
+</body>
+
+</html>

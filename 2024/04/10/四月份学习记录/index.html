@@ -1,0 +1,751 @@
+<!DOCTYPE html>
+<html lang="CH">
+
+<head>
+    <meta charset="UTF-8">
+<meta name="viewport"
+      content="width=device-width, initial-scale=1.0, maximum-scale=1.0, minimum-scale=1.0">
+<meta http-equiv="X-UA-Compatible" content="ie=edge">
+
+    <meta name="author" content="MatJenin">
+
+
+
+
+
+<title>学习记录 | Hexo</title>
+
+
+
+    <link rel="icon" href="/favicon.ico">
+
+
+
+
+    <!-- stylesheets list from _config.yml -->
+    
+    <link rel="stylesheet" href="/css/style.css">
+    
+
+
+
+    <!-- scripts list from _config.yml -->
+    
+    <script src="/js/script.js"></script>
+    
+    <script src="/js/tocbot.min.js"></script>
+    
+
+
+
+    
+    
+        
+    
+
+
+<meta name="generator" content="Hexo 7.1.1"></head>
+
+<body>
+    <script>
+        // this function is used to check current theme before page loaded.
+        (() => {
+            const currentTheme = window.localStorage && window.localStorage.getItem('theme') || '';
+            const isDark = currentTheme === 'dark';
+            const pagebody = document.getElementsByTagName('body')[0]
+            if (isDark) {
+                pagebody.classList.add('dark-theme');
+                // mobile
+                document.getElementById("mobile-toggle-theme").innerText = "· Dark"
+            } else {
+                pagebody.classList.remove('dark-theme');
+                // mobile
+                document.getElementById("mobile-toggle-theme").innerText = "· Light"
+            }
+        })();
+    </script>
+
+    <div class="wrapper">
+        <header>
+    <nav class="navbar">
+        <div class="container">
+            <div class="navbar-header header-logo"><a href="/">MatJenin&#39;s Blog</a></div>
+            <div class="menu navbar-right">
+                
+                    <a class="menu-item" href="/archives">Posts</a>
+                
+                    <a class="menu-item" href="/category">Categories</a>
+                
+                    <a class="menu-item" href="/tag">Tags</a>
+                
+                    <a class="menu-item" href="/about">About</a>
+                
+                <input id="switch_default" type="checkbox" class="switch_default">
+                <label for="switch_default" class="toggleBtn"></label>
+            </div>
+        </div>
+    </nav>
+
+    
+    <nav class="navbar-mobile" id="nav-mobile">
+        <div class="container">
+            <div class="navbar-header">
+                <div>
+                    <a href="/">MatJenin&#39;s Blog</a><a id="mobile-toggle-theme">·&nbsp;Light</a>
+                </div>
+                <div class="menu-toggle" onclick="mobileBtn()">&#9776; Menu</div>
+            </div>
+            <div class="menu" id="mobile-menu">
+                
+                    <a class="menu-item" href="/archives">Posts</a>
+                
+                    <a class="menu-item" href="/category">Categories</a>
+                
+                    <a class="menu-item" href="/tag">Tags</a>
+                
+                    <a class="menu-item" href="/about">About</a>
+                
+            </div>
+        </div>
+    </nav>
+
+</header>
+<script>
+    var mobileBtn = function f() {
+        var toggleMenu = document.getElementsByClassName("menu-toggle")[0];
+        var mobileMenu = document.getElementById("mobile-menu");
+        if(toggleMenu.classList.contains("active")){
+           toggleMenu.classList.remove("active")
+            mobileMenu.classList.remove("active")
+        }else{
+            toggleMenu.classList.add("active")
+            mobileMenu.classList.add("active")
+        }
+    }
+</script>
+            <div class="main">
+                <div class="container">
+    
+    
+        <div class="post-toc">
+    <div class="tocbot-list">
+    </div>
+    <div class="tocbot-list-menu">
+        <a class="tocbot-toc-expand" onclick="expand_toc()">Expand all</a>
+        <a onclick="go_top()">Back to top</a>
+        <a onclick="go_bottom()">Go to bottom</a>
+    </div>
+</div>
+
+<script>
+    var tocbot_timer;
+    var DEPTH_MAX = 6; // 为 6 时展开所有
+    var tocbot_default_config = {
+        tocSelector: '.tocbot-list',
+        contentSelector: '.post-content',
+        headingSelector: 'h1, h2, h3, h4, h5',
+        orderedList: false,
+        scrollSmooth: true,
+        onClick: extend_click,
+    };
+
+    function extend_click() {
+        clearTimeout(tocbot_timer);
+        tocbot_timer = setTimeout(function() {
+            tocbot.refresh(obj_merge(tocbot_default_config, {
+                hasInnerContainers: true
+            }));
+        }, 420); // 这个值是由 tocbot 源码里定义的 scrollSmoothDuration 得来的
+    }
+
+    document.ready(function() {
+        tocbot.init(obj_merge(tocbot_default_config, {
+            collapseDepth: 1
+        }));
+    });
+
+    function expand_toc() {
+        var b = document.querySelector('.tocbot-toc-expand');
+        var expanded = b.getAttribute('data-expanded');
+        expanded ? b.removeAttribute('data-expanded') : b.setAttribute('data-expanded', true);
+        tocbot.refresh(obj_merge(tocbot_default_config, {
+            collapseDepth: expanded ? 1 : DEPTH_MAX
+        }));
+        b.innerText = expanded ? 'Expand all' : 'Collapse all';
+    }
+
+    function go_top() {
+        window.scrollTo(0, 0);
+    }
+
+    function go_bottom() {
+        window.scrollTo(0, document.body.scrollHeight);
+    }
+
+    function obj_merge(target, source) {
+        for (var item in source) {
+            if (source.hasOwnProperty(item)) {
+                target[item] = source[item];
+            }
+        }
+        return target;
+    }
+</script>
+    
+
+    
+    <article class="post-wrap">
+        <header class="post-header">
+            <h1 class="post-title">学习记录</h1>
+            
+                <div class="post-meta">
+                    
+                        Author: <a itemprop="author" rel="author" href="/">MatJenin</a>
+                    
+
+                    
+                        <span class="post-time">
+                        Date: <a href="#">April 10, 2024&nbsp;&nbsp;10:18:35</a>
+                        </span>
+                    
+                    
+                        <span class="post-category">
+                    Category:
+                            
+                                <a href="/categories/%E8%AE%B0%E5%BD%95/">记录</a>
+                            
+                        </span>
+                    
+                </div>
+            
+        </header>
+
+        <div class="post-content">
+            <h2 id="四月份学习记录"><a href="#四月份学习记录" class="headerlink" title="四月份学习记录"></a>四月份学习记录</h2><table>
+<thead>
+<tr>
+<th align="center">时间</th>
+<th align="center">上午</th>
+<th align="center">下午</th>
+<th align="center">晚上</th>
+<th align="center">leetcode自己做出几道？</th>
+</tr>
+</thead>
+<tbody><tr>
+<td align="center">2024&#x2F;4&#x2F;10</td>
+<td align="center">安装Mysql、两道leetcode</td>
+<td align="center">一道leetcode、sql(5-7)</td>
+<td align="center">一道leetcode、sql(8-11)</td>
+<td align="center">0</td>
+</tr>
+<tr>
+<td align="center">2024&#x2F;4&#x2F;11</td>
+<td align="center">一道leetcode、小林MySQL(事务隔离级别是怎么实现的？)</td>
+<td align="center">一道leetcode、小林计网(TCP基本认识、TCP建立连接)</td>
+<td align="center">一道leetcode(基本上是自己做出来的)、sql(12-14)</td>
+<td align="center">1</td>
+</tr>
+<tr>
+<td align="center">2024&#x2F;4&#x2F;12</td>
+<td align="center">一道leetcode(基本上是自己写出来的，有点小语法错误对照答案)、hello算法（13.1–13.3）、Java(基本概念与常识、基本语法)</td>
+<td align="center">一道leetcode(基本上是自己写出来的）、Java(基本数据类型、变量)</td>
+<td align="center">一道leetcode(基本上是自己做出来的，但复杂度很高)、小林操作系统（进程与线程）调度没看</td>
+<td align="center">今天基本上都是自己做出来的，但是都有看一些题解</td>
+</tr>
+<tr>
+<td align="center">2024&#x2F;4&#x2F;15</td>
+<td align="center"></td>
+<td align="center">整理项目</td>
+<td align="center">一道leetcode(自己做出来的，但是复杂度很高)sql(15-20)</td>
+<td align="center"></td>
+</tr>
+<tr>
+<td align="center">2024&#x2F;4&#x2F;16</td>
+<td align="center">整理项目</td>
+<td align="center">打球</td>
+<td align="center">一道leetcode(自己做出来的，但是复杂度很高)</td>
+<td align="center"></td>
+</tr>
+<tr>
+<td align="center">2024&#x2F;4&#x2F;17</td>
+<td align="center">hello算法（14.1–14.3）、一道leetcode</td>
+<td align="center"></td>
+<td align="center">华为笔试</td>
+<td align="center"></td>
+</tr>
+<tr>
+<td align="center">2024&#x2F;4&#x2F;18</td>
+<td align="center">一道leetcode、hello算法（14.5）</td>
+<td align="center">一道leetcode、三道sql</td>
+<td align="center">恒生笔试</td>
+<td align="center"></td>
+</tr>
+<tr>
+<td align="center">2024&#x2F;4&#x2F;19</td>
+<td align="center">重做了恒生的SQL题目</td>
+<td align="center">两道leetcode、</td>
+<td align="center">Java(常见笔试题中)、Leetcode、</td>
+<td align="center"></td>
+</tr>
+<tr>
+<td align="center">2024&#x2F;4&#x2F;20</td>
+<td align="center">论文审稿意见汇总</td>
+<td align="center">外出散心</td>
+<td align="center">哔哩哔哩数仓笔试</td>
+<td align="center"></td>
+</tr>
+<tr>
+<td align="center">2024&#x2F;4&#x2F;21</td>
+<td align="center">Java（面试总结下）</td>
+<td align="center"></td>
+<td align="center">米哈游笔试</td>
+<td align="center"></td>
+</tr>
+<tr>
+<td align="center">2024&#x2F;4&#x2F;22</td>
+<td align="center">科研</td>
+<td align="center">科研、组会</td>
+<td align="center">注解、反射</td>
+<td align="center"></td>
+</tr>
+<tr>
+<td align="center">2024&#x2F;4&#x2F;23</td>
+<td align="center">Java(值传递与引用传递)、反射机制详解、14.1–14.5</td>
+<td align="center">打球</td>
+<td align="center">科研</td>
+<td align="center"></td>
+</tr>
+<tr>
+<td align="center">2024&#x2F;4&#x2F;24</td>
+<td align="center"></td>
+<td align="center"></td>
+<td align="center"></td>
+<td align="center"></td>
+</tr>
+<tr>
+<td align="center">2024&#x2F;4&#x2F;25</td>
+<td align="center">动态规划问题</td>
+<td align="center">Leetcode两道、JDBC</td>
+<td align="center">修改论文</td>
+<td align="center"></td>
+</tr>
+<tr>
+<td align="center">2024&#x2F;4&#x2F;26</td>
+<td align="center">Hello算法</td>
+<td align="center">Leetcode</td>
+<td align="center"></td>
+<td align="center"></td>
+</tr>
+<tr>
+<td align="center">2024&#x2F;4&#x2F;28</td>
+<td align="center"></td>
+<td align="center">4道Leetcode、云计算</td>
+<td align="center">修改论文</td>
+<td align="center"></td>
+</tr>
+<tr>
+<td align="center">2024&#x2F;4&#x2F;29</td>
+<td align="center">修改论文</td>
+<td align="center">修改论文</td>
+<td align="center"></td>
+<td align="center"></td>
+</tr>
+<tr>
+<td align="center">2024&#x2F;4&#x2F;30</td>
+<td align="center">修改论文</td>
+<td align="center">Leetcode四道</td>
+<td align="center"></td>
+<td align="center"></td>
+</tr>
+<tr>
+<td align="center">2024&#x2F;5&#x2F;1</td>
+<td align="center">修改论文、Leetcode一道</td>
+<td align="center"></td>
+<td align="center"></td>
+<td align="center"></td>
+</tr>
+<tr>
+<td align="center"></td>
+<td align="center"></td>
+<td align="center"></td>
+<td align="center"></td>
+<td align="center"></td>
+</tr>
+<tr>
+<td align="center"></td>
+<td align="center"></td>
+<td align="center"></td>
+<td align="center"></td>
+<td align="center"></td>
+</tr>
+<tr>
+<td align="center"></td>
+<td align="center"></td>
+<td align="center"></td>
+<td align="center"></td>
+<td align="center"></td>
+</tr>
+<tr>
+<td align="center"></td>
+<td align="center"></td>
+<td align="center"></td>
+<td align="center"></td>
+<td align="center"></td>
+</tr>
+<tr>
+<td align="center"></td>
+<td align="center"></td>
+<td align="center"></td>
+<td align="center"></td>
+<td align="center"></td>
+</tr>
+</tbody></table>
+<h4 id="2024-4-10"><a href="#2024-4-10" class="headerlink" title="2024&#x2F;4&#x2F;10:"></a>2024&#x2F;4&#x2F;10:</h4><h5 id="LeetCode"><a href="#LeetCode" class="headerlink" title="LeetCode"></a>LeetCode</h5><p><strong>leetcode第239题要求的是滑动窗口的最大值</strong>，思路是：</p>
+<p>1、使用一个双向队列Duque，不断往队列尾部添加数字，然后队列中是单调递增(非严格递减)，头部最大，尾部最小</p>
+<p>2、可能会遇见最大值，然后把队列中原本存在的数全都remove掉，使得其变为队列头部，但是当窗口的滑过该节点的索引时，它也会被remove</p>
+<p><strong>leetcode第415题要求的是字符串相加</strong>，思路是：</p>
+<p>1、对于字符串中获取的单个字符，要变为数字这种可加减的形式，应该使用’9’ - ‘0’ &#x3D; 9，这样与字符0相减。</p>
+<p>2、注意进位carry，以及两个数的位数不同时的处理</p>
+<p>3、要用可变字符串StringBuffer，最后要将StringBuffer转化为字符串String</p>
+<p><strong>leetcode第796题要求的是旋转字符串</strong>，思路是：</p>
+<p>1、相同的字符串相连接，如果是旋转字符串，那么目标字符串会存在在连接字符串内</p>
+<p><strong>leetcode第946题要求的是两个字符数组是不是在栈上入栈出栈的结果</strong>，思路是：</p>
+<p>主要是对两个数组要进行分析，最先开始是要先push()一个，另外遍历的是pushed，因为先有pushed再有popped.</p>
+<figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">class</span> <span class="title class_">Solution</span> &#123;</span><br><span class="line">    <span class="keyword">public</span> <span class="type">boolean</span> <span class="title function_">validateStackSequences</span><span class="params">(<span class="type">int</span>[] pushed, <span class="type">int</span>[] popped)</span> &#123;</span><br><span class="line">        <span class="keyword">if</span>( pushed.length != popped.length )&#123;</span><br><span class="line">            <span class="keyword">return</span> <span class="literal">false</span>;</span><br><span class="line">        &#125;</span><br><span class="line">        <span class="keyword">if</span>(pushed.length == <span class="number">0</span>)&#123;</span><br><span class="line">            <span class="keyword">return</span> <span class="literal">true</span>;</span><br><span class="line">        &#125;</span><br><span class="line">        Stack&lt;Integer&gt; res = <span class="keyword">new</span> <span class="title class_">Stack</span>&lt;&gt;();</span><br><span class="line">        <span class="type">int</span> <span class="variable">i</span> <span class="operator">=</span> <span class="number">0</span></span><br><span class="line">        <span class="keyword">for</span>(<span class="type">int</span> nums : pushed)&#123;</span><br><span class="line">            res.push(pushed[<span class="number">0</span>]);</span><br><span class="line">            <span class="keyword">while</span>(!res.isEmpyt() &amp;&amp; res.peek() == popped[i])&#123;</span><br><span class="line">                res.pop();</span><br><span class="line">                i++;</span><br><span class="line">            &#125;</span><br><span class="line">        &#125;</span><br><span class="line">        <span class="keyword">return</span> res.isEmpyt();</span><br><span class="line">    &#125;</span><br></pre></td></tr></table></figure>
+
+<h5 id="SQL"><a href="#SQL" class="headerlink" title="SQL"></a>SQL</h5><p>数据库今天主要学习了：<br>1、怎么通过可视化进行建表，以及用代码进行建表</p>
+<p>2、删除的操作</p>
+<p>3、列表的一些字段属性，但这些感觉不是重点？一般都明白，注意的是，not null 的意思是不能为空！</p>
+<h4 id="2024-4-11"><a href="#2024-4-11" class="headerlink" title="2024&#x2F;4&#x2F;11:"></a>2024&#x2F;4&#x2F;11:</h4><h5 id="LeetCode-1"><a href="#LeetCode-1" class="headerlink" title="LeetCode"></a>LeetCode</h5><p><strong>leetcode第6题要求的是对一个字符串进行Z变换</strong>，思路是：<br>1、所谓的Z变换其实就是N变换，每一行都是一个可变字符串，然后将其拼接起来</p>
+<p>2、主要是字符串中每一个字符怎么确定到哪一行中：</p>
+<p><strong>leetcode第54题要求的是对一个矩阵进行螺旋输出</strong>，思路是：<br>1、怎么判断结束循环</p>
+<p>2、外围的边界条件需要仔细判断</p>
+<p><strong>leetcode第59题要求的是生成一个螺旋矩阵</strong>，思路是：</p>
+<p>跟上面一样的，注意一个二维数组初始化，以及设定为一个值是怎么办？</p>
+<blockquote>
+<p>add与append的区别？</p>
+<p>add是对列表</p>
+<p>append是对数组</p>
+</blockquote>
+<h5 id="小林MySQL-事务隔离级别是怎么实现的？"><a href="#小林MySQL-事务隔离级别是怎么实现的？" class="headerlink" title="小林MySQL(事务隔离级别是怎么实现的？)"></a><strong>小林MySQL(事务隔离级别是怎么实现的？)</strong></h5><p>1、事务是什么？</p>
+<p>2、并行操作的问题</p>
+<p>3、事务隔离级别有哪些？</p>
+<p>4、Read View 是什么？，不同的事务隔离级Read View 是怎么进行的？</p>
+<h5 id="小林计网-TCP基本认识、TCP建立连接"><a href="#小林计网-TCP基本认识、TCP建立连接" class="headerlink" title="小林计网(TCP基本认识、TCP建立连接)"></a><strong>小林计网(TCP基本认识、TCP建立连接)</strong></h5><p>1、TCP是什么？</p>
+<p>2、TCP的格式</p>
+<p>3、三次握手的过程</p>
+<p>4、可不可以用两次握手、四次握手，会有什么问题？</p>
+<p>5、怎么样确定一个TCP连接？</p>
+<p><img src="/image-20240411222059972.png" alt="image-20240411222059972"></p>
+<blockquote>
+<p>SQL</p>
+</blockquote>
+<p>数据库今天学习的主要是：<br>1、外键是什么？怎么构建外键</p>
+<p>2、插入数据的语句是什么？INSECT INTO <code>grade</code> (<code>name</code>) VALUES(<code>zhangshan</code>);</p>
+<p>3、修改数据的语句是什么？ UPDATE <code>student</code> SET <code>name </code> &#x3D;’wtw’ WHERE <code>id</code> &#x3D; 1;</p>
+<h4 id="2024-4-11-1"><a href="#2024-4-11-1" class="headerlink" title="2024&#x2F;4&#x2F;11:"></a>2024&#x2F;4&#x2F;11:</h4><h5 id="Java"><a href="#Java" class="headerlink" title="Java"></a>Java</h5><ol>
+<li><p>java一次编译，到处运行的原因是什么？</p>
+<p>java在对源代码进行编译时，生成的是.class文件的字节码，而不是机器码，而不同的机器都有不同的JVM虚拟机，不同的JVM对于字节码生成本机器的机器码，从而能够在不同的机器上运行</p>
+</li>
+<li><p>带符号右移与无符号右移的区别</p>
+<p>带符号右移：高位补符号位</p>
+<p>无符号右移：高位补0</p>
+</li>
+<li><p>基本数据类型与包装类型的区别：</p>
+<p>基本数据类型是什么？包装类型是什么？</p>
+<p>局部变量与成员变量有什么区别？</p>
+<ul>
+<li>局部变量不会自动赋值，成员变量会自动赋值（局部变量在声明时必须显式地赋值，否则编译器会报错）</li>
+<li>局部变量不能用访问修饰符修饰、成员变量可以</li>
+<li>局部变量存储在栈内存中，成员变量存储在堆内存中</li>
+<li>生存时间不同</li>
+</ul>
+</li>
+<li><p>重载方法与重写方法的区别</p>
+<table>
+<thead>
+<tr>
+<th align="center"></th>
+<th align="center">重载方法</th>
+<th align="center">重写方法</th>
+</tr>
+</thead>
+<tbody><tr>
+<td align="center">方法名</td>
+<td align="center">相同</td>
+<td align="center">相同</td>
+</tr>
+<tr>
+<td align="center">发生时期</td>
+<td align="center">类中</td>
+<td align="center">子类继承父类</td>
+</tr>
+<tr>
+<td align="center">参数类型</td>
+<td align="center">不同</td>
+<td align="center">相同</td>
+</tr>
+<tr>
+<td align="center">返回类型</td>
+<td align="center">可以不同</td>
+<td align="center">范围要比原来的小或相等</td>
+</tr>
+<tr>
+<td align="center">异常</td>
+<td align="center">可以不同</td>
+<td align="center">范围要比原来的小或相等</td>
+</tr>
+<tr>
+<td align="center">访问修饰符</td>
+<td align="center">可以不同</td>
+<td align="center">不能对private、static、final方法进行重写，一定不能做更严格的限制（可以降低限制）</td>
+</tr>
+<tr>
+<td align="center"></td>
+<td align="center"></td>
+<td align="center">两同两小一大</td>
+</tr>
+</tbody></table>
+</li>
+</ol>
+<h5 id="Hello算法"><a href="#Hello算法" class="headerlink" title="Hello算法"></a>Hello算法</h5><ol>
+<li><p>回溯算法</p>
+<p>算法中主要有尝试、后退、减枝这些问题，经典的解决问题如：全排列以及子集和</p>
+<figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment">//回溯算法虽然也与之前的树的遍历相似，但有自己的基本框架代码</span></span><br><span class="line"><span class="keyword">void</span> <span class="title function_">backtrack</span><span class="params">(State state, List&lt;Choice&gt; choices, List&lt;State&gt; res)</span> &#123;</span><br><span class="line">    <span class="comment">// 判断是否为解</span></span><br><span class="line">    <span class="keyword">if</span> (isSolution(state)) &#123;</span><br><span class="line">        <span class="comment">// 记录解</span></span><br><span class="line">        recordSolution(state, res);</span><br><span class="line">        <span class="comment">// 不再继续搜索</span></span><br><span class="line">        <span class="keyword">return</span>;</span><br><span class="line">    &#125;</span><br><span class="line">    <span class="comment">// 遍历所有选择</span></span><br><span class="line">    <span class="keyword">for</span> (Choice choice : choices) &#123;</span><br><span class="line">        <span class="comment">// 剪枝：判断选择是否合法</span></span><br><span class="line">        <span class="keyword">if</span> (isValid(state, choice)) &#123;</span><br><span class="line">            <span class="comment">// 尝试：做出选择，更新状态</span></span><br><span class="line">            makeChoice(state, choice);</span><br><span class="line">            backtrack(state, choices, res);</span><br><span class="line">            <span class="comment">// 回退：撤销选择，恢复到之前的状态</span></span><br><span class="line">            undoChoice(state, choice);</span><br><span class="line">        &#125;</span><br><span class="line">    &#125;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure></li>
+</ol>
+<h5 id="LeetCode-2"><a href="#LeetCode-2" class="headerlink" title="LeetCode"></a>LeetCode</h5><ul>
+<li><p><strong>leetcode第48题要求的是对图像进行顺时针旋转90°</strong>，思路是：</p>
+<ul>
+<li>对角线翻转</li>
+<li>每一行的元素进行调换</li>
+</ul>
+</li>
+<li><p><strong>leetcode第48题要求的是字符串变为整数</strong>，思路是：</p>
+<ul>
+<li>因为题目规定，整数是有范围的，所以需要设定一个boudry，如果是负数，就变为Integer.MIN_VALUE，是正数就变为Integer.MAX_VALUE</li>
+<li>单个字符怎么变为数字？</li>
+<li>不同位次是进位怎么变？</li>
+</ul>
+</li>
+<li><p>leetcode第278题要求的是找出第一个错误的版本。思路：</p>
+<ul>
+<li><p>用的是二分法查找，我看了二分法的框架写出来的</p>
+</li>
+<li><pre><code class="java">//题解是用：
+while (i &lt;= j)
+//而我自己是:
+while ( j - i != 1)
+//其实大体上是差不多的，但我的时空复杂度太高了，他返回的是i，我返回的是j
+<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br><span class="line">35</span><br><span class="line">36</span><br><span class="line">37</span><br></pre></td><td class="code"><pre><span class="line"></span><br><span class="line">##### 小林操作系统</span><br><span class="line"></span><br><span class="line">- 进程是什么？</span><br><span class="line">- 线程是什么？为什么要使用线程？</span><br><span class="line">- PCB，TCB</span><br><span class="line">- 进程的状态</span><br><span class="line"></span><br><span class="line">#### 2024/4/15:</span><br><span class="line"></span><br><span class="line">##### Hello算法</span><br><span class="line"></span><br><span class="line">- 大顶堆与小顶堆是怎么样插入与删除节点的？</span><br><span class="line">- 二叉搜索树的插入节点操作</span><br><span class="line">- 平衡二叉搜索树的旋转以及常见操作</span><br><span class="line"></span><br><span class="line">##### SQL</span><br><span class="line"></span><br><span class="line">- 删表操作，delete与truncate的区别是自增是否存在</span><br><span class="line">- 怎么用别名字？</span><br><span class="line">- 去重的关键字是什么？</span><br><span class="line">- where语句</span><br><span class="line">- 模糊查询：%与_的区别</span><br><span class="line">- 联表查询，left join  、right join 、inner join  </span><br><span class="line"></span><br><span class="line">#### 2024/4/16:</span><br><span class="line"></span><br><span class="line">##### ACM</span><br><span class="line"></span><br><span class="line">- next 与nextInt()的区别，以及</span><br><span class="line"></span><br><span class="line">- ```java</span><br><span class="line">  Scanner sc = new Scanner(System.in)</span><br><span class="line">  while(sc.hasNextInt())&#123;</span><br><span class="line">      int a = sc.nextInt();</span><br><span class="line">      int b = sc.nextInt();</span><br><span class="line">  &#125;</span><br></pre></td></tr></table></figure>
+</code></pre>
+</li>
+</ul>
+</li>
+</ul>
+<h5 id="LeetCode-3"><a href="#LeetCode-3" class="headerlink" title="LeetCode"></a>LeetCode</h5><ul>
+<li>289寻找重复的数，我一开始用的是排序做，但这样改变了原数组，后面看了题解，发现可以想办法将数组跟指针结合，使得出现环，然后用快慢指针做</li>
+</ul>
+<h5 id="SQL-1"><a href="#SQL-1" class="headerlink" title="SQL"></a>SQL</h5><ul>
+<li><p>自连接</p>
+</li>
+<li><p>分页排序 </p>
+</li>
+<li><blockquote>
+<p>order by   名字   ASC（DESC）</p>
+</blockquote>
+</li>
+<li><p>子查询</p>
+</li>
+</ul>
+<h4 id="2024-4-17"><a href="#2024-4-17" class="headerlink" title="2024&#x2F;4&#x2F;17:"></a>2024&#x2F;4&#x2F;17:</h4><h5 id="Hello算法-1"><a href="#Hello算法-1" class="headerlink" title="Hello算法"></a>Hello算法</h5><ul>
+<li><p>dp表的大小是怎么判断的？</p>
+</li>
+<li><p>动态规划的背包问题</p>
+</li>
+<li><p>动态规划最重要的是要搞清楚状态的变化，<strong>前 i个物品在容量为 cap 的背包中的最大价值计为dp[i,cap]</strong></p>
+<figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br><span class="line">35</span><br><span class="line">36</span><br><span class="line">37</span><br><span class="line">38</span><br><span class="line">39</span><br><span class="line">40</span><br><span class="line">41</span><br><span class="line">42</span><br><span class="line">43</span><br><span class="line">44</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment">///暴力搜索</span></span><br><span class="line"><span class="type">int</span> <span class="title function_">knapsackDFS</span><span class="params">(<span class="type">int</span>[] wgt, <span class="type">int</span>[] val,<span class="type">int</span> i, <span class="type">int</span> c)</span>&#123; <span class="comment">//物品i与容量c</span></span><br><span class="line">    <span class="keyword">if</span>(i == <span class="number">0</span> || c == <span class="number">0</span>)&#123;</span><br><span class="line">        <span class="keyword">return</span> <span class="number">0</span>;</span><br><span class="line">    &#125;</span><br><span class="line">    <span class="keyword">if</span>(wgt[i - <span class="number">1</span>] &gt; c)&#123;</span><br><span class="line">        <span class="keyword">return</span> knapsackDFS(wgt, val, i -<span class="number">1</span> , c);</span><br><span class="line">    &#125;</span><br><span class="line">    <span class="type">int</span> <span class="variable">no</span> <span class="operator">=</span> knapsackDFS(wgt, val, i -<span class="number">1</span> , c);</span><br><span class="line">    <span class="type">int</span> <span class="variable">yes</span> <span class="operator">=</span> knapsackDFS(wgt, val, i -<span class="number">1</span> , c - wgt[i -<span class="number">1</span>]) + val[i -<span class="number">1</span>];</span><br><span class="line">    <span class="keyword">return</span> Math.max(no,yes);</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line"><span class="comment">//记忆化搜索</span></span><br><span class="line"><span class="type">int</span> <span class="title function_">knapsackDFS</span><span class="params">(<span class="type">int</span>[] wgt, <span class="type">int</span>[] val,<span class="type">int</span> i, <span class="type">int</span> c)</span>&#123; <span class="comment">//物品i与容量c</span></span><br><span class="line">    <span class="keyword">if</span>(i == <span class="number">0</span> || c == <span class="number">0</span>)&#123;</span><br><span class="line">        <span class="keyword">return</span> <span class="number">0</span>;</span><br><span class="line">    &#125;</span><br><span class="line">    <span class="keyword">if</span>(men[i][c] != -<span class="number">1</span>)&#123;</span><br><span class="line">        <span class="keyword">return</span> men[i];</span><br><span class="line">    &#125;</span><br><span class="line">    <span class="keyword">if</span>(wgt[i - <span class="number">1</span>] &gt; c)&#123;</span><br><span class="line">        <span class="keyword">return</span> knapsackDFS(wgt, val, i -<span class="number">1</span> , c);</span><br><span class="line">    &#125;</span><br><span class="line">    <span class="type">int</span> <span class="variable">no</span> <span class="operator">=</span> knapsackDFS(wgt, val, i -<span class="number">1</span> , c);</span><br><span class="line">    <span class="type">int</span> <span class="variable">yes</span> <span class="operator">=</span> knapsackDFS(wgt, val, i -<span class="number">1</span> , c - wgt[i -<span class="number">1</span>]) + val[i -<span class="number">1</span>];</span><br><span class="line">    men[i][c] = Math.max(no,yes);</span><br><span class="line">    <span class="keyword">return</span> men[i][c];</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line"><span class="comment">//动态规划</span></span><br><span class="line"><span class="type">int</span> <span class="title function_">knapsackDFS</span><span class="params">(<span class="type">int</span>[] wgt, <span class="type">int</span>[] val, <span class="type">int</span> cap)</span>&#123;<span class="comment">//wgt[]是物品的重量，val[]是物品的价值</span></span><br><span class="line">    <span class="type">int</span> <span class="variable">n</span> <span class="operator">=</span> wgt.length;</span><br><span class="line">    <span class="type">int</span> [][] dp = <span class="keyword">new</span> <span class="title class_">int</span> [n+<span class="number">1</span>][cap+<span class="number">1</span>];</span><br><span class="line">    <span class="keyword">for</span>(<span class="type">int</span> <span class="variable">i</span> <span class="operator">=</span> <span class="number">1</span>; i &lt;= n; i++)&#123;</span><br><span class="line">        <span class="keyword">for</span>(<span class="type">int</span> <span class="variable">c</span> <span class="operator">=</span> <span class="number">1</span>; c &lt;= cap; c++)&#123;</span><br><span class="line">            <span class="keyword">if</span>(wat[i-<span class="number">1</span>] &gt; c)&#123;</span><br><span class="line">                dp[i][cap] = dp[i - <span class="number">1</span>][cap];</span><br><span class="line">            &#125;<span class="keyword">else</span>&#123;</span><br><span class="line">                dp[i][cap] = max(dp[i - <span class="number">1</span>][cap],dp[i - <span class="number">1</span>][cap - wgt[i - <span class="number">1</span>]]+val[i-<span class="number">1</span>])</span><br><span class="line">            &#125;</span><br><span class="line">        &#125;</span><br><span class="line">    &#125;<span class="keyword">return</span> dp[n][cap];</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+
+
+<h5 id="LeetCode-4"><a href="#LeetCode-4" class="headerlink" title="LeetCode"></a>LeetCode</h5><figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment">//层序遍历多练，做过了又不会！！！！！！！！</span></span><br><span class="line"><span class="comment">//记住用Queue</span></span><br><span class="line"><span class="keyword">class</span> <span class="title class_">Solution</span> &#123;</span><br><span class="line">    <span class="keyword">public</span> List&lt;List&lt;Integer&gt;&gt; <span class="title function_">levelOrder</span><span class="params">(TreeNode root)</span> &#123;</span><br><span class="line">        List&lt;List&lt;Integer&gt;&gt; res = <span class="keyword">new</span> <span class="title class_">ArrayList</span>&lt;&gt;();</span><br><span class="line">        Queue&lt;TreeNode&gt; q = <span class="keyword">new</span> <span class="title class_">LinkedList</span>&lt;&gt;();</span><br><span class="line">        <span class="keyword">if</span>(root != <span class="literal">null</span>) q.add(root);</span><br><span class="line">        <span class="keyword">while</span>(!q.isEmpty())&#123;</span><br><span class="line">            List&lt;Integer&gt; temp = <span class="keyword">new</span> <span class="title class_">ArrayList</span>&lt;&gt;();</span><br><span class="line">            <span class="keyword">for</span>(<span class="type">int</span> <span class="variable">i</span> <span class="operator">=</span> q.size(); i &gt; <span class="number">0</span>; i--)&#123;</span><br><span class="line">                <span class="type">TreeNode</span> <span class="variable">node</span> <span class="operator">=</span> q.poll();</span><br><span class="line">                <span class="keyword">if</span>(node.left != <span class="literal">null</span>) q.add(node.left);</span><br><span class="line">                <span class="keyword">if</span>(node.right != <span class="literal">null</span>) q.add(node.right);</span><br><span class="line">                temp.add(node.val);</span><br><span class="line">            &#125;</span><br><span class="line">            res.add(temp);</span><br><span class="line">        &#125;</span><br><span class="line">        <span class="keyword">return</span> res;</span><br><span class="line">    &#125;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+
+<figure class="highlight sql"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">select</span> cs.cust_name, od.order_num, <span class="built_in">sum</span>(or.quantity <span class="operator">*</span> or.item_price) <span class="keyword">as</span> `<span class="keyword">Order</span> Roral`</span><br><span class="line"><span class="keyword">from</span> OrderItems <span class="keyword">as</span> <span class="keyword">or</span></span><br><span class="line"><span class="keyword">inner</span> <span class="keyword">join</span> Orders <span class="keyword">as</span> od</span><br><span class="line"><span class="keyword">on</span> od.order_num <span class="operator">=</span> or.order_num</span><br><span class="line"><span class="keyword">inner</span> <span class="keyword">join</span> Customers <span class="keyword">as</span> cu</span><br><span class="line"><span class="keyword">on</span> cu.cust_id <span class="operator">=</span> or.cust_id</span><br><span class="line"><span class="keyword">group</span> <span class="keyword">by</span> </span><br><span class="line"><span class="keyword">order</span> <span class="keyword">by</span> or.order_num <span class="keyword">ASC</span> cu.cust_name</span><br><span class="line"><span class="comment">---分组查询是什么？</span></span><br></pre></td></tr></table></figure></li>
+</ul>
+<figure class="highlight sql"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">select</span> cust_id, order_date </span><br><span class="line"><span class="keyword">from</span> Orders <span class="keyword">as</span> o</span><br><span class="line"><span class="keyword">inner</span> <span class="keyword">join</span> OrderIntems <span class="keyword">as</span> i <span class="keyword">on</span></span><br><span class="line">o.order_num <span class="operator">=</span> i.order_num</span><br><span class="line"><span class="keyword">where</span> prod_id <span class="operator">=</span> <span class="string">&#x27;BR01&#x27;</span></span><br><span class="line"><span class="keyword">order</span> <span class="keyword">by</span> o.order_date <span class="keyword">ASC</span></span><br></pre></td></tr></table></figure>
+
+<figure class="highlight sql"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">select</span> cus.cust_name, ord.order_num </span><br><span class="line"><span class="keyword">from</span> Customers <span class="keyword">as</span> cus</span><br><span class="line"><span class="keyword">inner</span> <span class="keyword">join</span> Orders <span class="keyword">as</span> ord </span><br><span class="line"><span class="keyword">on</span> cus.cust_id <span class="operator">=</span> ord.cust_id</span><br><span class="line"><span class="keyword">order</span> <span class="keyword">by</span> cus.cust_name <span class="keyword">ASC</span>, ord.order_num <span class="keyword">ASC</span></span><br></pre></td></tr></table></figure>
+
+<h4 id="2024-4-18"><a href="#2024-4-18" class="headerlink" title="2024&#x2F;4&#x2F;18:"></a>2024&#x2F;4&#x2F;18:</h4><h5 id="Java-1"><a href="#Java-1" class="headerlink" title="Java"></a>Java</h5><ul>
+<li>当一个类实现一个接口时，必须对接口中的所有方法进行实现，不然该类得为抽象类Object</li>
+<li>可以将一个父类的引用转换为一个子类的引用，前提是该对象实际上是子类的一个实例。这个过程被称为向下转型（downcasting）</li>
+<li>char是基本数据类型，但是char[]是一个引用数据类型</li>
+</ul>
+<h4 id="2024-4-21"><a href="#2024-4-21" class="headerlink" title="2024&#x2F;4&#x2F;21:"></a>2024&#x2F;4&#x2F;21:</h4><h5 id="Java-2"><a href="#Java-2" class="headerlink" title="Java"></a>Java</h5><ul>
+<li>类在实例化时才能真正的传递类型参数，由于静态方法的加载先于类的实例化，也就是说类中的泛型还没有传递真正的类型参数，静态的方法的加载就已经完成了，所以静态泛型方法是没有办法使用类上声明的泛型的。只能使用自己声明的 <code>&lt;E&gt;</code></li>
+</ul>
+<h3 id="2024-4-22-2024-4-28"><a href="#2024-4-22-2024-4-28" class="headerlink" title="2024&#x2F;4&#x2F;22-2024&#x2F;4&#x2F;28"></a>2024&#x2F;4&#x2F;22-2024&#x2F;4&#x2F;28</h3><h4 id="2024-4-23"><a href="#2024-4-23" class="headerlink" title="2024&#x2F;4.23"></a>2024&#x2F;4.23</h4><h4 id="2024-4-24"><a href="#2024-4-24" class="headerlink" title="2024&#x2F;4.24"></a>2024&#x2F;4.24</h4><h5 id="Java-3"><a href="#Java-3" class="headerlink" title="Java"></a>Java</h5><ul>
+<li><p>数组<code>array</code>可以存储对象，只要将一个数组声明为对象数组。</p>
+</li>
+<li><p>在Java的集合里比如ArrayList，LinkedList等都会说线程不安全，不同步的状况。<br>这里的不同步指的是。当使用线程和web的时候，对这个集合对象进行操作，那么不同的线程，和不同的web客户端所获取的这个集合对象是不同的。所以是说不同步，且不安全的。</p>
+<p>比如说现在A线程 和B线程，要拿到这个集合对象，现在集合对象里有 [1,2,3]。那么A在集合对象里添加了一些数字[1,2,3,4,5]。那么这个时候B线程取拿这个集合对象的时候，还是[1,2,3]而不是A已经修改过的集合[1,2,3,4,5]。所以说这里的集合不同步。</p>
+</li>
+</ul>
+<h5 id="LeetCode-5"><a href="#LeetCode-5" class="headerlink" title="LeetCode"></a>LeetCode</h5><ul>
+<li><p>207课程表，有几个知识点：</p>
+<ol>
+<li><p>怎样构建临界矩阵？</p>
+</li>
+<li><p>dfs怎么写的？</p>
+</li>
+<li><p>如何判断有环？</p>
+<figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment">//怎样构建临界矩阵？</span></span><br><span class="line"><span class="keyword">for</span>(<span class="type">int</span>[] cp : prerequisites)&#123;</span><br><span class="line">	adjacency.get(cp[<span class="number">1</span>]).add(cp[<span class="number">0</span>]);    </span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line"><span class="comment">//dfs中的判断</span></span><br><span class="line"><span class="keyword">for</span>(Integer j : adjacency.get(i))&#123;</span><br><span class="line">    <span class="keyword">if</span>(!dfs(adjacency,flag,j)) <span class="keyword">return</span> <span class="literal">false</span>;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure></li>
+</ol>
+</li>
+</ul>
+<h4 id="2024-4-25"><a href="#2024-4-25" class="headerlink" title="2024&#x2F;4.25"></a>2024&#x2F;4.25</h4><h4 id="2024-4-26"><a href="#2024-4-26" class="headerlink" title="2024&#x2F;4.26"></a>2024&#x2F;4.26</h4><h5 id="Hello算法-2"><a href="#Hello算法-2" class="headerlink" title="Hello算法"></a>Hello算法</h5><ul>
+<li><pre><code class="java">//选择排序
+//选择出为排序数组中最小的一个
+void selectSort(nums[])&#123;
+    for(int i = 0; i &lt; nums.length - 1; i++)&#123;
+        int k = i;
+        //找到未排序的最小元素的索引
+        for(int j = i + 1; j &lt; nums.length; j++)&#123;
+            if(nums[j] &lt; nums[k])&#123;
+                k = j;
+            &#125;
+        &#125;
+        int temp = nums[i];
+        nums[i] = nums[j];
+        nums[j] = temp;
+    &#125;
+&#125;
+//插入排序
+//左边一直是排序好的，右边不断扩张
+void insertSort(nums[])&#123;
+    for(int i = 1; i &lt; nums.length; i++)&#123;
+        int base = nums[i], j = i - 1;
+        while(j&gt;=0 &amp;&amp; nums[j] &gt; base)&#123;
+            nums[j + 1] =  nums[j];
+            j--;
+        &#125;
+        nums[j+1] = base;
+    &#125;  
+&#125;
+//////快速排序
+void swap(int nums[], int i, int j)&#123;
+    int temp = nums[i];
+    nums[i] = nums[j];
+    nums[j] = temp;
+&#125;
+//哨兵划分
+int partition(int nums[], int left, int right)&#123;
+    int i = left, j = right;
+    while(i&lt;j)&#123;
+        while(i &lt; j &amp;&amp; nums[j] &gt;= nums[left])&#123;
+            j--;
+        &#125;
+        while(i &lt; j &amp;&amp; nums[i] &lt;= nums[right])&#123;
+            i++;
+        &#125;
+        swap(nums,i,j);
+    &#125;
+    swap(nums,i,left);
+    return i;//返回基准数
+&#125;
+void quickSort(int nums[], int left, int right)&#123;
+    if(left &gt;= right)&#123;
+        return;
+    &#125;
+    int i = partition(nums,left,right);
+    quickSort(nums,left,i-1);
+    quickSort(nums,i+1,right);
+&#125;
+<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br></pre></td><td class="code"><pre><span class="line">##### LeetCode</span><br><span class="line"></span><br><span class="line">- 回溯算法的框架：</span><br><span class="line"></span><br><span class="line">- 图形结构、树形结构</span><br><span class="line"></span><br><span class="line">- ```java</span><br><span class="line">  void backtrack(参数)&#123;</span><br><span class="line">      if(终止条件)&#123;</span><br><span class="line">          收集结果</span><br><span class="line">          return</span><br><span class="line">      &#125;</span><br><span class="line">      for(集合的元素)&#123;</span><br><span class="line">          处理节点</span><br><span class="line">          递归</span><br><span class="line">          回溯</span><br><span class="line">      &#125;</span><br><span class="line">  &#125;</span><br></pre></td></tr></table></figure>
+</code></pre>
+</li>
+<li><pre><code class="java">//第77题
+//当向结果列表 res 添加路径时，应该添加路径的一个副本而不是直接添加当前路径。
+//这是因为 Java 中的集合是通过引用传递的，因此如果直接将 path 添加到 res 中，
+//后续的修改将影响到已经添加到 res 中的路径。
+class Solution &#123;
+    List&lt;Integer&gt; path = new ArrayList&lt;&gt;();
+    List&lt;List&lt;Integer&gt;&gt; res = new ArrayList&lt;&gt;();
+
+    public List&lt;List&lt;Integer&gt;&gt; combine(int n, int k) &#123;
+        backtracking(n,k,1);
+        return res;
+    &#125;
+
+    public void backtracking(int n, int k, int start)&#123;
+        if(path.size() == k)&#123;
+            res.add(new ArrayList&lt;&gt;(path));
+            return;
+        &#125;
+        for(int i = start; i &lt;= n; i++)&#123;
+            path.add(i);
+            backtracking(n,k,i+1);
+            path.remove(path.size() - 1);
+        &#125;
+    &#125;
+&#125;
+<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br><span class="line">35</span><br><span class="line">36</span><br><span class="line">37</span><br><span class="line">38</span><br><span class="line">39</span><br><span class="line">40</span><br><span class="line">41</span><br><span class="line">42</span><br><span class="line">43</span><br><span class="line">44</span><br><span class="line">45</span><br><span class="line">46</span><br><span class="line">47</span><br><span class="line">48</span><br><span class="line">49</span><br><span class="line">50</span><br><span class="line">51</span><br><span class="line">52</span><br><span class="line">53</span><br><span class="line">54</span><br><span class="line">55</span><br><span class="line">56</span><br><span class="line">57</span><br><span class="line">58</span><br><span class="line">59</span><br><span class="line">60</span><br><span class="line">61</span><br><span class="line">62</span><br></pre></td><td class="code"><pre><span class="line"></span><br><span class="line">- </span><br><span class="line"></span><br><span class="line">#### 2024/4.30</span><br><span class="line"></span><br><span class="line">##### Leetcode</span><br><span class="line"></span><br><span class="line">- 虚拟头节点</span><br><span class="line">- 临时节点是用来记录一个节点的信息的！</span><br><span class="line">- ![image-20240430202223894](image-20240430202223894.png)</span><br><span class="line"></span><br><span class="line"></span><br><span class="line"></span><br><span class="line">```java</span><br><span class="line">public class Solution &#123;</span><br><span class="line">    public ListNode detectCycle(ListNode head) &#123;</span><br><span class="line">        ListNode dump =new ListNode(-1);//一个虚拟头节点</span><br><span class="line">        dump.next = head;</span><br><span class="line">        ListNode slow = dump.next;</span><br><span class="line">        ListNode fast = dump.next;        </span><br><span class="line">        while(fast != null &amp;&amp; fast.next != null)&#123;</span><br><span class="line">            slow = slow.next;</span><br><span class="line">            fast = fast.next.next;</span><br><span class="line">            if(slow == fast)&#123;</span><br><span class="line">                break;</span><br><span class="line">            &#125;</span><br><span class="line">        &#125;</span><br><span class="line">        if(fast != null ||  fast.next != null)&#123;return null;&#125;</span><br><span class="line">        fast = dump.next;</span><br><span class="line">        while(slow != fast)&#123;</span><br><span class="line">            slow = slow.next;</span><br><span class="line">            fast = fast.next;</span><br><span class="line">        &#125;</span><br><span class="line">        return fast;</span><br><span class="line">    &#125;</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line">public class Solution &#123;</span><br><span class="line">    public ListNode detectCycle(ListNode head) &#123;</span><br><span class="line">        ListNode dumpy = new ListNode(-1);</span><br><span class="line">        dumpy.next = head;</span><br><span class="line">        ListNode slow = dumpy.next;</span><br><span class="line">        ListNode fast = dumpy.next;</span><br><span class="line">        while (fast!=null &amp;&amp; fast.next!=null)&#123;</span><br><span class="line">            slow = slow.next;</span><br><span class="line">            fast = fast.next.next;</span><br><span class="line">            if (slow == fast)&#123;</span><br><span class="line">                break;</span><br><span class="line">            &#125;</span><br><span class="line">        &#125;</span><br><span class="line">        if (fast == null || fast.next == null)&#123;</span><br><span class="line">            return null;</span><br><span class="line">        &#125;</span><br><span class="line">        fast = dumpy.next;</span><br><span class="line">        while(fast!=slow)&#123;</span><br><span class="line">            fast = fast.next;</span><br><span class="line">            slow = slow.next;</span><br><span class="line">           </span><br><span class="line">        &#125;</span><br><span class="line">        return fast;</span><br><span class="line">    &#125;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+</code></pre>
+</li>
+</ul>
+
+        </div>
+
+        
+            <section class="post-copyright">
+                
+                    <p class="copyright-item">
+                        <span>Author:</span>
+                        <span>MatJenin</span>
+                    </p>
+                
+                
+                
+                
+
+            </section>
+        
+        <section class="post-tags">
+            <div>
+                <span>Tag(s):</span>
+                <span class="tag">
+                    
+                    
+                        <a href="/tags/%E8%AE%B0%E5%BD%95/"># 记录</a>
+                    
+                        
+                </span>
+            </div>
+            <div>
+                <a href="javascript:window.history.back();">back</a>
+                <span>· </span>
+                <a href="/">home</a>
+            </div>
+        </section>
+        <section class="post-nav">
+            
+                <a class="prev" rel="prev" href="/2024/04/25/%E4%BA%91%E8%AE%A1%E7%AE%97%EF%BC%9B/"></a>
+            
+            
+            <a class="next" rel="next" href="/2024/03/30/MySQL/">小林MySQL</a>
+            
+        </section>
+
+
+    </article>
+</div>
+
+            </div>
+            <footer id="footer" class="footer">
+    <div class="copyright">
+        <span>© MatJenin | Powered by <a href="https://hexo.io" target="_blank">Hexo</a> & <a href="https://github.com/Siricee/hexo-theme-Chic" target="_blank">Chic</a></span>
+    </div>
+</footer>
+
+    </div>
+</body>
+
+</html>

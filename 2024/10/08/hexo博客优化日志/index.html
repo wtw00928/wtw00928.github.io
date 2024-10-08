@@ -1,0 +1,348 @@
+<!DOCTYPE html>
+<html lang="CH">
+
+<head>
+    <meta charset="UTF-8">
+<meta name="viewport"
+      content="width=device-width, initial-scale=1.0, maximum-scale=1.0, minimum-scale=1.0">
+<meta http-equiv="X-UA-Compatible" content="ie=edge">
+
+    <meta name="author" content="MatJenin">
+
+
+
+
+
+<title>hexo博客优化日志 | Hexo</title>
+
+
+
+    <link rel="icon" href="/favicon.ico">
+
+
+
+
+    <!-- stylesheets list from _config.yml -->
+    
+    <link rel="stylesheet" href="/css/style.css">
+    
+
+
+
+    <!-- scripts list from _config.yml -->
+    
+    <script src="/js/script.js"></script>
+    
+    <script src="/js/tocbot.min.js"></script>
+    
+
+
+
+    
+    
+        
+    
+
+
+<meta name="generator" content="Hexo 7.1.1"></head>
+
+<body>
+    <script>
+        // this function is used to check current theme before page loaded.
+        (() => {
+            const currentTheme = window.localStorage && window.localStorage.getItem('theme') || '';
+            const isDark = currentTheme === 'dark';
+            const pagebody = document.getElementsByTagName('body')[0]
+            if (isDark) {
+                pagebody.classList.add('dark-theme');
+                // mobile
+                document.getElementById("mobile-toggle-theme").innerText = "· Dark"
+            } else {
+                pagebody.classList.remove('dark-theme');
+                // mobile
+                document.getElementById("mobile-toggle-theme").innerText = "· Light"
+            }
+        })();
+    </script>
+
+    <div class="wrapper">
+        <header>
+    <nav class="navbar">
+        <div class="container">
+            <div class="navbar-header header-logo"><a href="/">MatJenin&#39;s Blog</a></div>
+            <div class="menu navbar-right">
+                
+                    <a class="menu-item" href="/archives">Posts</a>
+                
+                    <a class="menu-item" href="/category">Categories</a>
+                
+                    <a class="menu-item" href="/tag">Tags</a>
+                
+                    <a class="menu-item" href="/about">About</a>
+                
+                <input id="switch_default" type="checkbox" class="switch_default">
+                <label for="switch_default" class="toggleBtn"></label>
+            </div>
+        </div>
+    </nav>
+
+    
+    <nav class="navbar-mobile" id="nav-mobile">
+        <div class="container">
+            <div class="navbar-header">
+                <div>
+                    <a href="/">MatJenin&#39;s Blog</a><a id="mobile-toggle-theme">·&nbsp;Light</a>
+                </div>
+                <div class="menu-toggle" onclick="mobileBtn()">&#9776; Menu</div>
+            </div>
+            <div class="menu" id="mobile-menu">
+                
+                    <a class="menu-item" href="/archives">Posts</a>
+                
+                    <a class="menu-item" href="/category">Categories</a>
+                
+                    <a class="menu-item" href="/tag">Tags</a>
+                
+                    <a class="menu-item" href="/about">About</a>
+                
+            </div>
+        </div>
+    </nav>
+
+</header>
+<script>
+    var mobileBtn = function f() {
+        var toggleMenu = document.getElementsByClassName("menu-toggle")[0];
+        var mobileMenu = document.getElementById("mobile-menu");
+        if(toggleMenu.classList.contains("active")){
+           toggleMenu.classList.remove("active")
+            mobileMenu.classList.remove("active")
+        }else{
+            toggleMenu.classList.add("active")
+            mobileMenu.classList.add("active")
+        }
+    }
+</script>
+            <div class="main">
+                <div class="container">
+    
+    
+        <div class="post-toc">
+    <div class="tocbot-list">
+    </div>
+    <div class="tocbot-list-menu">
+        <a class="tocbot-toc-expand" onclick="expand_toc()">Expand all</a>
+        <a onclick="go_top()">Back to top</a>
+        <a onclick="go_bottom()">Go to bottom</a>
+    </div>
+</div>
+
+<script>
+    var tocbot_timer;
+    var DEPTH_MAX = 6; // 为 6 时展开所有
+    var tocbot_default_config = {
+        tocSelector: '.tocbot-list',
+        contentSelector: '.post-content',
+        headingSelector: 'h1, h2, h3, h4, h5',
+        orderedList: false,
+        scrollSmooth: true,
+        onClick: extend_click,
+    };
+
+    function extend_click() {
+        clearTimeout(tocbot_timer);
+        tocbot_timer = setTimeout(function() {
+            tocbot.refresh(obj_merge(tocbot_default_config, {
+                hasInnerContainers: true
+            }));
+        }, 420); // 这个值是由 tocbot 源码里定义的 scrollSmoothDuration 得来的
+    }
+
+    document.ready(function() {
+        tocbot.init(obj_merge(tocbot_default_config, {
+            collapseDepth: 1
+        }));
+    });
+
+    function expand_toc() {
+        var b = document.querySelector('.tocbot-toc-expand');
+        var expanded = b.getAttribute('data-expanded');
+        expanded ? b.removeAttribute('data-expanded') : b.setAttribute('data-expanded', true);
+        tocbot.refresh(obj_merge(tocbot_default_config, {
+            collapseDepth: expanded ? 1 : DEPTH_MAX
+        }));
+        b.innerText = expanded ? 'Expand all' : 'Collapse all';
+    }
+
+    function go_top() {
+        window.scrollTo(0, 0);
+    }
+
+    function go_bottom() {
+        window.scrollTo(0, document.body.scrollHeight);
+    }
+
+    function obj_merge(target, source) {
+        for (var item in source) {
+            if (source.hasOwnProperty(item)) {
+                target[item] = source[item];
+            }
+        }
+        return target;
+    }
+</script>
+    
+
+    
+    <article class="post-wrap">
+        <header class="post-header">
+            <h1 class="post-title">hexo博客优化日志</h1>
+            
+                <div class="post-meta">
+                    
+                        Author: <a itemprop="author" rel="author" href="/">MatJenin</a>
+                    
+
+                    
+                        <span class="post-time">
+                        Date: <a href="#">October 8, 2024&nbsp;&nbsp;22:10:45</a>
+                        </span>
+                    
+                    
+                </div>
+            
+        </header>
+
+        <div class="post-content">
+            <p>由于各种原因，网站会有各种变化以及配置的增加，以日志记下改动</p>
+<h3 id="2023年11月16日更新"><a href="#2023年11月16日更新" class="headerlink" title="2023年11月16日更新"></a>2023年11月16日更新</h3><p>修改文章的间距。<br>原先文章之间间距过大，调整一下，修改文件themes&#x2F;next&#x2F;source&#x2F;css&#x2F;_schemes&#x2F;Mist&#x2F;_post-expanded.styl</p>
+<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">.post &#123; margin-top: 60px; &#125;</span><br></pre></td></tr></table></figure>
+
+
+
+<p>原先是120px，我修改为60px。注意选择你对应的主题进行修改，我这里使用的Mist，因此修改这个。</p>
+<h3 id="2023年8月18日更新"><a href="#2023年8月18日更新" class="headerlink" title="2023年8月18日更新"></a>2023年8月18日更新</h3><h4 id="增加豆瓣读书"><a href="#增加豆瓣读书" class="headerlink" title="增加豆瓣读书"></a>增加豆瓣读书</h4><p>1.安装插件：</p>
+<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">npm install hexo-douban --save</span><br></pre></td></tr></table></figure>
+
+
+
+<p>2.在主站点配置文件增加以下内容，注意是主站点配置文件不是主题配置文件：</p>
+<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br></pre></td><td class="code"><pre><span class="line">douban:</span><br><span class="line">  user:  # 个人豆瓣ID</span><br><span class="line">  builtin: false</span><br><span class="line">  book:</span><br><span class="line">    title: &#x27;This is my book title&#x27;</span><br><span class="line">    quote: &#x27;This is my book quote&#x27;</span><br><span class="line">  movie:</span><br><span class="line">    title: &#x27;This is my movie title&#x27;</span><br><span class="line">    quote: &#x27;This is my movie quote&#x27;</span><br><span class="line">  game:</span><br><span class="line">    title: &#x27;This is my game title&#x27;</span><br><span class="line">    quote: &#x27;This is my game quote&#x27;</span><br><span class="line">  timeout: 10000</span><br></pre></td></tr></table></figure>
+
+
+
+<p>如果不需要电影和游戏部分可以注释掉，注意，我在使用的时候发现如果把builtin设置为true，最后没有获取到书籍信息。</p>
+<p>3.修改主题配置文件，在菜单那里增加一项：</p>
+<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">书籍: /books/ || book</span><br></pre></td></tr></table></figure>
+
+
+
+<p>4.执行命令生成豆瓣读书页面：</p>
+<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">hexo douban</span><br></pre></td></tr></table></figure>
+
+
+
+<p>5.继续其他内容的生成和部署，注意部署要使用hexo deploy了，不能用简写的hexo d，因此douban简写也是d。</p>
+<h3 id="2023年4月15日更新"><a href="#2023年4月15日更新" class="headerlink" title="2023年4月15日更新"></a>2023年4月15日更新</h3><h4 id="增加cnzz站点统计PV，UV等信息"><a href="#增加cnzz站点统计PV，UV等信息" class="headerlink" title="增加cnzz站点统计PV，UV等信息"></a>增加cnzz站点统计PV，UV等信息</h4><p>1.注册友盟账号:<a target="_blank" rel="noopener" href="https://www.umeng.com/">https://www.umeng.com/</a><br>2.选择-产品-网站统计添加要统计的网站信息<br>3.站点设置-获取代码，注意是复制图中所示的代码之一，而不是前面的代码，否则只会显示图标而不显示统计结果。</p>
+<p><a target="_blank" rel="noopener" href="https://github.com/yanbinghu/BlogImages/raw/master/articles/%E5%8D%9A%E5%AE%A2%E7%BD%91%E7%AB%99%E6%9B%B4%E6%96%B0%E6%97%A5%E5%BF%97/cnzz.png"><img src="/cnzz.png" alt="cnzz统计"></a></p>
+<p>找到主题下cnzz的文件，例如next主题修改&#x2F;next&#x2F;layout&#x2F;_third-party&#x2F;analytics&#x2F;cnzz-analytics.swig<br>文件内容如下：</p>
+<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br></pre></td><td class="code"><pre><span class="line">&#123;% if theme.cnzz_siteid %&#125;</span><br><span class="line">&lt;div&gt;</span><br><span class="line"></span><br><span class="line">这里替换成你复制的内容</span><br><span class="line">&lt;/div&gt;</span><br><span class="line">&#123;% endif %&#125;</span><br></pre></td></tr></table></figure>
+
+
+
+<p>添加完成后，记得修改next主题配置文件，将cnzz相关信息修改：</p>
+<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">cnzz_siteid: 这里替换成你自己的id</span><br></pre></td></tr></table></figure>
+
+<h4 id="文章添加置顶功能"><a href="#文章添加置顶功能" class="headerlink" title="文章添加置顶功能"></a>文章添加置顶功能</h4><p>1.安装插件：</p>
+<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">npm uninstall hexo-generator-index --save</span><br><span class="line">npm install hexo-generator-index-pin-top --save</span><br></pre></td></tr></table></figure>
+
+
+
+<p>2.修改样式，打开next&#x2F;layout&#x2F;_macro&#x2F;post.swig，找到class为post-meta的div,插入下面的内容：</p>
+<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></td><td class="code"><pre><span class="line">&#123;% if post.top %&#125;</span><br><span class="line">    &lt;i class=&quot;fa fa-thumb-tack&quot;&gt;&lt;/i&gt;</span><br><span class="line">    &lt;font color=&quot;green&quot;&gt;置顶&lt;/font&gt;</span><br><span class="line">    &lt;span class=&quot;post-meta-divider&quot;&gt;|&lt;/span&gt;</span><br><span class="line">&#123;% endif %&#125;</span><br></pre></td></tr></table></figure>
+
+
+
+<p>使用时，只需要在文章的开头加：</p>
+<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">top: true</span><br></pre></td></tr></table></figure>
+
+
+
+<p>即可。</p>
+<p><a target="_blank" rel="noopener" href="https://github.com/yanbinghu/BlogImages/raw/master/articles/%E5%8D%9A%E5%AE%A2%E7%BD%91%E7%AB%99%E6%9B%B4%E6%96%B0%E6%97%A5%E5%BF%97/zhiding.png"><img src="/zhiding.png" alt="置顶"></a></p>
+<h4 id="添加标签云"><a href="#添加标签云" class="headerlink" title="添加标签云"></a>添加标签云</h4><p>安装插件：</p>
+<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">npm install hexo-tag-cloud --save</span><br></pre></td></tr></table></figure>
+
+
+
+<p>打开next&#x2F;layout&#x2F;_custom&#x2F;sidebar.swig</p>
+<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br></pre></td><td class="code"><pre><span class="line">&#123;% if site.tags.length &gt; 1 %&#125;</span><br><span class="line">&lt;script type=&quot;text/javascript&quot; charset=&quot;utf-8&quot; src=&quot;/js/tagcloud.js&quot;&gt;&lt;/script&gt;</span><br><span class="line">&lt;script type=&quot;text/javascript&quot; charset=&quot;utf-8&quot; src=&quot;/js/tagcanvas.js&quot;&gt;&lt;/script&gt;</span><br><span class="line">&lt;div class=&quot;widget-wrap&quot;&gt;</span><br><span class="line">    &lt;h3 class=&quot;widget-title&quot;&gt;Tag Cloud&lt;/h3&gt;</span><br><span class="line">    &lt;div id=&quot;myCanvasContainer&quot; class=&quot;widget tagcloud&quot;&gt;</span><br><span class="line">        &lt;canvas width=&quot;250&quot; height=&quot;250&quot; id=&quot;resCanvas&quot; style=&quot;width=100%&quot;&gt;</span><br><span class="line">            &#123;&#123; list_tags() &#125;&#125;</span><br><span class="line">        &lt;/canvas&gt;</span><br><span class="line">    &lt;/div&gt;</span><br><span class="line">&lt;/div&gt;</span><br><span class="line">&#123;% endif %&#125;</span><br></pre></td></tr></table></figure>
+
+<h3 id="2023年3月8日更新"><a href="#2023年3月8日更新" class="headerlink" title="2023年3月8日更新"></a>2023年3月8日更新</h3><h4 id="解决出现mixed-content的问题"><a href="#解决出现mixed-content的问题" class="headerlink" title="解决出现mixed content的问题"></a>解决出现mixed content的问题</h4><p>某篇文章内容空白，打开控制台发现下面的内容：</p>
+<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">Mixed Content: The page at &#x27;https://www.yanbinghu.com/2019/03/09/61352.html&#x27; was loaded over HTTPS, but requested an insecure script &#x27;http://www.qq.com/404/search_children.js&#x27;. This request has been blocked; the content must be served over HTTPS.</span><br></pre></td></tr></table></figure>
+
+
+
+<p>发现是网站https访问的，但是我的404页面中又使用了http访问，因此导致mixed content的错误。<br>解决方法：<br>修改404页面，将http改为https。</p>
+<h3 id="2022年2月4日更新"><a href="#2022年2月4日更新" class="headerlink" title="2022年2月4日更新"></a>2022年2月4日更新</h3><h4 id="解决百度分享不显示的问题"><a href="#解决百度分享不显示的问题" class="headerlink" title="解决百度分享不显示的问题"></a>解决百度分享不显示的问题</h4><p>百度分享不支持https,因此无法显示。解决方法：<br><a target="_blank" rel="noopener" href="https://github.com/hrwhisper/baiduShare">https://github.com/hrwhisper/baiduShare</a></p>
+<p>将api&#x2F;js&#x2F;conf&#x2F;define.js中的<a target="_blank" rel="noopener" href="https://github.com/hrwhisper/baiduShare/%E4%BF%AE%E6%94%B9%E4%B8%BA/">https://github.com/hrwhisper/baiduShare/修改为/</a><br>将next主题下的layout&#x2F;_partials&#x2F;share&#x2F;baidushare.swig中的&#x2F;&#x2F;bdimg.share.baidu.com去掉<br>注明：后续未能生效，去掉</p>
+<h3 id="2022年2月27日更新"><a href="#2022年2月27日更新" class="headerlink" title="2022年2月27日更新"></a>2022年2月27日更新</h3><h4 id="优化首页标题"><a href="#优化首页标题" class="headerlink" title="优化首页标题"></a>优化首页标题</h4><p>修改next主题配置文件，将index_with_subtitle改为true，这样网站的标题将会由主标题和子标题组成。<br>这样标题就变成了网站名称-网站描述的格式。</p>
+<h3 id="2022年1月31日更新"><a href="#2022年1月31日更新" class="headerlink" title="2022年1月31日更新"></a>2022年1月31日更新</h3><h4 id="hexo博客seo"><a href="#hexo博客seo" class="headerlink" title="hexo博客seo"></a>hexo博客seo</h4><p>1.增加页面关键字，修改next主题配置文件中的keywords:</p>
+<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">keywords: &quot;C语言,Cpp,Linux,Go,Python,算法&quot;</span><br></pre></td></tr></table></figure>
+
+
+
+
+        </div>
+
+        
+            <section class="post-copyright">
+                
+                    <p class="copyright-item">
+                        <span>Author:</span>
+                        <span>MatJenin</span>
+                    </p>
+                
+                
+                
+                
+
+            </section>
+        
+        <section class="post-tags">
+            <div>
+                <span>Tag(s):</span>
+                <span class="tag">
+                    
+                </span>
+            </div>
+            <div>
+                <a href="javascript:window.history.back();">back</a>
+                <span>· </span>
+                <a href="/">home</a>
+            </div>
+        </section>
+        <section class="post-nav">
+            
+                <a class="prev" rel="prev" href="/2024/10/08/Python%E6%95%99%E7%A8%8B/">Python教程</a>
+            
+            
+            <a class="next" rel="next" href="/2024/10/08/%E5%90%8E%E7%AB%AFJava%E5%AD%A6%E4%B9%A0%E8%AE%B0%E5%BD%95/">Java学习记录</a>
+            
+        </section>
+
+
+    </article>
+</div>
+
+            </div>
+            <footer id="footer" class="footer">
+    <div class="copyright">
+        <span>© MatJenin | Powered by <a href="https://hexo.io" target="_blank">Hexo</a> & <a href="https://github.com/Siricee/hexo-theme-Chic" target="_blank">Chic</a></span>
+    </div>
+</footer>
+
+    </div>
+</body>
+
+</html>

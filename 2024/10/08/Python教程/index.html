@@ -1,0 +1,324 @@
+<!DOCTYPE html>
+<html lang="CH">
+
+<head>
+    <meta charset="UTF-8">
+<meta name="viewport"
+      content="width=device-width, initial-scale=1.0, maximum-scale=1.0, minimum-scale=1.0">
+<meta http-equiv="X-UA-Compatible" content="ie=edge">
+
+    <meta name="author" content="MatJenin">
+
+
+
+
+
+<title>Python教程 | Hexo</title>
+
+
+
+    <link rel="icon" href="/favicon.ico">
+
+
+
+
+    <!-- stylesheets list from _config.yml -->
+    
+    <link rel="stylesheet" href="/css/style.css">
+    
+
+
+
+    <!-- scripts list from _config.yml -->
+    
+    <script src="/js/script.js"></script>
+    
+    <script src="/js/tocbot.min.js"></script>
+    
+
+
+
+    
+    
+        
+    
+
+
+<meta name="generator" content="Hexo 7.1.1"></head>
+
+<body>
+    <script>
+        // this function is used to check current theme before page loaded.
+        (() => {
+            const currentTheme = window.localStorage && window.localStorage.getItem('theme') || '';
+            const isDark = currentTheme === 'dark';
+            const pagebody = document.getElementsByTagName('body')[0]
+            if (isDark) {
+                pagebody.classList.add('dark-theme');
+                // mobile
+                document.getElementById("mobile-toggle-theme").innerText = "· Dark"
+            } else {
+                pagebody.classList.remove('dark-theme');
+                // mobile
+                document.getElementById("mobile-toggle-theme").innerText = "· Light"
+            }
+        })();
+    </script>
+
+    <div class="wrapper">
+        <header>
+    <nav class="navbar">
+        <div class="container">
+            <div class="navbar-header header-logo"><a href="/">MatJenin&#39;s Blog</a></div>
+            <div class="menu navbar-right">
+                
+                    <a class="menu-item" href="/archives">Posts</a>
+                
+                    <a class="menu-item" href="/category">Categories</a>
+                
+                    <a class="menu-item" href="/tag">Tags</a>
+                
+                    <a class="menu-item" href="/about">About</a>
+                
+                <input id="switch_default" type="checkbox" class="switch_default">
+                <label for="switch_default" class="toggleBtn"></label>
+            </div>
+        </div>
+    </nav>
+
+    
+    <nav class="navbar-mobile" id="nav-mobile">
+        <div class="container">
+            <div class="navbar-header">
+                <div>
+                    <a href="/">MatJenin&#39;s Blog</a><a id="mobile-toggle-theme">·&nbsp;Light</a>
+                </div>
+                <div class="menu-toggle" onclick="mobileBtn()">&#9776; Menu</div>
+            </div>
+            <div class="menu" id="mobile-menu">
+                
+                    <a class="menu-item" href="/archives">Posts</a>
+                
+                    <a class="menu-item" href="/category">Categories</a>
+                
+                    <a class="menu-item" href="/tag">Tags</a>
+                
+                    <a class="menu-item" href="/about">About</a>
+                
+            </div>
+        </div>
+    </nav>
+
+</header>
+<script>
+    var mobileBtn = function f() {
+        var toggleMenu = document.getElementsByClassName("menu-toggle")[0];
+        var mobileMenu = document.getElementById("mobile-menu");
+        if(toggleMenu.classList.contains("active")){
+           toggleMenu.classList.remove("active")
+            mobileMenu.classList.remove("active")
+        }else{
+            toggleMenu.classList.add("active")
+            mobileMenu.classList.add("active")
+        }
+    }
+</script>
+            <div class="main">
+                <div class="container">
+    
+    
+        <div class="post-toc">
+    <div class="tocbot-list">
+    </div>
+    <div class="tocbot-list-menu">
+        <a class="tocbot-toc-expand" onclick="expand_toc()">Expand all</a>
+        <a onclick="go_top()">Back to top</a>
+        <a onclick="go_bottom()">Go to bottom</a>
+    </div>
+</div>
+
+<script>
+    var tocbot_timer;
+    var DEPTH_MAX = 6; // 为 6 时展开所有
+    var tocbot_default_config = {
+        tocSelector: '.tocbot-list',
+        contentSelector: '.post-content',
+        headingSelector: 'h1, h2, h3, h4, h5',
+        orderedList: false,
+        scrollSmooth: true,
+        onClick: extend_click,
+    };
+
+    function extend_click() {
+        clearTimeout(tocbot_timer);
+        tocbot_timer = setTimeout(function() {
+            tocbot.refresh(obj_merge(tocbot_default_config, {
+                hasInnerContainers: true
+            }));
+        }, 420); // 这个值是由 tocbot 源码里定义的 scrollSmoothDuration 得来的
+    }
+
+    document.ready(function() {
+        tocbot.init(obj_merge(tocbot_default_config, {
+            collapseDepth: 1
+        }));
+    });
+
+    function expand_toc() {
+        var b = document.querySelector('.tocbot-toc-expand');
+        var expanded = b.getAttribute('data-expanded');
+        expanded ? b.removeAttribute('data-expanded') : b.setAttribute('data-expanded', true);
+        tocbot.refresh(obj_merge(tocbot_default_config, {
+            collapseDepth: expanded ? 1 : DEPTH_MAX
+        }));
+        b.innerText = expanded ? 'Expand all' : 'Collapse all';
+    }
+
+    function go_top() {
+        window.scrollTo(0, 0);
+    }
+
+    function go_bottom() {
+        window.scrollTo(0, document.body.scrollHeight);
+    }
+
+    function obj_merge(target, source) {
+        for (var item in source) {
+            if (source.hasOwnProperty(item)) {
+                target[item] = source[item];
+            }
+        }
+        return target;
+    }
+</script>
+    
+
+    
+    <article class="post-wrap">
+        <header class="post-header">
+            <h1 class="post-title">Python教程</h1>
+            
+                <div class="post-meta">
+                    
+                        Author: <a itemprop="author" rel="author" href="/">MatJenin</a>
+                    
+
+                    
+                        <span class="post-time">
+                        Date: <a href="#">October 8, 2024&nbsp;&nbsp;22:14:15</a>
+                        </span>
+                    
+                    
+                </div>
+            
+        </header>
+
+        <div class="post-content">
+            <h2 id="《简明python教程》学习笔记"><a href="#《简明python教程》学习笔记" class="headerlink" title="《简明python教程》学习笔记"></a>《简明python教程》学习笔记</h2><h2 id="前言"><a href="#前言" class="headerlink" title="前言"></a>前言</h2><p>记录在阅读简明python教程中的一些关键内容。<br>私以为，该书适合有一定编程基础，并且有面向对象编程经验的人初学。</p>
+<h2 id="数"><a href="#数" class="headerlink" title="数"></a>数</h2><p>在python中有四中类型的数—整数， 长整数，浮点数和复数</p>
+<h2 id="字符串"><a href="#字符串" class="headerlink" title="字符串"></a>字符串</h2><h4 id="可以使用，单引号，双引号，三引号，三引号可以指示一个多行的字符串"><a href="#可以使用，单引号，双引号，三引号，三引号可以指示一个多行的字符串" class="headerlink" title="可以使用，单引号，双引号，三引号，三引号可以指示一个多行的字符串"></a>可以使用，单引号，双引号，三引号，三引号可以指示一个多行的字符串</h4><h4 id="字符串是不可变的"><a href="#字符串是不可变的" class="headerlink" title="字符串是不可变的"></a>字符串是不可变的</h4><h4 id="按字面意义级连字符串"><a href="#按字面意义级连字符串" class="headerlink" title="按字面意义级连字符串"></a>按字面意义级连字符串</h4><p>例如，‘are you ok’‘？’，会被自动转为‘are you ok？’</p>
+<h4 id="python没有char类型数据"><a href="#python没有char类型数据" class="headerlink" title="python没有char类型数据"></a>python没有char类型数据</h4><h4 id="使用自然字符串处理正则表达式。"><a href="#使用自然字符串处理正则表达式。" class="headerlink" title="使用自然字符串处理正则表达式。"></a>使用自然字符串处理正则表达式。</h4><p>如果你想要指示某些不需要如转义符那样的特别处理的字符串，那么你需要指定一个自<br>然字符串。自然字符串通过给字符串加上前缀r或R来指定。</p>
+<h2 id="标识符"><a href="#标识符" class="headerlink" title="标识符"></a>标识符</h2><p>以字母或者下划线开头，其他部分由字母，下划线或者数字组成。</p>
+<h2 id="数据类型"><a href="#数据类型" class="headerlink" title="数据类型"></a>数据类型</h2><p>基本数据类型为数和字符串，当然可以用基本类型构造属于我们自己的类型。</p>
+<h2 id="运算符"><a href="#运算符" class="headerlink" title="运算符"></a>运算符</h2><figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br></pre></td><td class="code"><pre><span class="line">+ 加</span><br><span class="line">- 减</span><br><span class="line">× 乘</span><br><span class="line">×× 幂</span><br><span class="line">/ 除</span><br><span class="line">//取整除 返回商的整数部分</span><br><span class="line">% 取模</span><br><span class="line">&lt;&lt; 左移</span><br><span class="line">&gt;&gt; 右移</span><br><span class="line">not 非</span><br><span class="line">and 与</span><br><span class="line">or 或</span><br><span class="line">......</span><br></pre></td></tr></table></figure>
+
+<h2 id="控制流"><a href="#控制流" class="headerlink" title="控制流"></a>控制流</h2><h4 id="if-else"><a href="#if-else" class="headerlink" title="if else"></a>if else</h4><p>if expression：<br>elif expression<br>else：</p>
+<h4 id="while"><a href="#while" class="headerlink" title="while"></a>while</h4><p>while expression：</p>
+<h4 id="for"><a href="#for" class="headerlink" title="for"></a>for</h4><p>for i in range（1,5）</p>
+<h2 id="函数"><a href="#函数" class="headerlink" title="函数"></a>函数</h2><h4 id="函数形参"><a href="#函数形参" class="headerlink" title="函数形参"></a>函数形参</h4><p>def printMax（a，b）：</p>
+<h4 id="全局变量"><a href="#全局变量" class="headerlink" title="全局变量"></a>全局变量</h4><p>global 关键字</p>
+<h4 id="默认参数值"><a href="#默认参数值" class="headerlink" title="默认参数值"></a>默认参数值</h4><p>对于一些函数，你可能希望它的一些参数是 可选 的，如果用户不想要为这些参数提供值的<br>话，这些参数就使用默认值。<br>例如：</p>
+<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br></pre></td><td class="code"><pre><span class="line">#!/usr/bin/python</span><br><span class="line"># Filename: func_default.py</span><br><span class="line">def myprint(message, times = 1):</span><br><span class="line"> print message * times</span><br><span class="line">myprint(&#x27;Hello&#x27;)</span><br><span class="line">myprint(&#x27;World&#x27;, 5)</span><br></pre></td></tr></table></figure>
+
+
+
+<p>只有在形参表末尾的那些参数可以有默认参数值</p>
+<p>def func(a, b&#x3D;5)有效，而def func(a&#x3D;5, b)无效</p>
+<h4 id="关键参数"><a href="#关键参数" class="headerlink" title="关键参数"></a>关键参数</h4><p>如果你的某个函数有许多参数，而你只想指定其中的一部分，那么你可以通过命名来为这些参<br>数赋值</p>
+<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br></pre></td><td class="code"><pre><span class="line">#!/usr/bin/python</span><br><span class="line"># Filename: func_key.py</span><br><span class="line">def func(a, b=5, c=10):</span><br><span class="line"> print &#x27;a is&#x27;, a, &#x27;and b is&#x27;, b, &#x27;and c is&#x27;, c</span><br><span class="line">func(3, 7)</span><br><span class="line">func(25, c=24)</span><br><span class="line">func(c=50, a=100)</span><br></pre></td></tr></table></figure>
+
+
+
+<p>输出<br>$ python func_key.py<br>a is 3 and b is 7 and c is 10<br>a is 25 and b is 5 and c is 24<br>a is 100 and b is 5 and c is 50</p>
+<h2 id="docstrings"><a href="#docstrings" class="headerlink" title="docstrings"></a>docstrings</h2><p>文档字符串的惯例是一个多行字符串，它的首行以大写字母开始，句号结尾。第二行是空行，<br>从第三行开始是详细的描述。</p>
+<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br></pre></td><td class="code"><pre><span class="line">#!/usr/bin/python</span><br><span class="line">def docStringTest(message):</span><br><span class="line">    &#x27;&#x27;&#x27; Hello,this is the test function.</span><br><span class="line"></span><br><span class="line">        let us get start&#x27;&#x27;&#x27;</span><br><span class="line"></span><br><span class="line">    print message</span><br><span class="line"></span><br><span class="line">docStringTest(&#x27;test messge&#x27;)</span><br><span class="line">print docStringTest.__doc__</span><br></pre></td></tr></table></figure>
+
+<p>输出：<br>test messge<br>Hello,this is the test function.</p>
+<p>let us get start</p>
+<h2 id="数据结构"><a href="#数据结构" class="headerlink" title="数据结构"></a>数据结构</h2><h4 id="列表"><a href="#列表" class="headerlink" title="列表"></a>列表</h4><h4 id="元组"><a href="#元组" class="headerlink" title="元组"></a>元组</h4><h4 id="字典"><a href="#字典" class="headerlink" title="字典"></a>字典</h4><h4 id="序列"><a href="#序列" class="headerlink" title="序列"></a>序列</h4><h4 id="引用"><a href="#引用" class="headerlink" title="引用"></a>引用</h4><h2 id="面向对象编程"><a href="#面向对象编程" class="headerlink" title="面向对象编程"></a>面向对象编程</h2><h4 id="self"><a href="#self" class="headerlink" title="self"></a>self</h4><p>self等价于java中的this<br>你有一个不需要参数的对象方法，你还是得给这个方法定义一个self参数</p>
+<h4 id="init"><a href="#init" class="headerlink" title="init"></a><strong>init</strong></h4><p>在创建对象的实例时，会把参数传给init方法</p>
+<h4 id="继承"><a href="#继承" class="headerlink" title="继承"></a>继承</h4><p>class Student（SchoolMember）：<br>—Python不会自动调用基本类的constructor，你得亲自专门调用它。<br>因此，在子类的init函数中，需要调用基类的init</p>
+<h4 id="存储器-pickle"><a href="#存储器-pickle" class="headerlink" title="存储器 pickle"></a>存储器 pickle</h4><p>cPickle比pickle快1000倍</p>
+<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br></pre></td><td class="code"><pre><span class="line">shoplist = [&#x27;apple&#x27;, &#x27;mango&#x27;, &#x27;carrot&#x27;]</span><br><span class="line"># Write to the file</span><br><span class="line">f = file(shoplistfile, &#x27;w&#x27;)</span><br><span class="line">p.dump(shoplist, f) # dump the object to a file</span><br><span class="line">f.close()</span><br><span class="line">del shoplist # remove the shoplist</span><br><span class="line"># Read back from the storage</span><br><span class="line">f = file(shoplistfile)</span><br><span class="line">storedlist = p.load(f)</span><br><span class="line">print storedlist</span><br></pre></td></tr></table></figure>
+
+
+
+<h2 id="异常"><a href="#异常" class="headerlink" title="异常"></a>异常</h2><h4 id="捕捉异常"><a href="#捕捉异常" class="headerlink" title="捕捉异常"></a>捕捉异常</h4><p>try：<br>except：errortype<br>except：</p>
+<h5 id="引发异常"><a href="#引发异常" class="headerlink" title="引发异常"></a>引发异常</h5><p>class MyException(Exception):<br>‘’’A user-defined exception class.’’’<br>def <strong>init</strong>(self, length, atleast):<br>Exception.<strong>init</strong>(self)<br>self.length &#x3D; length<br>self.atleast &#x3D; atleast<br>raise MyException（3,3）</p>
+<h3 id="try-finally"><a href="#try-finally" class="headerlink" title="try finally"></a>try finally</h3><p>try：<br>finally：<br>finally中的语句，无论异常发生与否都会执行</p>
+<h2 id="python标准库"><a href="#python标准库" class="headerlink" title="python标准库"></a>python标准库</h2><h4 id="sys"><a href="#sys" class="headerlink" title="sys"></a>sys</h4><p>包含系统对应的功能</p>
+<h4 id="os"><a href="#os" class="headerlink" title="os"></a>os</h4><p>包含普遍的操作系统功能</p>
+<p>比如获取当前目录</p>
+<h2 id="其他内容"><a href="#其他内容" class="headerlink" title="其他内容"></a>其他内容</h2><h4 id="特殊方法"><a href="#特殊方法" class="headerlink" title="特殊方法"></a>特殊方法</h4><p><strong>init</strong>(self,…) 新建对象要被返回使用之前被调用<br><strong>del</strong>（self）在对象要被删除之前调用<br><strong>str</strong>（self）在对对象使用print或是使用str（）的时候调用<br><strong>lt</strong>当使用小于运算符时调用，类似的，+，》等都有特殊的方法<br><strong>len</strong>（self）对序列对象使用内建的()函数时调用</p>
+<h4 id="列表综合"><a href="#列表综合" class="headerlink" title="列表综合"></a>列表综合</h4><figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></td><td class="code"><pre><span class="line">#!/usr/bin/python</span><br><span class="line"># Filename: list_comprehension.py</span><br><span class="line">listone = [2, 3, 4]</span><br><span class="line">listtwo = [2*i for i in listone if i &gt; 2]</span><br><span class="line">print listtwo</span><br></pre></td></tr></table></figure>
+
+<p>输出：<br>[6, 8]<br>使其中所有大于2的数都是原来的2倍</p>
+<h4 id="在函数中接收元组和列表"><a href="#在函数中接收元组和列表" class="headerlink" title="在函数中接收元组和列表"></a>在函数中接收元组和列表</h4><p>由于在args变量前有*前缀，所有多余的函数参数都会作为一个元组存储在args中。如果使用的<br>是**前缀，多余的参数则会被认为是一个字典的键&#x2F;值对。</p>
+<h4 id="lambda-形式"><a href="#lambda-形式" class="headerlink" title="lambda 形式"></a>lambda 形式</h4><p>lambda语句被用来创建新的函数对象</p>
+<p>注：是否类似c语言里的函数指针</p>
+<h4 id="exec-和eval语句"><a href="#exec-和eval语句" class="headerlink" title="exec 和eval语句"></a>exec 和eval语句</h4><p>exec语句用来执行储存在字符串或文件中的Python语句。</p>
+<p>eval语句用来计算存储在字符串中的有效Python表达式。</p>
+
+        </div>
+
+        
+            <section class="post-copyright">
+                
+                    <p class="copyright-item">
+                        <span>Author:</span>
+                        <span>MatJenin</span>
+                    </p>
+                
+                
+                
+                
+
+            </section>
+        
+        <section class="post-tags">
+            <div>
+                <span>Tag(s):</span>
+                <span class="tag">
+                    
+                </span>
+            </div>
+            <div>
+                <a href="javascript:window.history.back();">back</a>
+                <span>· </span>
+                <a href="/">home</a>
+            </div>
+        </section>
+        <section class="post-nav">
+            
+                <a class="prev" rel="prev" href="/2024/10/08/%E7%BD%91%E7%BB%9C%E7%BC%96%E7%A8%8B-%E7%AE%80%E5%8D%95%E7%9A%84echo%E7%A8%8B%E5%BA%8F/">网络编程-简单的echo程序</a>
+            
+            
+            <a class="next" rel="next" href="/2024/10/08/hexo%E5%8D%9A%E5%AE%A2%E4%BC%98%E5%8C%96%E6%97%A5%E5%BF%97/">hexo博客优化日志</a>
+            
+        </section>
+
+
+    </article>
+</div>
+
+            </div>
+            <footer id="footer" class="footer">
+    <div class="copyright">
+        <span>© MatJenin | Powered by <a href="https://hexo.io" target="_blank">Hexo</a> & <a href="https://github.com/Siricee/hexo-theme-Chic" target="_blank">Chic</a></span>
+    </div>
+</footer>
+
+    </div>
+</body>
+
+</html>
